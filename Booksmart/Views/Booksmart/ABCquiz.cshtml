@@ -1,0 +1,29 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/ABC quiz.css" rel="stylesheet" />
+
+   
+    <title>ABCquiz</title>
+</head>
+<body>
+    <input onclick="window.location.href='@Url.Action("HomePage", "Booksmart" )';"  id="img" type="image" value="button" src="~/Pics/home.jpg" class="home" />
+    <br /><br /><br /><br />
+    <div id="ABC">
+
+        <h2 style="color:black;">A B _ D</h2>
+        <label style="color:blueviolet;">Fill in the missing letter.</label>
+        <br /><br />
+        <input id="Text" type="text" />
+        <br /><br />
+        <input id="btnNext" type="button" value="Next" />
+        </div>
+</body>
+</html>

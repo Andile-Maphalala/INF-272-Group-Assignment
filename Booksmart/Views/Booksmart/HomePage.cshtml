@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/Homepage.css" rel="stylesheet" />
+    <title>HomePage</title>
+</head>
+<body>
+    <h1>Welcome Mr Ray  0 Points</h1>
+    <div>
+        <img onclick="window.location.href='@Url.Action("Theory", "Booksmart" )';" class="Theory" src="~/Content/Images/Theory.jpg"   />
+        <img onclick="window.location.href='@Url.Action("PracticalMenu", "Booksmart" )';" class="Practical" src="~/Content/Images/ThreeCups.jpg" />
+        <br /><br /><br />
+
+        <img id="imgClickAndChange" onclick="window.location.href='@Url.Action("Entertainment", "Booksmart" )';" onmouseover="changeImage()" onmouseout="changeImageBack()"  class="Ent" src="~/Pics/humpty 2.jpg" />
+        <img  class="imgs" onclick="Info()" src="~/Content/Images/QuestionMark.jpg" />
+        <img onclick="window.location.href='@Url.Action("Settings", "Booksmart" )';" class="imgs2" src="~/Pics/settings.png" />
+
+    </div>
+
+    <script>
+        function changeImageBack() {
+
+            document.getElementById("imgClickAndChange").src = "@Url.Content("~/Content/Images/humpty 2.jpg")";
+        }
+        function changeImage() {
+            document.getElementById("imgClickAndChange").src = "@Url.Content("~/Pics/lock.jpg")";
+        }
+        function Info() {
+            window.alert("Instructions \n You need an average of 50% to progress to the next level.\n The buttons with the locked icons are not accessible.\n To gain access one must play the current and pass. ")
+        }
+
+    </script>
+</body>
+</html>

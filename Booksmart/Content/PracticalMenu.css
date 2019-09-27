@@ -1,0 +1,12 @@
+﻿body {
+      background-image: url('../Pics/download (1).jpg');
+     background-size: 1600px 800px;
+      text-align: center;
+}
+.home
+{
+    right:0;
+    height: 100px;
+    width:100px;
+    position:fixed;
+}

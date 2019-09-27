@@ -1,0 +1,32 @@
+﻿#body
+{
+    background-color:firebrick;
+    text-align:center;
+}
+#body2
+{
+    background-color:turquoise;
+    text-align:center;
+}
+
+.Pic
+{
+    width: 530px;
+    height:379px;
+    margin:auto;
+}
+.home
+{
+    right:0;
+    height: 100px;
+    width:100px;
+    position:fixed;
+}
+#Label
+{
+    font-size: 40px;
+}
+#l
+{
+    font-size: 20px;
+}

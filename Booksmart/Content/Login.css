@@ -1,0 +1,29 @@
+﻿Every{
+    text-align : center;
+ 
+}
+
+label {
+    font-size: 60px;
+}
+
+button {
+    font-size: 60px;
+}
+
+input{
+    font-size: 50px;
+}
+h1 {
+    font-size: 70px;
+}
+body {
+    background-image: url('../Content/Images/ImgLogin.jpg');
+    background-size: 1600px 800px
+}
+
+a{
+     font-size : 20px;
+    color : red;
+    
+}

@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/StyleSheet2.css" rel="stylesheet" />
+    <title>Theory</title>
+</head>
+<body id="1stBody">
+    <div>
+         
+        <input onclick="window.location.href='@Url.Action("HomePage", "Booksmart" )';"  id="img" type="image" value="button" src="~/Pics/home.jpg" class="home" />
+        <br />
+        <br />
+        <br />
+        <br />
+        <input onclick="window.location.href='@Url.Action("ABCsong", "Booksmart" )';"  id="img"style="height:180px;width:180px" type="image" value="" src="~/Pics/abcsong.png" />
+            
+        <input onclick="window.location.href='@Url.Action("NumberSong", "Booksmart" )';"  id="img" style="height:180px;width:180px"type="image" value="" src="~/Pics/numbersong.jpg" />
+    </div>
+           
+     </body>
+</html>

@@ -1,0 +1,40 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/PracticalMenu.css" rel="stylesheet" />
+    <title>PracticalMenu</title>
+
+   
+   
+  
+</head>
+
+<body>
+    <input onclick="window.location.href='@Url.Action("HomePage", "Booksmart" )';"  id="img" type="image" value="button" src="~/Pics/home.jpg" class="home" />
+
+
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <div>
+        <div>
+            Numbers <br />
+            <input onclick="window.location.href='@Url.Action("NumberGame", "Booksmart" )';"  id="img" type="image" value="" src="~/Pics/images.jpg" />
+
+
+        </div>
+        <br />
+        <div>
+            Words <br />
+            <input onclick="window.location.href='@Url.Action("Wordgame", "Booksmart" )';"  id="img" type="image" value="" src="~/Pics/alpha3.jpg" />
+
+
+        </div>
+
+    </div>
+</body>
+</html>

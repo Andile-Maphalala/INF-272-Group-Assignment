@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/StyleSheet1.css" rel="stylesheet" type="text/css" />
+    <title>Numbergamequiz</title>
+</head>
+<body id="body">
+    <input class="home" type="image" value="button" src="~/Pics/home.jpg" onclick="window.location.href='@Url.Action("HomePage", "Booksmart" )';" />
+    <br />
+    <br />
+    <br />
+    <div class="Pic"> 
+        <img src="~/Pics/3-objects-clipart-.gif" alt="" />
+        <br />
+        <label id="l2">How many objects are in this picture</label>
+    </div>
+    <br />
+    <br/>
+    <input id="Text1" type="number" />
+    <br/>
+    <br />
+    <input id="Button1" type="button" value="next" onclick="location.href='@Url.Action("Wordgame", "Booksmart")'" /> 
+</body>
+</html>

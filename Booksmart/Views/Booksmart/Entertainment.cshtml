@@ -1,0 +1,30 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Entertainment</title>
+    <link href="~/StyleSheet1.css" rel="stylesheet" />
+</head>
+<body id="body">
+    <input class="home" type="image" value="button" src="~/Pics/home.jpg" onclick="window.location.href='@Url.Action("HomePage", "Booksmart" )';" />
+    <br />
+    <br />
+    <br />
+    <h1>Pick A story to read</h1>
+    <div class="books">
+        <img src="~/Pics/cinderella.jpg" alt="" />
+    </div>
+    <div class="books">
+        <img src="~/Pics/humpty.jpg" alt="" />
+    </div>
+    <div class="books">
+        <img src="~/Pics/little red.jpg" alt="" />
+    </div>
+</body>
+</html>

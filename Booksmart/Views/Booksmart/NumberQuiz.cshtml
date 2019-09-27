@@ -1,0 +1,33 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>NumberQuiz</title>
+
+
+    <link href="~/Content/StyleSheet1.css" rel="stylesheet" />
+</head>
+
+
+<body id="body2">
+    <input onclick="window.location.href='@Url.Action("HomePage", "Booksmart" )';"  id="img" type="image" value="button" src="~/Pics/home.jpg" class="home" />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <div>
+
+        <h1 style="color:white; font-size:40px;">1 2 _ 4</h1>
+        <label style="color:white; font-size:40px;">Fill in the missing number.</label>
+        <br /><br /><br /><br />
+        <input id="Text1" type="text" />
+        <br /><br /><br /><br />
+        <input id="Button1" type="button" value="Next" />
+
+
+    </div>
+</body>
+</html>

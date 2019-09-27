@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/Theme.css" rel="stylesheet" />
+    <title>Themes</title>
+</head>
+<body>
+    <h1>Themes</h1>
+    <input onclick="window.location.href='@Url.Action("HomePage", "Booksmart" )';" id="img" type="image" value="button" src="~/Pics/home.jpg" class="home" />
+    <div>
+        <img  class="blue" src="~/Pics/bluetheme.jpg" />
+        <img  class="game" src="~/Pics/gametheme.png" />
+        <img  class="trop" src="~/Pics/tropicaltheme.jpg" />
+        <img  class="red" src="~/Pics/redTheme.jpg" />
+        <button> Reset</button>
+    </div>
+
+    <script>
+        function Info() {
+            window.alert("Instructions \n You need an average of 50% to progress to the next level.\n The buttons with the locked icons are not accessible.\n To gain access one must play the current and pass. ")
+        }
+    </script>
+</body>
+</html>

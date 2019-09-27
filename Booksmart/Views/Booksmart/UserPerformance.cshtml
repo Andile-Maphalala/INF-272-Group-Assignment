@@ -1,0 +1,92 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Index</title>
+
+    <style>
+        #customers {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            #customers td, #customers th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #customers tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            #customers tr:hover {
+                background-color: #ddd;
+            }
+
+            #customers th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #4CAF50;
+                color: white;
+            }
+    </style>
+
+
+
+
+</head>
+<body style="text-align:center;">
+
+    <h1>User Performance Report</h1>
+    <br />
+    <div style="text-align:center;">
+        <table id="customers" style="text-align:center;">
+            <tr>
+                <th>NAME</th>
+                <th>SURNAME</th>
+                <th>AVERAGE THEORY GAME SCORE</th>
+                <th>AVERAGE PRACTICAL GAME SCORE</th>
+            </tr>
+            <tr>
+                <td>Jack</td>
+                <td>Gooding</td>
+                <td>78</td>
+                <td>65</td>
+            </tr>
+            <tr>
+                <td>Travis</td>
+                <td>Jones</td>
+                <td>72</td>
+                <td>68</td>
+            </tr>
+            <tr>
+                <td>Jane</td>
+                <td>Dickson</td>
+                <td>68</td>
+                <td>54</td>
+            </tr>
+            <tr>
+                <td>Valerie</td>
+                <td>Smith</td>
+                <td>61</td>
+                <td>62</td>
+            </tr>
+
+        </table>
+
+        <br />
+        <button type="button">Print Report</button>
+
+    </div>
+</body>
+</html>

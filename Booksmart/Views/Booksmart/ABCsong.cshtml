@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/StyleSheet2.css" rel="stylesheet" />
+    <title>ABCsong</title>
+    <style>
+        body {
+            background-color: powderblue;
+        }
+
+      
+        
+    </style>
+</head>
+<body id="2ndBody">
+    <input onclick="window.location.href='@Url.Action("HomePage", "Booksmart" )';"  id="img" type="image" value="button" src="~/Pics/home.jpg" class="home" />
+    <br /><br />
+
+    <div>
+
+        <iframe width="420" height="315"
+                src="https://www.youtube.com/embed/75p-N9YKqNo"></iframe>
+        <br /><br />
+        <input id="Submit1" type="submit" value="Go To Quiz" onclick="window.location.href='@Url.Action("ABCquiz", "Booksmart" )';" />
+
+    </div>
+</body>
+</html>

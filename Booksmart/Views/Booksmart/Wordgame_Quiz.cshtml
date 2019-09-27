@@ -1,0 +1,29 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Wordgame_Quiz</title>
+    <link href="~/StyleSheet1.css" rel="stylesheet" />
+</head>
+<body id="body2">
+    <input onclick="window.location.href='@Url.Action("HomePage", "Booksmart" )';"  class="home" type="image" value="button" src="~/Pics/home.jpg" />
+    <br />
+    <br />
+    <br />
+    <div class="Pic">
+        <img src="~/Pics/ball.jpg" alt="" />
+        <br />
+        <label id="l2">What is in this picture</label>
+        <br />
+        <input id="Text1" type="text" />
+        <input id="Button1" type="button" value="next" onclick="location.href='@Url.Action("Wordgame", "Booksmart")'" />
+    </div>
+
+</body>
+</html>

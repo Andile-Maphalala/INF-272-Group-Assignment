@@ -1,0 +1,33 @@
+﻿.form {
+        text-align :center;
+	}
+.form label{
+        font-size : 35px;
+        position :absolute;
+	}
+.form input{  
+        font-size : 30px;
+         margin-left : 10em;
+         width : 400px;
+       
+	}
+
+.form select{
+        font-size : 30px;
+        width : 400px;
+         margin-left : 10em;
+    }
+
+.form button{
+    font-size : 30px;
+}
+
+a{
+    font-size : 20px;
+    color : red;
+}
+
+body {
+    background-image: url('Images/ImgRegsister.jpg');
+    background-size: 1600px 800px;
+}

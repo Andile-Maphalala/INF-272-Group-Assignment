@@ -1,0 +1,42 @@
+﻿
+#1stBody {
+       background-image:url(MusicT.jpg);
+       object-fit:fill;
+  
+      text-align:center;
+}
+#3rdBody{
+    background-image: url(star.png);
+    object-fit: fill;
+   background-repeat: no-repeat;
+    text-align: center;
+}
+.home{right:0;
+      position:fixed;
+}
+
+
+h2 {
+    text-align: center;
+}
+#ABC{
+     text-align:center;
+  margin:auto;
+  border-radius: 2px;
+  padding: 20px; 
+  width: 300px;
+  height: 200px; 
+}
+div{
+    
+   text-align:center;
+  margin:auto;
+  border-radius: 2px;
+  padding: 20px; 
+  width: 300px;
+  height: 200px; 
+}
+#img {
+    padding: 1%;
+    width: 10%;
+}

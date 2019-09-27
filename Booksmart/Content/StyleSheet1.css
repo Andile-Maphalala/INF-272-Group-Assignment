@@ -1,0 +1,117 @@
+﻿#body1{background-color:aqua;
+     margin:auto;
+      text-align:center;
+}
+
+
+#body2{background-image:url('../Pics/star.png');
+       object-fit:fill;
+       margin:auto;
+      text-align:center;
+      background-repeat:no-repeat;
+}
+
+#body3 {
+    background-image: url('../Pics/download (1).jpg');
+     background-size: 1600px 800px
+      
+}     
+ 
+
+
+
+.home{right:0;
+      position:fixed;
+}
+
+#img{   
+    padding: 1%;
+    width: 10%;
+
+}
+
+#h1{text-align:center}
+
+#btnadd{
+    font-size:140%;
+    padding: 1%;
+    width: 10%;
+    
+}
+
+#btnCont{
+    text-align:right;
+}
+
+
+
+#di{border-color:dodgerblue chartreuse salmon yellow;
+    margin:auto;
+    border-radius:25px;
+    background-color:darkorchid;
+  border-width:10px;
+    width:80%;
+    text-align:center;
+    border-style:solid;
+    
+}
+
+#lbl{
+     font-size:50px;
+ }
+
+tbl1{}
+tbl1{}
+tbl1{}
+tbl1{}
+
+
+table{
+    font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+  /*clear:left;*/
+  /*float:left;*/
+  /*vertical-align:top;*/
+  border-color:blue;
+  border-width:thick;
+  border:solid black;
+  margin-top:10px;
+  margin-left:10px; 
+    position: fixed; 
+   top:200px;
+    left: 200px;
+    right: 0;
+    
+}
+td,th {
+
+      border: 1px solid black;
+
+  
+  padding: 8px;
+}
+
+/*div{
+    margin:0px;
+    margin:auto;
+}*/
+
+label{
+      text-align:left;
+
+}
+
+#container{display:inline-block;
+
+}
+
+
+#LowerDiv
+{bottom:0;
+ /*position:fixed;*/
+   /*left: 200px;
+    right: 0;*/
+    margin:auto;
+ text-align:center;
+}

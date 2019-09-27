@@ -1,0 +1,33 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/Content/Login.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="Every">
+        <h1> BookSmart &trade;</h1>
+        <br />
+        <br />
+
+        <label>Username:</label>
+        <input type="text" />    <br />
+        <br />
+        <label>Password:</label>
+        <input type="text" />
+
+        <br /><br />
+
+        <button type="submit" onclick="window.location.href = '@Url.Action("HomePage","Booksmart")';">login</button>
+        <br /><br />
+        <a href="@Url.Action("Register", "Booksmart")">Click here if you don't have an account</a>
+</div>
+</body>
+</html>

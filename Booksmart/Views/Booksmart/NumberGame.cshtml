@@ -1,0 +1,30 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/StyleSheet1.css" rel="stylesheet" type="text/css" />
+    <title>NumberGame</title>
+</head>
+<body id="body">
+    <input onclick="window.location.href='@Url.Action("HomePage", "Booksmart" )';"  class="home" type="image" value="button" src="~/Pics/home.jpg" />
+    <br />
+    <br />
+    <br />
+    <div class="Pic"> 
+        <img src="~/Pics/3-objects-clipart-.gif" alt="" />
+        <br />
+        <label id="Label">3 Three</label>
+    </div>
+    <br />
+    <br />
+    <br />
+    <input id="Button1" type="button" value="Back" />
+    <input id="Button1" type="button" value="Next" onclick="location.href='@Url.Action("Numbergamequiz", "Booksmart")'" />
+</body>
+</html>
