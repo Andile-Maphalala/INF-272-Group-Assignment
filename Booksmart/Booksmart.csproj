@@ -209,10 +209,15 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ABCquizVM.cs" />
     <Compile Include="ViewModels\ABCsongVM.cs" />
+    <Compile Include="ViewModels\EntertainmentVM.cs" />
+    <Compile Include="ViewModels\NumberGameQuizVM.cs" />
     <Compile Include="ViewModels\NumberQuizVM.cs" />
     <Compile Include="ViewModels\NumberGameVM.cs" />
     <Compile Include="ViewModels\NumberSongVM.cs" />
+    <Compile Include="ViewModels\ThemesVM.cs" />
     <Compile Include="ViewModels\TheoryVM.cs" />
+    <Compile Include="ViewModels\WordGameQuizVM.cs" />
+    <Compile Include="ViewModels\WordGameVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\ABC quiz.css" />
