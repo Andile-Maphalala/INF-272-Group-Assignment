@@ -231,6 +231,16 @@
     <Content Include="Content\StyleSheet1.css" />
     <Content Include="Content\StyleSheet2.css" />
     <Content Include="Content\Theme.css" />
+    <Content Include="Content\WordGameImages\apple.jpg" />
+    <Content Include="Content\WordGameImages\ball.jpg" />
+    <Content Include="Content\WordGameImages\car.png" />
+    <Content Include="Content\WordGameImages\dog.jpg" />
+    <Content Include="Content\WordGameImages\glass.jpg" />
+    <Content Include="Content\WordGameImages\horse.png" />
+    <Content Include="Content\WordGameImages\pen.jpg" />
+    <Content Include="Content\WordGameImages\shoe.jpg" />
+    <Content Include="Content\WordGameImages\tree.jpg" />
+    <Content Include="Content\WordGameImages\wheel.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -384,7 +394,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>3268</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
