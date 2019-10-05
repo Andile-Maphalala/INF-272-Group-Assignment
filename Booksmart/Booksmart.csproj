@@ -259,9 +259,6 @@
     <Compile Include="Models\ShortStory.cs">
       <DependentUpon>BookSmartModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>BookSmartModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Theme.cs">
       <DependentUpon>BookSmartModel.tt</DependentUpon>
     </Compile>

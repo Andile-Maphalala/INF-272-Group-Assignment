@@ -147,16 +147,6 @@
     <Property Name="ShortStoryDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ShortStoryPdfPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <EntityType Name="Theme">
     <Key>
       <PropertyRef Name="ThemeID" />
@@ -534,7 +524,6 @@
     <EntitySet Name="PracQuestions" EntityType="Self.PracQuestion" />
     <EntitySet Name="PracticalGameAttempts" EntityType="Self.PracticalGameAttempt" />
     <EntitySet Name="ShortStories" EntityType="Self.ShortStory" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="Themes" EntityType="Self.Theme" />
     <EntitySet Name="TheoryGames" EntityType="Self.TheoryGame" />
     <EntitySet Name="TheoryGameAttempts" EntityType="Self.TheoryGameAttempt" />

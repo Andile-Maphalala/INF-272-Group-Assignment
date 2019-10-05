@@ -117,16 +117,6 @@
     <Property Name="ShortStoryDescription" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ShortStoryPdfPath" Type="varchar(max)" Nullable="false" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
   <EntityType Name="Theme">
     <Key>
       <PropertyRef Name="ThemeID" />
@@ -488,7 +478,6 @@
     <EntitySet Name="PracQuestion" EntityType="Self.PracQuestion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PracticalGameAttempt" EntityType="Self.PracticalGameAttempt" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ShortStory" EntityType="Self.ShortStory" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Theme" EntityType="Self.Theme" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TheoryGame" EntityType="Self.TheoryGame" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TheoryGameAttempt" EntityType="Self.TheoryGameAttempt" Schema="dbo" store:Type="Tables" />

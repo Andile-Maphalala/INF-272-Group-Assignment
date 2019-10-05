@@ -63,26 +63,33 @@
          <label style="color:white; font-size:40px;">Fill in the missing number.</label>
          <br /><br /><br /><br />
 
-         <form id="myform">
-             <input id="Text1" type="text" name="userAnswer1"  />
-
+         <form id="form2">
+             <input id="Text_@n" type="text" name="userAnswer_@n" pattern="^[0-9]*$" onkeypress="return isNumber(event)" required />
          </form>
              <br /><br /><br /><br />
              <div id="arrow">
                  @*<input id="Button1" type="button" value="Next" class="next" />*@
 
-
                  @if (n == 10)
-                 {<button class="next btn btn-primary" id="@n" onclick="window.location.href = '@Url.Action("HomePage", "Booksmart" )';" type="submit">Next</button>
+                 {
+                     <button class="next btn btn-primary" id="@n" onclick="window.location.href = '@Url.Action("PracticalMenu", "Booksmart" )';" type="submit"  disabled>Next</button>
                  }
                  else
                  {
-                     <button class="next btn btn-primary" id="@n" type="submit">Next</button>
+                    @*<input class="next btn btn-primary" type="submit" value="Submit" id="@n" disabled />*@
+                     <button class="next btn btn-primary" id="@n" type="submit" disabled>Next</button>
+                     @*<button class="next btn btn-primary" id="@n" type="submit">Next</button>*@
                  }
+                 <br /><br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
+                 <br />
 
-
-
+             
              </div>
+       
 </div>
         </section>
             }
@@ -118,6 +125,32 @@
     </script>*@
 
     <script>
+
+
+
+    //    var toValidate = $('#Text_1'),
+    //valid = false;
+    //    toValidate.keyup(function () {
+    //        if ($(this).val().length > 0) {
+    //            $(this).data('valid', true);
+    //        } else {
+    //            $(this).data('valid', false);
+    //        }
+    //        toValidate.each(function () {
+    //            if ($(this).data('valid') == true) {
+    //                valid = true;
+    //            } else {
+    //                valid = false;
+    //            }
+    //        });
+    //        if (valid === true) {
+    //            $('input[type=submit]').prop('disabled', false);
+    //        } else {
+    //            $('input[type=submit]').prop('disabled', true);
+    //        }
+    //    });
+
+
         $(function () {
 
             var pagePositon = 0,
@@ -193,29 +226,82 @@
         //}
 
 
-        $(document).ready(function () {
+        //$(document).ready(function () {
 
-            $('#myform').validate({
-                rules: {
-                    userAnswer1: {
-                        required: true
+        //    $('#myform').validate({
+        //        rules: {
+        //            userAnswer1: {
+        //                required: true
+        //            }
+        //            //field2: {
+        //            //    required: true
+        //            //}
+        //        },
+        //        submitHandler: function (form) { // for demo
+        //            window.alert('valid form');
+        //            return false;
+        //        }
+        //    });
+
+        //    // programmatically check any element using the `.valid()` method.
+        //    $('#1').on('click', function () {
+        //        $('input[name="userAnswer1"]').valid();
+        //    });
+
+        //});
+        
+        $(document).on('click', 'input', function () {
+           
+            var currentid = $(this).attr("id");
+
+            var toValidate = $(String("#"+$(this).attr("id"))),
+   valid = false;
+            toValidate.keyup(function () {
+                if ($(this).val().length > 0) {
+                    $(this).data('valid', true);
+                } else {
+                    $(this).data('valid', false);
+                }
+                toValidate.each(function () {
+                    if ($(this).data('valid') == true) {
+                        valid = true;
+                    } else {
+                        valid = false;
                     }
-                    //field2: {
-                    //    required: true
-                    //}
-                },
-                submitHandler: function (form) { // for demo
-                    window.alert('valid form');
-                    return false;
+                });
+                if (valid === true) {
+                    if (currentid.length == 6) {
+                        $('button[id=' + currentid.charAt(5) + ']').prop('disabled', false);
+                    }
+                    else if (currentid.length == 7) {
+                        $('button[id=10]').prop('disabled', false);
+                    }
+
+                }
+                else {
+                    if (currentid.length == 6)
+                    {
+                        $('button[id=' + currentid.charAt(5) + ']').prop('disabled', true);
+                    }
+                    else if (currentid.length == 7)
+                    {
+                        $('button[id=10]').prop('disabled', true);
+                    }
                 }
             });
 
-            // programmatically check any element using the `.valid()` method.
-            $('#1').on('click', function () {
-                $('input[name="userAnswer1"]').valid();
-            });
-
         });
+
+        function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+
+
 
     </script>
 }

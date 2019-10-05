@@ -17,7 +17,6 @@
         <EntityTypeShape EntityType="Model.PracQuestion" Width="1.5" PointX="6" PointY="18" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.PracticalGameAttempt" Width="1.5" PointX="8.25" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.ShortStory" Width="1.5" PointX="2.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.sysdiagram" Width="1.5" PointX="4.75" PointY="1.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Theme" Width="1.5" PointX="3.75" PointY="16.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.TheoryGame" Width="1.5" PointX="9" PointY="13.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.TheoryGameAttempt" Width="1.5" PointX="11.25" PointY="9.75" IsExpanded="true" />
