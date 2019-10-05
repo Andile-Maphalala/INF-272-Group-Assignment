@@ -67,12 +67,16 @@ namespace Booksmart.Controllers
 
         public ActionResult NumberQuiz()
         { Del_4_272Entities db = new Del_4_272Entities();
-
-
+            db.Configuration.ProxyCreationEnabled = false;
+            //Random rnd = new Random();
             //load questions to view
-            var questions = db.TheoryQuestions.Where(xx=>xx.Type==0).ToList();
+            var qlist = db.TheoryQuestions.Where(xx => xx.Type == 0).ToList();
+            //var questions = db.TheoryQuestions.Where(xx => xx.Type == 0).OrderBy().ToList();
+            var questions = from item in qlist
+                            orderby Guid.NewGuid() ascending
+                            select item;
 
-            return View(questions);
+            return View(questions.ToList());
         }
         public ActionResult Wordgame_Quiz()
         {
