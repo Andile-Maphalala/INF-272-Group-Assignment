@@ -37,7 +37,16 @@ namespace Booksmart.Controllers
         }
         public ActionResult ABCquiz()
         {
-            return View();
+            Del_4_272Entities db = new Del_4_272Entities();
+            db.Configuration.ProxyCreationEnabled = false;
+            //Random rnd = new Random();
+            //load questions to view
+            var qlist = db.TheoryQuestions.Where(xx => xx.Type == 1).ToList();
+            //var questions = db.TheoryQuestions.Where(xx => xx.Type == 0).OrderBy().ToList();
+            var questions = from item in qlist
+                            orderby Guid.NewGuid() ascending
+                            select item;
+            return View(questions.ToList());
         }
         public ActionResult ABCsong()
         {
