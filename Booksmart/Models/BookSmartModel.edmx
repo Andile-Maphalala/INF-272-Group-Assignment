@@ -1,0 +1,1488 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Achievement">
+          <Key>
+            <PropertyRef Name="AchievementID" />
+          </Key>
+          <Property Name="AchievementID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Points" Type="int" Nullable="false" />
+          <Property Name="Min_Score" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdminName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CellphoneNo" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="GenderID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="GenderID" />
+          </Key>
+          <Property Name="GenderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Learner">
+          <Key>
+            <PropertyRef Name="LearnerID" />
+          </Key>
+          <Property Name="LearnerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Age" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DOB" Type="date" Nullable="false" />
+          <Property Name="PointBalance" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="ThemeID" Type="int" Nullable="false" />
+          <Property Name="ParentID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="LevelID" Type="int" Nullable="false" />
+          <Property Name="GenderID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Level">
+          <Key>
+            <PropertyRef Name="LevelID" />
+          </Key>
+          <Property Name="LevelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LevelDescription" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Parent">
+          <Key>
+            <PropertyRef Name="ParentID" />
+          </Key>
+          <Property Name="ParentID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Age" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DOB" Type="date" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
+          <Property Name="GenderID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PracGame">
+          <Key>
+            <PropertyRef Name="PracGameID" />
+          </Key>
+          <Property Name="PracGameID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="PracType" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="LevelID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PracGameQuestion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="PracQuestionID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PracGameID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PracQuestion">
+          <Key>
+            <PropertyRef Name="PracQuestionID" />
+          </Key>
+          <Property Name="PracQuestionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Answer" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Image" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PracticalGameAttempt">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="PracticalGameScore" Type="int" Nullable="false" />
+          <Property Name="PracGameID" Type="int" Nullable="false" />
+          <Property Name="LearnerID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AttemptDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShortStory">
+          <Key>
+            <PropertyRef Name="ShortStoryID" />
+          </Key>
+          <Property Name="ShortStoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShortStoryDescription" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ShortStoryPdfPath" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Theme">
+          <Key>
+            <PropertyRef Name="ThemeID" />
+          </Key>
+          <Property Name="ThemeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ThemeDescription" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ThemeImage" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ThemePointsPrice" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TheoryGame">
+          <Key>
+            <PropertyRef Name="TheoryGameID" />
+          </Key>
+          <Property Name="TheoryGameID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="TheoryVideo" Type="char" MaxLength="254" Nullable="false" />
+          <Property Name="TheoryType" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="LevelID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TheoryGameAttempt">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Score" Type="int" Nullable="false" />
+          <Property Name="TheoryGameID" Type="int" Nullable="false" />
+          <Property Name="LearnerID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AttemptDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TheoryGameQuestion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="TheoryGameID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TheoryQuestionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TheoryQuestion">
+          <Key>
+            <PropertyRef Name="TheoryQuestionID" />
+          </Key>
+          <Property Name="TheoryQuestionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Question" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Answer" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Type" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar(max)" Nullable="false" />
+          <Property Name="LastLoginDate" Type="datetime" Nullable="false" />
+          <Property Name="UserTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserAchievement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="LearnerID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AchievementID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeID" />
+          </Key>
+          <Property Name="UserTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserTypeDescription" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Admin_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="GenderID" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Admin_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Learner_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Learner" Type="Self.Learner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="GenderID" />
+            </Principal>
+            <Dependent Role="Learner">
+              <PropertyRef Name="GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Learner_Level">
+          <End Role="Level" Type="Self.Level" Multiplicity="1" />
+          <End Role="Learner" Type="Self.Learner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Level">
+              <PropertyRef Name="LevelID" />
+            </Principal>
+            <Dependent Role="Learner">
+              <PropertyRef Name="LevelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Learner_Parent">
+          <End Role="Parent" Type="Self.Parent" Multiplicity="1" />
+          <End Role="Learner" Type="Self.Learner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parent">
+              <PropertyRef Name="ParentID" />
+            </Principal>
+            <Dependent Role="Learner">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Learner_Theme">
+          <End Role="Theme" Type="Self.Theme" Multiplicity="1" />
+          <End Role="Learner" Type="Self.Learner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Theme">
+              <PropertyRef Name="ThemeID" />
+            </Principal>
+            <Dependent Role="Learner">
+              <PropertyRef Name="ThemeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Learner_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Learner" Type="Self.Learner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Learner">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parent_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Parent" Type="Self.Parent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Parent">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parent_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Parent" Type="Self.Parent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="GenderID" />
+            </Principal>
+            <Dependent Role="Parent">
+              <PropertyRef Name="GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parent_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Parent" Type="Self.Parent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Parent">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PracGame_Level">
+          <End Role="Level" Type="Self.Level" Multiplicity="1" />
+          <End Role="PracGame" Type="Self.PracGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Level">
+              <PropertyRef Name="LevelID" />
+            </Principal>
+            <Dependent Role="PracGame">
+              <PropertyRef Name="LevelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PracGameQuestion_PracGame">
+          <End Role="PracGame" Type="Self.PracGame" Multiplicity="1" />
+          <End Role="PracGameQuestion" Type="Self.PracGameQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PracGame">
+              <PropertyRef Name="PracGameID" />
+            </Principal>
+            <Dependent Role="PracGameQuestion">
+              <PropertyRef Name="PracGameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PracGameQuestion_PracQuestion">
+          <End Role="PracQuestion" Type="Self.PracQuestion" Multiplicity="1" />
+          <End Role="PracGameQuestion" Type="Self.PracGameQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PracQuestion">
+              <PropertyRef Name="PracQuestionID" />
+            </Principal>
+            <Dependent Role="PracGameQuestion">
+              <PropertyRef Name="PracQuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PracticalGameAttempt_Learner">
+          <End Role="Learner" Type="Self.Learner" Multiplicity="1" />
+          <End Role="PracticalGameAttempt" Type="Self.PracticalGameAttempt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Learner">
+              <PropertyRef Name="LearnerID" />
+            </Principal>
+            <Dependent Role="PracticalGameAttempt">
+              <PropertyRef Name="LearnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PracticalGameAttempt_PracGame">
+          <End Role="PracGame" Type="Self.PracGame" Multiplicity="1" />
+          <End Role="PracticalGameAttempt" Type="Self.PracticalGameAttempt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PracGame">
+              <PropertyRef Name="PracGameID" />
+            </Principal>
+            <Dependent Role="PracticalGameAttempt">
+              <PropertyRef Name="PracGameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TheoryGame_Level">
+          <End Role="Level" Type="Self.Level" Multiplicity="1" />
+          <End Role="TheoryGame" Type="Self.TheoryGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Level">
+              <PropertyRef Name="LevelID" />
+            </Principal>
+            <Dependent Role="TheoryGame">
+              <PropertyRef Name="LevelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TheoryGameAttempt_Learner">
+          <End Role="Learner" Type="Self.Learner" Multiplicity="1" />
+          <End Role="TheoryGameAttempt" Type="Self.TheoryGameAttempt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Learner">
+              <PropertyRef Name="LearnerID" />
+            </Principal>
+            <Dependent Role="TheoryGameAttempt">
+              <PropertyRef Name="LearnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TheoryGameAttempt_TheoryGame">
+          <End Role="TheoryGame" Type="Self.TheoryGame" Multiplicity="1" />
+          <End Role="TheoryGameAttempt" Type="Self.TheoryGameAttempt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TheoryGame">
+              <PropertyRef Name="TheoryGameID" />
+            </Principal>
+            <Dependent Role="TheoryGameAttempt">
+              <PropertyRef Name="TheoryGameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TheoryGameQuestion_TheoryGame">
+          <End Role="TheoryGame" Type="Self.TheoryGame" Multiplicity="1" />
+          <End Role="TheoryGameQuestion" Type="Self.TheoryGameQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TheoryGame">
+              <PropertyRef Name="TheoryGameID" />
+            </Principal>
+            <Dependent Role="TheoryGameQuestion">
+              <PropertyRef Name="TheoryGameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TheoryGameQuestion_TheoryQuestion">
+          <End Role="TheoryQuestion" Type="Self.TheoryQuestion" Multiplicity="1" />
+          <End Role="TheoryGameQuestion" Type="Self.TheoryGameQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TheoryQuestion">
+              <PropertyRef Name="TheoryQuestionID" />
+            </Principal>
+            <Dependent Role="TheoryGameQuestion">
+              <PropertyRef Name="TheoryQuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_UserType1">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="UserTypeID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="UserTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAchievement_Achievement">
+          <End Role="Achievement" Type="Self.Achievement" Multiplicity="1" />
+          <End Role="UserAchievement" Type="Self.UserAchievement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Achievement">
+              <PropertyRef Name="AchievementID" />
+            </Principal>
+            <Dependent Role="UserAchievement">
+              <PropertyRef Name="AchievementID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAchievement_Learner">
+          <End Role="Learner" Type="Self.Learner" Multiplicity="1" />
+          <End Role="UserAchievement" Type="Self.UserAchievement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Learner">
+              <PropertyRef Name="LearnerID" />
+            </Principal>
+            <Dependent Role="UserAchievement">
+              <PropertyRef Name="LearnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Achievement" EntityType="Self.Achievement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Learner" EntityType="Self.Learner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Level" EntityType="Self.Level" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parent" EntityType="Self.Parent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PracGame" EntityType="Self.PracGame" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PracGameQuestion" EntityType="Self.PracGameQuestion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PracQuestion" EntityType="Self.PracQuestion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PracticalGameAttempt" EntityType="Self.PracticalGameAttempt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShortStory" EntityType="Self.ShortStory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Theme" EntityType="Self.Theme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TheoryGame" EntityType="Self.TheoryGame" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TheoryGameAttempt" EntityType="Self.TheoryGameAttempt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TheoryGameQuestion" EntityType="Self.TheoryGameQuestion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TheoryQuestion" EntityType="Self.TheoryQuestion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAchievement" EntityType="Self.UserAchievement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Admin_Gender" Association="Self.FK_Admin_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Admin" EntitySet="Admin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Admin_User" Association="Self.FK_Admin_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Admin" EntitySet="Admin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Learner_Gender" Association="Self.FK_Learner_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Learner" EntitySet="Learner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Learner_Level" Association="Self.FK_Learner_Level">
+            <End Role="Level" EntitySet="Level" />
+            <End Role="Learner" EntitySet="Learner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Learner_Parent" Association="Self.FK_Learner_Parent">
+            <End Role="Parent" EntitySet="Parent" />
+            <End Role="Learner" EntitySet="Learner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Learner_Theme" Association="Self.FK_Learner_Theme">
+            <End Role="Theme" EntitySet="Theme" />
+            <End Role="Learner" EntitySet="Learner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Learner_User" Association="Self.FK_Learner_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Learner" EntitySet="Learner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parent_Country" Association="Self.FK_Parent_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Parent" EntitySet="Parent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parent_Gender" Association="Self.FK_Parent_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Parent" EntitySet="Parent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parent_User" Association="Self.FK_Parent_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Parent" EntitySet="Parent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PracGame_Level" Association="Self.FK_PracGame_Level">
+            <End Role="Level" EntitySet="Level" />
+            <End Role="PracGame" EntitySet="PracGame" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PracGameQuestion_PracGame" Association="Self.FK_PracGameQuestion_PracGame">
+            <End Role="PracGame" EntitySet="PracGame" />
+            <End Role="PracGameQuestion" EntitySet="PracGameQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PracGameQuestion_PracQuestion" Association="Self.FK_PracGameQuestion_PracQuestion">
+            <End Role="PracQuestion" EntitySet="PracQuestion" />
+            <End Role="PracGameQuestion" EntitySet="PracGameQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PracticalGameAttempt_Learner" Association="Self.FK_PracticalGameAttempt_Learner">
+            <End Role="Learner" EntitySet="Learner" />
+            <End Role="PracticalGameAttempt" EntitySet="PracticalGameAttempt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PracticalGameAttempt_PracGame" Association="Self.FK_PracticalGameAttempt_PracGame">
+            <End Role="PracGame" EntitySet="PracGame" />
+            <End Role="PracticalGameAttempt" EntitySet="PracticalGameAttempt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TheoryGame_Level" Association="Self.FK_TheoryGame_Level">
+            <End Role="Level" EntitySet="Level" />
+            <End Role="TheoryGame" EntitySet="TheoryGame" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TheoryGameAttempt_Learner" Association="Self.FK_TheoryGameAttempt_Learner">
+            <End Role="Learner" EntitySet="Learner" />
+            <End Role="TheoryGameAttempt" EntitySet="TheoryGameAttempt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TheoryGameAttempt_TheoryGame" Association="Self.FK_TheoryGameAttempt_TheoryGame">
+            <End Role="TheoryGame" EntitySet="TheoryGame" />
+            <End Role="TheoryGameAttempt" EntitySet="TheoryGameAttempt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TheoryGameQuestion_TheoryGame" Association="Self.FK_TheoryGameQuestion_TheoryGame">
+            <End Role="TheoryGame" EntitySet="TheoryGame" />
+            <End Role="TheoryGameQuestion" EntitySet="TheoryGameQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TheoryGameQuestion_TheoryQuestion" Association="Self.FK_TheoryGameQuestion_TheoryQuestion">
+            <End Role="TheoryQuestion" EntitySet="TheoryQuestion" />
+            <End Role="TheoryGameQuestion" EntitySet="TheoryGameQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_UserType1" Association="Self.FK_User_UserType1">
+            <End Role="UserType" EntitySet="UserType" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAchievement_Achievement" Association="Self.FK_UserAchievement_Achievement">
+            <End Role="Achievement" EntitySet="Achievement" />
+            <End Role="UserAchievement" EntitySet="UserAchievement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAchievement_Learner" Association="Self.FK_UserAchievement_Learner">
+            <End Role="Learner" EntitySet="Learner" />
+            <End Role="UserAchievement" EntitySet="UserAchievement" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Achievement">
+          <Key>
+            <PropertyRef Name="AchievementID" />
+          </Key>
+          <Property Name="AchievementID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Points" Type="Int32" Nullable="false" />
+          <Property Name="Min_Score" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="UserAchievements" Relationship="Self.FK_UserAchievement_Achievement" FromRole="Achievement" ToRole="UserAchievement" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CellphoneNo" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="GenderID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_Admin_Gender" FromRole="Admin" ToRole="Gender" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Admin_User" FromRole="Admin" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Parents" Relationship="Self.FK_Parent_Country" FromRole="Country" ToRole="Parent" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="GenderID" />
+          </Key>
+          <Property Name="GenderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Admins" Relationship="Self.FK_Admin_Gender" FromRole="Gender" ToRole="Admin" />
+          <NavigationProperty Name="Learners" Relationship="Self.FK_Learner_Gender" FromRole="Gender" ToRole="Learner" />
+          <NavigationProperty Name="Parents" Relationship="Self.FK_Parent_Gender" FromRole="Gender" ToRole="Parent" />
+        </EntityType>
+        <EntityType Name="Learner">
+          <Key>
+            <PropertyRef Name="LearnerID" />
+          </Key>
+          <Property Name="LearnerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Age" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PointBalance" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ThemeID" Type="Int32" Nullable="false" />
+          <Property Name="ParentID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="LevelID" Type="Int32" Nullable="false" />
+          <Property Name="GenderID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_Learner_Gender" FromRole="Learner" ToRole="Gender" />
+          <NavigationProperty Name="Level" Relationship="Self.FK_Learner_Level" FromRole="Learner" ToRole="Level" />
+          <NavigationProperty Name="Parent" Relationship="Self.FK_Learner_Parent" FromRole="Learner" ToRole="Parent" />
+          <NavigationProperty Name="Theme" Relationship="Self.FK_Learner_Theme" FromRole="Learner" ToRole="Theme" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Learner_User" FromRole="Learner" ToRole="User" />
+          <NavigationProperty Name="PracticalGameAttempts" Relationship="Self.FK_PracticalGameAttempt_Learner" FromRole="Learner" ToRole="PracticalGameAttempt" />
+          <NavigationProperty Name="TheoryGameAttempts" Relationship="Self.FK_TheoryGameAttempt_Learner" FromRole="Learner" ToRole="TheoryGameAttempt" />
+          <NavigationProperty Name="UserAchievements" Relationship="Self.FK_UserAchievement_Learner" FromRole="Learner" ToRole="UserAchievement" />
+        </EntityType>
+        <EntityType Name="Level">
+          <Key>
+            <PropertyRef Name="LevelID" />
+          </Key>
+          <Property Name="LevelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LevelDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Learners" Relationship="Self.FK_Learner_Level" FromRole="Level" ToRole="Learner" />
+          <NavigationProperty Name="PracGames" Relationship="Self.FK_PracGame_Level" FromRole="Level" ToRole="PracGame" />
+          <NavigationProperty Name="TheoryGames" Relationship="Self.FK_TheoryGame_Level" FromRole="Level" ToRole="TheoryGame" />
+        </EntityType>
+        <EntityType Name="Parent">
+          <Key>
+            <PropertyRef Name="ParentID" />
+          </Key>
+          <Property Name="ParentID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Age" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gender" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <Property Name="GenderID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Parent_Country" FromRole="Parent" ToRole="Country" />
+          <NavigationProperty Name="Gender1" Relationship="Self.FK_Parent_Gender" FromRole="Parent" ToRole="Gender" />
+          <NavigationProperty Name="Learners" Relationship="Self.FK_Learner_Parent" FromRole="Parent" ToRole="Learner" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Parent_User" FromRole="Parent" ToRole="User" />
+        </EntityType>
+        <EntityType Name="PracGame">
+          <Key>
+            <PropertyRef Name="PracGameID" />
+          </Key>
+          <Property Name="PracGameID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PracType" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="LevelID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Level" Relationship="Self.FK_PracGame_Level" FromRole="PracGame" ToRole="Level" />
+          <NavigationProperty Name="PracGameQuestions" Relationship="Self.FK_PracGameQuestion_PracGame" FromRole="PracGame" ToRole="PracGameQuestion" />
+          <NavigationProperty Name="PracticalGameAttempts" Relationship="Self.FK_PracticalGameAttempt_PracGame" FromRole="PracGame" ToRole="PracticalGameAttempt" />
+        </EntityType>
+        <EntityType Name="PracGameQuestion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="PracQuestionID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PracGameID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PracGame" Relationship="Self.FK_PracGameQuestion_PracGame" FromRole="PracGameQuestion" ToRole="PracGame" />
+          <NavigationProperty Name="PracQuestion" Relationship="Self.FK_PracGameQuestion_PracQuestion" FromRole="PracGameQuestion" ToRole="PracQuestion" />
+        </EntityType>
+        <EntityType Name="PracQuestion">
+          <Key>
+            <PropertyRef Name="PracQuestionID" />
+          </Key>
+          <Property Name="PracQuestionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Answer" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Type" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <NavigationProperty Name="PracGameQuestions" Relationship="Self.FK_PracGameQuestion_PracQuestion" FromRole="PracQuestion" ToRole="PracGameQuestion" />
+        </EntityType>
+        <EntityType Name="PracticalGameAttempt">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="PracticalGameScore" Type="Int32" Nullable="false" />
+          <Property Name="PracGameID" Type="Int32" Nullable="false" />
+          <Property Name="LearnerID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AttemptDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Learner" Relationship="Self.FK_PracticalGameAttempt_Learner" FromRole="PracticalGameAttempt" ToRole="Learner" />
+          <NavigationProperty Name="PracGame" Relationship="Self.FK_PracticalGameAttempt_PracGame" FromRole="PracticalGameAttempt" ToRole="PracGame" />
+        </EntityType>
+        <EntityType Name="ShortStory">
+          <Key>
+            <PropertyRef Name="ShortStoryID" />
+          </Key>
+          <Property Name="ShortStoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShortStoryDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ShortStoryPdfPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Theme">
+          <Key>
+            <PropertyRef Name="ThemeID" />
+          </Key>
+          <Property Name="ThemeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ThemeDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ThemeImage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ThemePointsPrice" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Learners" Relationship="Self.FK_Learner_Theme" FromRole="Theme" ToRole="Learner" />
+        </EntityType>
+        <EntityType Name="TheoryGame">
+          <Key>
+            <PropertyRef Name="TheoryGameID" />
+          </Key>
+          <Property Name="TheoryGameID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TheoryVideo" Type="String" MaxLength="254" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TheoryType" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="LevelID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Level" Relationship="Self.FK_TheoryGame_Level" FromRole="TheoryGame" ToRole="Level" />
+          <NavigationProperty Name="TheoryGameAttempts" Relationship="Self.FK_TheoryGameAttempt_TheoryGame" FromRole="TheoryGame" ToRole="TheoryGameAttempt" />
+          <NavigationProperty Name="TheoryGameQuestions" Relationship="Self.FK_TheoryGameQuestion_TheoryGame" FromRole="TheoryGame" ToRole="TheoryGameQuestion" />
+        </EntityType>
+        <EntityType Name="TheoryGameAttempt">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Score" Type="Int32" Nullable="false" />
+          <Property Name="TheoryGameID" Type="Int32" Nullable="false" />
+          <Property Name="LearnerID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AttemptDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Learner" Relationship="Self.FK_TheoryGameAttempt_Learner" FromRole="TheoryGameAttempt" ToRole="Learner" />
+          <NavigationProperty Name="TheoryGame" Relationship="Self.FK_TheoryGameAttempt_TheoryGame" FromRole="TheoryGameAttempt" ToRole="TheoryGame" />
+        </EntityType>
+        <EntityType Name="TheoryGameQuestion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="TheoryGameID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TheoryQuestionID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TheoryGame" Relationship="Self.FK_TheoryGameQuestion_TheoryGame" FromRole="TheoryGameQuestion" ToRole="TheoryGame" />
+          <NavigationProperty Name="TheoryQuestion" Relationship="Self.FK_TheoryGameQuestion_TheoryQuestion" FromRole="TheoryGameQuestion" ToRole="TheoryQuestion" />
+        </EntityType>
+        <EntityType Name="TheoryQuestion">
+          <Key>
+            <PropertyRef Name="TheoryQuestionID" />
+          </Key>
+          <Property Name="TheoryQuestionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Question" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Answer" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Type" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <NavigationProperty Name="TheoryGameQuestions" Relationship="Self.FK_TheoryGameQuestion_TheoryQuestion" FromRole="TheoryQuestion" ToRole="TheoryGameQuestion" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Admins" Relationship="Self.FK_Admin_User" FromRole="User" ToRole="Admin" />
+          <NavigationProperty Name="Learners" Relationship="Self.FK_Learner_User" FromRole="User" ToRole="Learner" />
+          <NavigationProperty Name="Parents" Relationship="Self.FK_Parent_User" FromRole="User" ToRole="Parent" />
+          <NavigationProperty Name="UserType" Relationship="Self.FK_User_UserType1" FromRole="User" ToRole="UserType" />
+        </EntityType>
+        <EntityType Name="UserAchievement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LearnerID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AchievementID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Achievement" Relationship="Self.FK_UserAchievement_Achievement" FromRole="UserAchievement" ToRole="Achievement" />
+          <NavigationProperty Name="Learner" Relationship="Self.FK_UserAchievement_Learner" FromRole="UserAchievement" ToRole="Learner" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeID" />
+          </Key>
+          <Property Name="UserTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserTypeDescription" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_UserType1" FromRole="UserType" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_UserAchievement_Achievement">
+          <End Role="Achievement" Type="Self.Achievement" Multiplicity="1" />
+          <End Role="UserAchievement" Type="Self.UserAchievement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Achievement">
+              <PropertyRef Name="AchievementID" />
+            </Principal>
+            <Dependent Role="UserAchievement">
+              <PropertyRef Name="AchievementID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Admin_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="GenderID" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Admin_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parent_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Parent" Type="Self.Parent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Parent">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Learner_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Learner" Type="Self.Learner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="GenderID" />
+            </Principal>
+            <Dependent Role="Learner">
+              <PropertyRef Name="GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parent_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Parent" Type="Self.Parent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="GenderID" />
+            </Principal>
+            <Dependent Role="Parent">
+              <PropertyRef Name="GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Learner_Level">
+          <End Role="Level" Type="Self.Level" Multiplicity="1" />
+          <End Role="Learner" Type="Self.Learner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Level">
+              <PropertyRef Name="LevelID" />
+            </Principal>
+            <Dependent Role="Learner">
+              <PropertyRef Name="LevelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Learner_Parent">
+          <End Role="Parent" Type="Self.Parent" Multiplicity="1" />
+          <End Role="Learner" Type="Self.Learner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parent">
+              <PropertyRef Name="ParentID" />
+            </Principal>
+            <Dependent Role="Learner">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Learner_Theme">
+          <End Role="Theme" Type="Self.Theme" Multiplicity="1" />
+          <End Role="Learner" Type="Self.Learner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Theme">
+              <PropertyRef Name="ThemeID" />
+            </Principal>
+            <Dependent Role="Learner">
+              <PropertyRef Name="ThemeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Learner_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Learner" Type="Self.Learner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Learner">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PracticalGameAttempt_Learner">
+          <End Role="Learner" Type="Self.Learner" Multiplicity="1" />
+          <End Role="PracticalGameAttempt" Type="Self.PracticalGameAttempt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Learner">
+              <PropertyRef Name="LearnerID" />
+            </Principal>
+            <Dependent Role="PracticalGameAttempt">
+              <PropertyRef Name="LearnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TheoryGameAttempt_Learner">
+          <End Role="Learner" Type="Self.Learner" Multiplicity="1" />
+          <End Role="TheoryGameAttempt" Type="Self.TheoryGameAttempt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Learner">
+              <PropertyRef Name="LearnerID" />
+            </Principal>
+            <Dependent Role="TheoryGameAttempt">
+              <PropertyRef Name="LearnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAchievement_Learner">
+          <End Role="Learner" Type="Self.Learner" Multiplicity="1" />
+          <End Role="UserAchievement" Type="Self.UserAchievement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Learner">
+              <PropertyRef Name="LearnerID" />
+            </Principal>
+            <Dependent Role="UserAchievement">
+              <PropertyRef Name="LearnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PracGame_Level">
+          <End Role="Level" Type="Self.Level" Multiplicity="1" />
+          <End Role="PracGame" Type="Self.PracGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Level">
+              <PropertyRef Name="LevelID" />
+            </Principal>
+            <Dependent Role="PracGame">
+              <PropertyRef Name="LevelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TheoryGame_Level">
+          <End Role="Level" Type="Self.Level" Multiplicity="1" />
+          <End Role="TheoryGame" Type="Self.TheoryGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Level">
+              <PropertyRef Name="LevelID" />
+            </Principal>
+            <Dependent Role="TheoryGame">
+              <PropertyRef Name="LevelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parent_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Parent" Type="Self.Parent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Parent">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PracGameQuestion_PracGame">
+          <End Role="PracGame" Type="Self.PracGame" Multiplicity="1" />
+          <End Role="PracGameQuestion" Type="Self.PracGameQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PracGame">
+              <PropertyRef Name="PracGameID" />
+            </Principal>
+            <Dependent Role="PracGameQuestion">
+              <PropertyRef Name="PracGameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PracticalGameAttempt_PracGame">
+          <End Role="PracGame" Type="Self.PracGame" Multiplicity="1" />
+          <End Role="PracticalGameAttempt" Type="Self.PracticalGameAttempt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PracGame">
+              <PropertyRef Name="PracGameID" />
+            </Principal>
+            <Dependent Role="PracticalGameAttempt">
+              <PropertyRef Name="PracGameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PracGameQuestion_PracQuestion">
+          <End Role="PracQuestion" Type="Self.PracQuestion" Multiplicity="1" />
+          <End Role="PracGameQuestion" Type="Self.PracGameQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PracQuestion">
+              <PropertyRef Name="PracQuestionID" />
+            </Principal>
+            <Dependent Role="PracGameQuestion">
+              <PropertyRef Name="PracQuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TheoryGameAttempt_TheoryGame">
+          <End Role="TheoryGame" Type="Self.TheoryGame" Multiplicity="1" />
+          <End Role="TheoryGameAttempt" Type="Self.TheoryGameAttempt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TheoryGame">
+              <PropertyRef Name="TheoryGameID" />
+            </Principal>
+            <Dependent Role="TheoryGameAttempt">
+              <PropertyRef Name="TheoryGameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TheoryGameQuestion_TheoryGame">
+          <End Role="TheoryGame" Type="Self.TheoryGame" Multiplicity="1" />
+          <End Role="TheoryGameQuestion" Type="Self.TheoryGameQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TheoryGame">
+              <PropertyRef Name="TheoryGameID" />
+            </Principal>
+            <Dependent Role="TheoryGameQuestion">
+              <PropertyRef Name="TheoryGameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TheoryGameQuestion_TheoryQuestion">
+          <End Role="TheoryQuestion" Type="Self.TheoryQuestion" Multiplicity="1" />
+          <End Role="TheoryGameQuestion" Type="Self.TheoryGameQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TheoryQuestion">
+              <PropertyRef Name="TheoryQuestionID" />
+            </Principal>
+            <Dependent Role="TheoryGameQuestion">
+              <PropertyRef Name="TheoryQuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_UserType1">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="UserTypeID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="UserTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Del_4_272Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Achievements" EntityType="Self.Achievement" />
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="Genders" EntityType="Self.Gender" />
+          <EntitySet Name="Learners" EntityType="Self.Learner" />
+          <EntitySet Name="Levels" EntityType="Self.Level" />
+          <EntitySet Name="Parents" EntityType="Self.Parent" />
+          <EntitySet Name="PracGames" EntityType="Self.PracGame" />
+          <EntitySet Name="PracGameQuestions" EntityType="Self.PracGameQuestion" />
+          <EntitySet Name="PracQuestions" EntityType="Self.PracQuestion" />
+          <EntitySet Name="PracticalGameAttempts" EntityType="Self.PracticalGameAttempt" />
+          <EntitySet Name="ShortStories" EntityType="Self.ShortStory" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Themes" EntityType="Self.Theme" />
+          <EntitySet Name="TheoryGames" EntityType="Self.TheoryGame" />
+          <EntitySet Name="TheoryGameAttempts" EntityType="Self.TheoryGameAttempt" />
+          <EntitySet Name="TheoryGameQuestions" EntityType="Self.TheoryGameQuestion" />
+          <EntitySet Name="TheoryQuestions" EntityType="Self.TheoryQuestion" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserAchievements" EntityType="Self.UserAchievement" />
+          <EntitySet Name="UserTypes" EntityType="Self.UserType" />
+          <AssociationSet Name="FK_UserAchievement_Achievement" Association="Self.FK_UserAchievement_Achievement">
+            <End Role="Achievement" EntitySet="Achievements" />
+            <End Role="UserAchievement" EntitySet="UserAchievements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Admin_Gender" Association="Self.FK_Admin_Gender">
+            <End Role="Gender" EntitySet="Genders" />
+            <End Role="Admin" EntitySet="Admins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Admin_User" Association="Self.FK_Admin_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Admin" EntitySet="Admins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parent_Country" Association="Self.FK_Parent_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Parent" EntitySet="Parents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Learner_Gender" Association="Self.FK_Learner_Gender">
+            <End Role="Gender" EntitySet="Genders" />
+            <End Role="Learner" EntitySet="Learners" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parent_Gender" Association="Self.FK_Parent_Gender">
+            <End Role="Gender" EntitySet="Genders" />
+            <End Role="Parent" EntitySet="Parents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Learner_Level" Association="Self.FK_Learner_Level">
+            <End Role="Level" EntitySet="Levels" />
+            <End Role="Learner" EntitySet="Learners" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Learner_Parent" Association="Self.FK_Learner_Parent">
+            <End Role="Parent" EntitySet="Parents" />
+            <End Role="Learner" EntitySet="Learners" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Learner_Theme" Association="Self.FK_Learner_Theme">
+            <End Role="Theme" EntitySet="Themes" />
+            <End Role="Learner" EntitySet="Learners" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Learner_User" Association="Self.FK_Learner_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Learner" EntitySet="Learners" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PracticalGameAttempt_Learner" Association="Self.FK_PracticalGameAttempt_Learner">
+            <End Role="Learner" EntitySet="Learners" />
+            <End Role="PracticalGameAttempt" EntitySet="PracticalGameAttempts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TheoryGameAttempt_Learner" Association="Self.FK_TheoryGameAttempt_Learner">
+            <End Role="Learner" EntitySet="Learners" />
+            <End Role="TheoryGameAttempt" EntitySet="TheoryGameAttempts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAchievement_Learner" Association="Self.FK_UserAchievement_Learner">
+            <End Role="Learner" EntitySet="Learners" />
+            <End Role="UserAchievement" EntitySet="UserAchievements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PracGame_Level" Association="Self.FK_PracGame_Level">
+            <End Role="Level" EntitySet="Levels" />
+            <End Role="PracGame" EntitySet="PracGames" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TheoryGame_Level" Association="Self.FK_TheoryGame_Level">
+            <End Role="Level" EntitySet="Levels" />
+            <End Role="TheoryGame" EntitySet="TheoryGames" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parent_User" Association="Self.FK_Parent_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Parent" EntitySet="Parents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PracGameQuestion_PracGame" Association="Self.FK_PracGameQuestion_PracGame">
+            <End Role="PracGame" EntitySet="PracGames" />
+            <End Role="PracGameQuestion" EntitySet="PracGameQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PracticalGameAttempt_PracGame" Association="Self.FK_PracticalGameAttempt_PracGame">
+            <End Role="PracGame" EntitySet="PracGames" />
+            <End Role="PracticalGameAttempt" EntitySet="PracticalGameAttempts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PracGameQuestion_PracQuestion" Association="Self.FK_PracGameQuestion_PracQuestion">
+            <End Role="PracQuestion" EntitySet="PracQuestions" />
+            <End Role="PracGameQuestion" EntitySet="PracGameQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TheoryGameAttempt_TheoryGame" Association="Self.FK_TheoryGameAttempt_TheoryGame">
+            <End Role="TheoryGame" EntitySet="TheoryGames" />
+            <End Role="TheoryGameAttempt" EntitySet="TheoryGameAttempts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TheoryGameQuestion_TheoryGame" Association="Self.FK_TheoryGameQuestion_TheoryGame">
+            <End Role="TheoryGame" EntitySet="TheoryGames" />
+            <End Role="TheoryGameQuestion" EntitySet="TheoryGameQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TheoryGameQuestion_TheoryQuestion" Association="Self.FK_TheoryGameQuestion_TheoryQuestion">
+            <End Role="TheoryQuestion" EntitySet="TheoryQuestions" />
+            <End Role="TheoryGameQuestion" EntitySet="TheoryGameQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_UserType1" Association="Self.FK_User_UserType1">
+            <End Role="UserType" EntitySet="UserTypes" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Del_4_272Entities">
+          <EntitySetMapping Name="Achievements">
+            <EntityTypeMapping TypeName="Model.Achievement">
+              <MappingFragment StoreEntitySet="Achievement">
+                <ScalarProperty Name="AchievementID" ColumnName="AchievementID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="Min_Score" ColumnName="Min_Score" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="Model.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CellphoneNo" ColumnName="CellphoneNo" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="Model.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="Model.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Learners">
+            <EntityTypeMapping TypeName="Model.Learner">
+              <MappingFragment StoreEntitySet="Learner">
+                <ScalarProperty Name="LearnerID" ColumnName="LearnerID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="PointBalance" ColumnName="PointBalance" />
+                <ScalarProperty Name="ThemeID" ColumnName="ThemeID" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="LevelID" ColumnName="LevelID" />
+                <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Levels">
+            <EntityTypeMapping TypeName="Model.Level">
+              <MappingFragment StoreEntitySet="Level">
+                <ScalarProperty Name="LevelID" ColumnName="LevelID" />
+                <ScalarProperty Name="LevelDescription" ColumnName="LevelDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parents">
+            <EntityTypeMapping TypeName="Model.Parent">
+              <MappingFragment StoreEntitySet="Parent">
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PracGames">
+            <EntityTypeMapping TypeName="Model.PracGame">
+              <MappingFragment StoreEntitySet="PracGame">
+                <ScalarProperty Name="PracGameID" ColumnName="PracGameID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PracType" ColumnName="PracType" />
+                <ScalarProperty Name="LevelID" ColumnName="LevelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PracGameQuestions">
+            <EntityTypeMapping TypeName="Model.PracGameQuestion">
+              <MappingFragment StoreEntitySet="PracGameQuestion">
+                <ScalarProperty Name="PracQuestionID" ColumnName="PracQuestionID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PracGameID" ColumnName="PracGameID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PracQuestions">
+            <EntityTypeMapping TypeName="Model.PracQuestion">
+              <MappingFragment StoreEntitySet="PracQuestion">
+                <ScalarProperty Name="PracQuestionID" ColumnName="PracQuestionID" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PracticalGameAttempts">
+            <EntityTypeMapping TypeName="Model.PracticalGameAttempt">
+              <MappingFragment StoreEntitySet="PracticalGameAttempt">
+                <ScalarProperty Name="PracticalGameScore" ColumnName="PracticalGameScore" />
+                <ScalarProperty Name="PracGameID" ColumnName="PracGameID" />
+                <ScalarProperty Name="LearnerID" ColumnName="LearnerID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AttemptDate" ColumnName="AttemptDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShortStories">
+            <EntityTypeMapping TypeName="Model.ShortStory">
+              <MappingFragment StoreEntitySet="ShortStory">
+                <ScalarProperty Name="ShortStoryID" ColumnName="ShortStoryID" />
+                <ScalarProperty Name="ShortStoryDescription" ColumnName="ShortStoryDescription" />
+                <ScalarProperty Name="ShortStoryPdfPath" ColumnName="ShortStoryPdfPath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Themes">
+            <EntityTypeMapping TypeName="Model.Theme">
+              <MappingFragment StoreEntitySet="Theme">
+                <ScalarProperty Name="ThemeID" ColumnName="ThemeID" />
+                <ScalarProperty Name="ThemeDescription" ColumnName="ThemeDescription" />
+                <ScalarProperty Name="ThemeImage" ColumnName="ThemeImage" />
+                <ScalarProperty Name="ThemePointsPrice" ColumnName="ThemePointsPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TheoryGames">
+            <EntityTypeMapping TypeName="Model.TheoryGame">
+              <MappingFragment StoreEntitySet="TheoryGame">
+                <ScalarProperty Name="TheoryGameID" ColumnName="TheoryGameID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TheoryVideo" ColumnName="TheoryVideo" />
+                <ScalarProperty Name="TheoryType" ColumnName="TheoryType" />
+                <ScalarProperty Name="LevelID" ColumnName="LevelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TheoryGameAttempts">
+            <EntityTypeMapping TypeName="Model.TheoryGameAttempt">
+              <MappingFragment StoreEntitySet="TheoryGameAttempt">
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="TheoryGameID" ColumnName="TheoryGameID" />
+                <ScalarProperty Name="LearnerID" ColumnName="LearnerID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AttemptDate" ColumnName="AttemptDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TheoryGameQuestions">
+            <EntityTypeMapping TypeName="Model.TheoryGameQuestion">
+              <MappingFragment StoreEntitySet="TheoryGameQuestion">
+                <ScalarProperty Name="TheoryGameID" ColumnName="TheoryGameID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TheoryQuestionID" ColumnName="TheoryQuestionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TheoryQuestions">
+            <EntityTypeMapping TypeName="Model.TheoryQuestion">
+              <MappingFragment StoreEntitySet="TheoryQuestion">
+                <ScalarProperty Name="TheoryQuestionID" ColumnName="TheoryQuestionID" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Model.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAchievements">
+            <EntityTypeMapping TypeName="Model.UserAchievement">
+              <MappingFragment StoreEntitySet="UserAchievement">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="LearnerID" ColumnName="LearnerID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AchievementID" ColumnName="AchievementID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="Model.UserType">
+              <MappingFragment StoreEntitySet="UserType">
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+                <ScalarProperty Name="UserTypeDescription" ColumnName="UserTypeDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

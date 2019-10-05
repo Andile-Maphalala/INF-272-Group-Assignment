@@ -36,5 +36,18 @@ namespace Booksmart.ViewModels
                 answer = value;
             }
         }
+
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
+            }
+        }
     }
 }

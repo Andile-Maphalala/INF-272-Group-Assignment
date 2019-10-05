@@ -1,33 +1,227 @@
-﻿
+﻿@model List<Booksmart.Models.TheoryQuestion>
+
 @{
     Layout = null;
 }
 
 <!DOCTYPE html>
 
-<html>
+<html style="">
 <head>
-    <meta name="viewport" content="width=device-width" />
+    @*<meta name="viewport" content="width=device-width" />*@
     <title>NumberQuiz</title>
 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <style>
+    section {
+  min-height:800px;
+}
+ 
+    #arrow {
+   
+}   
+    #arrow a{
+    display:inline-block;
+    padding:10px 20px;
+    cursor:pointer;
+}
+    
+    </style>
 
     <link href="~/Content/StyleSheet1.css" rel="stylesheet" />
 </head>
 
 
-<body id="body2">
+<body id="body2"> 
     <input onclick="window.location.href='@Url.Action("HomePage", "Booksmart" )';"  id="img" type="image" value="button" src="~/Pics/home.jpg" class="home" />
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+@if (Model != null)
+{
     <div>
 
-        <h1 style="color:white; font-size:40px;">1 2 _ 4</h1>
-        <label style="color:white; font-size:40px;">Fill in the missing number.</label>
-        <br /><br /><br /><br />
-        <input id="Text1" type="text" />
-        <br /><br /><br /><br />
-        <input id="Button1" type="button" value="Next" />
+        <h1 style="color:white; font-size:40px;">
+           
+        </h1>
+        @{ var n = 0;
+
+        }
+@foreach (var group in Model)
+{
+  
+        <section style="border:solid; margin-bottom:20px; margin-top:20px;" >
+     <div>    @{n++;
+     }
+         <h1 style="color:white; font-size:40px;">@group.Question</h1>
+         <label style="color:white; font-size:40px;">Fill in the missing number.</label>
+         <br /><br /><br /><br />
+
+         <form id="myform">
+             <input id="Text1" type="text" name="userAnswer1"  />
+
+         </form>
+             <br /><br /><br /><br />
+             <div id="arrow">
+                 @*<input id="Button1" type="button" value="Next" class="next" />*@
 
 
-    </div>
+                 @if (n == 10)
+                 {<button class="next btn btn-primary" id="@n" onclick="window.location.href = '@Url.Action("HomePage", "Booksmart" )';" type="submit">Next</button>
+                 }
+                 else
+                 {
+                     <button class="next btn btn-primary" id="@n" type="submit">Next</button>
+                 }
+
+
+
+             </div>
+</div>
+        </section>
+            }
+</div>
+
+
+
+    @*<script>
+        jQuery.fn.extend({
+            scrollTo: function (speed, easing) {
+                return this.each(function () {
+                    var targetOffset = $(this).offset().top;
+                    $('html,body').animate({ scrollTop: targetOffset }, speed, easing);
+                });
+            }
+        });
+
+        $('.next-section').click(function (e) {
+            e.preventDefault();
+            var $this = $(this),
+                $next = $this.parent().next();
+
+            $next.scrollTo(400, 'linear');
+        });
+
+        $('.prev-section').click(function (e) {
+            e.preventDefault();
+            var $this = $(this),
+                $prev = $this.parent().prev();
+
+            $prev.scrollTo(400, 'linear');
+        });
+    </script>*@
+
+    <script>
+        $(function () {
+
+            var pagePositon = 0,
+                sectionsSeclector = 'section',
+                $scrollItems = $(sectionsSeclector),
+                offsetTolorence = 30,
+                pageMaxPosition = $scrollItems.length - 1;
+
+            //Map the sections:
+            $scrollItems.each(function (index, ele) { $(ele).attr("debog", index).data("pos", index); });
+
+            // Bind to scroll
+            $(window).bind('scroll', upPos);
+
+            //Move on click:
+            $('#arrow button').click(function (e) {
+                if ($(this).hasClass('next') && pagePositon + 1 <= pageMaxPosition) {
+                    pagePositon++;
+                    $('html, body').stop().animate({
+                        scrollTop: $scrollItems.eq(pagePositon).offset().top
+                    }, 300);
+                }
+                if ($(this).hasClass('previous') && pagePositon - 1 >= 0) {
+                    pagePositon--;
+                    $('html, body').stop().animate({
+                        scrollTop: $scrollItems.eq(pagePositon).offset().top
+                    }, 300);
+                    return false;
+                }
+            });
+
+            //Update position func:
+            function upPos() {
+                var fromTop = $(this).scrollTop();
+                var $cur = null;
+                $scrollItems.each(function (index, ele) {
+                    if ($(ele).offset().top < fromTop + offsetTolorence) $cur = $(ele);
+                });
+                if ($cur != null && pagePositon != $cur.data('pos')) {
+                    pagePositon = $cur.data('pos');
+                }
+            }
+
+        });
+
+
+
+        @*function myFunction() {
+
+            var x = document.getElementsByTagName("SECTION")[9];
+            var url = '@Url.Action("HomePage", "Booksmart")';
+            var att = document.createAttribute("onclick");
+            att.value = window.location.href = '@Url.Action("HomePage", "Booksmart" )';
+
+
+            if (x.debog === 9) {
+
+
+                x.setAttributeNode(att);
+            }
+            else { }
+
+
+        }*@
+
+
+        //function validate()
+        //{
+        //    if(document.getElementById("aa").value=="")
+        //    {
+        //        alert("this textbox should not be empty");
+        //    }
+        //}
+
+
+        $(document).ready(function () {
+
+            $('#myform').validate({
+                rules: {
+                    userAnswer1: {
+                        required: true
+                    }
+                    //field2: {
+                    //    required: true
+                    //}
+                },
+                submitHandler: function (form) { // for demo
+                    window.alert('valid form');
+                    return false;
+                }
+            });
+
+            // programmatically check any element using the `.valid()` method.
+            $('#1').on('click', function () {
+                $('input[name="userAnswer1"]').valid();
+            });
+
+        });
+
+    </script>
+}
+   
+
+   
 </body>
 </html>
+

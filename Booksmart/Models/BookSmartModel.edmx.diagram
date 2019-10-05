@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d0ccf6b24db64d768f963fd69809a99e" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Achievement" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Admin" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Country" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Gender" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Learner" Width="1.5" PointX="6" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Level" Width="1.5" PointX="3.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Parent" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PracGame" Width="1.5" PointX="6" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PracGameQuestion" Width="1.5" PointX="8.25" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PracQuestion" Width="1.5" PointX="6" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PracticalGameAttempt" Width="1.5" PointX="8.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ShortStory" Width="1.5" PointX="2.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.sysdiagram" Width="1.5" PointX="4.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Theme" Width="1.5" PointX="3.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TheoryGame" Width="1.5" PointX="9" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TheoryGameAttempt" Width="1.5" PointX="11.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TheoryGameQuestion" Width="1.5" PointX="11.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TheoryQuestion" Width="1.5" PointX="9" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.UserAchievement" Width="1.5" PointX="8.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.UserType" Width="1.5" PointX="1.5" PointY="13.5" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_UserAchievement_Achievement" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Admin_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Admin_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Parent_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Learner_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Parent_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Learner_Level" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Learner_Parent" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Learner_Theme" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Learner_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PracticalGameAttempt_Learner" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TheoryGameAttempt_Learner" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_UserAchievement_Learner" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PracGame_Level" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TheoryGame_Level" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Parent_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PracGameQuestion_PracGame" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PracticalGameAttempt_PracGame" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PracGameQuestion_PracQuestion" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TheoryGameAttempt_TheoryGame" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TheoryGameQuestion_TheoryGame" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TheoryGameQuestion_TheoryQuestion" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_User_UserType1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

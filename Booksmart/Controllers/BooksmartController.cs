@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using Booksmart.Models;
 
 namespace Booksmart.Controllers
 {
@@ -66,8 +66,13 @@ namespace Booksmart.Controllers
         }
 
         public ActionResult NumberQuiz()
-        {
-            return View();
+        { Del_4_272Entities db = new Del_4_272Entities();
+
+
+            //load questions to view
+            var questions = db.TheoryQuestions.Where(xx=>xx.Type==0).ToList();
+
+            return View(questions);
         }
         public ActionResult Wordgame_Quiz()
         {

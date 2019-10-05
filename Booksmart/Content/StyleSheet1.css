@@ -5,10 +5,10 @@
 
 
 #body2{background-image:url('../Pics/star.png');
-       object-fit:fill;
+       /*object-fit:fill;*/
        margin:auto;
       text-align:center;
-      background-repeat:no-repeat;
+      background-repeat:repeat;
 }
 
 #body3 {
@@ -22,6 +22,7 @@
 
 .home{right:0;
       position:fixed;
+      
 }
 
 #img{   
@@ -64,6 +65,10 @@ tbl1{}
 tbl1{}
 tbl1{}
 tbl1{}
+
+.prev-section, .next-section {
+    
+}
 
 
 table{
