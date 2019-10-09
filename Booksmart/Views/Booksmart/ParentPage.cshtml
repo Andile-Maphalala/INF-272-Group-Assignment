@@ -1,0 +1,70 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ParentPage</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body style="background-color:lightgray">
+    <div>
+        <h1 style="text-align :center"> Parent Homepage</h1>
+
+        <div id="container">
+            <div id="row" style="float:right">
+                <div class="col-lg-6 col-xs-12">
+                    <a href="#" class="btn btn-info btn-lg">
+                        <span class="glyphicon glyphicon-user"></span> User
+                    </a>
+                </div>
+                <div class="col-lg-6 col-xs-12"><button type="button" class="btn btn-primary">Add Child</button></div>
+            </div>
+        </div>
+
+    </div>
+
+    <br /><br />
+    <table class="table table-hover table-bordered" style="border-width :medium">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Username</th>
+                <th scope="col">Generare performance report</th>
+                <th scope="col">Remove Child</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td><button type="button" class="btn btn-info">Generate Report</button></td>
+                <td><button type="button" class="btn btn-danger">Delete</button></td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td><button type="button" class="btn btn-info">Generate Report</button></td>
+                <td><button type="button" class="btn btn-danger">Delete</button></td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td><button type="button" class="btn btn-info">Generate Report</button></td>
+                <td><button type="button" class="btn btn-danger">Delete</button></td>
+
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</body>
+</html>

@@ -15,6 +15,16 @@ namespace Booksmart.Controllers
             return View();
         }
 
+        public ActionResult AdminPage()
+        {
+            return View();
+        }
+
+        public ActionResult ParentPage()
+        {
+            return View();
+
+        }
 
         public ActionResult Login()
         {

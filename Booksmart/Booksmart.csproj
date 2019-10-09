@@ -467,6 +467,8 @@
     <Content Include="Views\Booksmart\UserPerformance.cshtml" />
     <Content Include="Views\Booksmart\InactiveUser.cshtml" />
     <Content Include="Views\Booksmart\Theme.cshtml" />
+    <Content Include="Views\Booksmart\AdminPage.cshtml" />
+    <Content Include="Views\Booksmart\ParentPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
