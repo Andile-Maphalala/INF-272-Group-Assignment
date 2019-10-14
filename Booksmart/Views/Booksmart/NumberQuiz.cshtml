@@ -28,9 +28,16 @@
 
     <style>
     section {
-  min-height:800px;
+ height:100vh;
+
 }
- 
+
+ html{
+     overflow:hidden;
+
+
+ }
+
     #arrow {
    
 }   
@@ -66,12 +73,15 @@
             {
                 <div>
 
-                    <section style="border:solid; margin-bottom:20px; margin-top:20px;">
+                    <section style="margin-top:20px;">  @*margin-bottom:20px; margin-top:20px;*@
 
 
                         <div>
                             @{n++;
                             }
+
+                           <h1 style="color:white;" > Please complete the question and click next !</h1><br /><br /><br /><br />
+                            
                             <h1 style="color:white; font-size:40px;">@group.Question</h1>
                             <label style="color:white; font-size:40px;">Fill in the missing number.</label>
                             <br /><br /><br /><br />
