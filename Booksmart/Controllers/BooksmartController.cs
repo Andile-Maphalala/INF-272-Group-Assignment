@@ -70,8 +70,8 @@ namespace Booksmart.Controllers
             //load questions to view
             var alist = db.PracQuestions.Where(xx => xx.Type == 1).ToList();
             //var questions = db.TheoryQuestions.Where(xx => xx.Type == 0).OrderBy().ToList();
-              return View(alist.ToList());
-           
+            return View(alist.ToList());
+
         }
         public ActionResult Numbergamequiz()
         {
@@ -91,11 +91,12 @@ namespace Booksmart.Controllers
             return View();
         }
 
-        
-     
-      
+
+
+
         public ActionResult NumberQuiz(string nada)
-        { Del_4_272Entities db = new Del_4_272Entities();
+        {
+            Del_4_272Entities db = new Del_4_272Entities();
             db.Configuration.ProxyCreationEnabled = false;
             //Random rnd = new Random();
             //load questions to view
@@ -118,7 +119,7 @@ namespace Booksmart.Controllers
         //}
 
         [HttpPost]
-        public ActionResult Result(int userAnswer_1,int userAnswer_2,int userAnswer_3,int userAnswer_4,int userAnswer_5 ,int userAnswer_6, int userAnswer_7, int userAnswer_8, int userAnswer_9, int userAnswer_10,int Answer_1,int Answer_2, int Answer_3, int Answer_4, int Answer_5, int Answer_6, int Answer_7, int Answer_8, int Answer_9,int Answer_10)
+        public ActionResult Result(int userAnswer_1, int userAnswer_2, int userAnswer_3, int userAnswer_4, int userAnswer_5, int userAnswer_6, int userAnswer_7, int userAnswer_8, int userAnswer_9, int userAnswer_10, int Answer_1, int Answer_2, int Answer_3, int Answer_4, int Answer_5, int Answer_6, int Answer_7, int Answer_8, int Answer_9, int Answer_10)
         {
             List<int> UserAnswers = new List<int>();
             UserAnswers.Add(userAnswer_1);
@@ -148,7 +149,7 @@ namespace Booksmart.Controllers
 
             for (int i = 0; i < 10; i++)
             {
-                if(UserAnswers[i]== CorrectAnswers[i])
+                if (UserAnswers[i] == CorrectAnswers[i])
                 {
                     count++;
                 }
@@ -174,18 +175,18 @@ namespace Booksmart.Controllers
             Del_4_272Entities db = new Del_4_272Entities();
             TheoryGameAttempt addScore = new TheoryGameAttempt();
             addScore.Score = ViewBag.RESULT;
-            addScore.AttemptDate = DateTime.Now ;
+            addScore.AttemptDate = DateTime.Now;
             addScore.TheoryGameID = 1;
             addScore.LearnerID = 2;
             db.TheoryGameAttempts.Add(addScore);
-           
+
             db.SaveChanges();
 
 
 
 
-                return View("Theory", ViewBag.RESULT);
-        
+            return View("Theory", ViewBag.RESULT);
+
 
         }
 
@@ -216,6 +217,62 @@ namespace Booksmart.Controllers
         public ActionResult Theme()
         {
             return View();
+        }
+        public ActionResult Result_ABC()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Result_ABC(string userAnswer_1, string userAnswer_2, string userAnswer_3, string userAnswer_4, string userAnswer_5, string userAnswer_6, string userAnswer_7, string userAnswer_8, string userAnswer_9, string userAnswer_10, string Answer_1, string Answer_2, string Answer_3, string Answer_4, string Answer_5, string Answer_6, string Answer_7, string Answer_8, string Answer_9, string Answer_10)
+        {
+            List<string> UserAnswers = new List<string>();
+            UserAnswers.Add(userAnswer_1);
+            UserAnswers.Add(userAnswer_2);
+            UserAnswers.Add(userAnswer_3);
+            UserAnswers.Add(userAnswer_4);
+            UserAnswers.Add(userAnswer_5);
+            UserAnswers.Add(userAnswer_6);
+            UserAnswers.Add(userAnswer_7);
+            UserAnswers.Add(userAnswer_8);
+            UserAnswers.Add(userAnswer_9);
+            UserAnswers.Add(userAnswer_10);
+
+            List<string> CorrectAnswers = new List<string>();
+            CorrectAnswers.Add(Answer_1);
+            CorrectAnswers.Add(Answer_2);
+            CorrectAnswers.Add(Answer_3);
+            CorrectAnswers.Add(Answer_4);
+            CorrectAnswers.Add(Answer_5);
+            CorrectAnswers.Add(Answer_6);
+            CorrectAnswers.Add(Answer_7);
+            CorrectAnswers.Add(Answer_8);
+            CorrectAnswers.Add(Answer_9);
+            CorrectAnswers.Add(Answer_10);
+
+
+            var count = 0;
+
+            for (int i = 0; i < 10; i++)
+            {
+                if (UserAnswers[i] == CorrectAnswers[i])
+                {
+                    count++;
+                }
+
+                ViewBag.RESULT_ABC = count;
+
+                Del_4_272Entities db = new Del_4_272Entities();
+                TheoryGameAttempt addScore = new TheoryGameAttempt();
+                addScore.Score = ViewBag.RESULT_ABC;
+                addScore.AttemptDate = DateTime.Now;
+                addScore.TheoryGameID = 1;
+                addScore.LearnerID = 2;
+                db.TheoryGameAttempts.Add(addScore);
+
+                db.SaveChanges();
+            }
+            return View("Theory", ViewBag.RESULT_ABC);
+
         }
     }
 }
