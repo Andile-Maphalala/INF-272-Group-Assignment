@@ -1,15 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Achievement">
-    <Key>
-      <PropertyRef Name="AchievementID" />
-    </Key>
-    <Property Name="AchievementID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Points" Type="Int32" Nullable="false" />
-    <Property Name="Min_Score" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="UserAchievements" Relationship="Self.FK_UserAchievement_Achievement" FromRole="Achievement" ToRole="UserAchievement" />
-  </EntityType>
   <EntityType Name="Admin">
     <Key>
       <PropertyRef Name="AdminID" />
@@ -60,11 +50,9 @@
     <NavigationProperty Name="Gender" Relationship="Self.FK_Learner_Gender" FromRole="Learner" ToRole="Gender" />
     <NavigationProperty Name="Level" Relationship="Self.FK_Learner_Level" FromRole="Learner" ToRole="Level" />
     <NavigationProperty Name="Parent" Relationship="Self.FK_Learner_Parent" FromRole="Learner" ToRole="Parent" />
-    <NavigationProperty Name="Theme" Relationship="Self.FK_Learner_Theme" FromRole="Learner" ToRole="Theme" />
     <NavigationProperty Name="User" Relationship="Self.FK_Learner_User" FromRole="Learner" ToRole="User" />
     <NavigationProperty Name="PracticalGameAttempts" Relationship="Self.FK_PracticalGameAttempt_Learner" FromRole="Learner" ToRole="PracticalGameAttempt" />
     <NavigationProperty Name="TheoryGameAttempts" Relationship="Self.FK_TheoryGameAttempt_Learner" FromRole="Learner" ToRole="TheoryGameAttempt" />
-    <NavigationProperty Name="UserAchievements" Relationship="Self.FK_UserAchievement_Learner" FromRole="Learner" ToRole="UserAchievement" />
   </EntityType>
   <EntityType Name="Level">
     <Key>
@@ -146,16 +134,6 @@
     <Property Name="ShortStoryDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ShortStoryPdfPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
-  <EntityType Name="Theme">
-    <Key>
-      <PropertyRef Name="ThemeID" />
-    </Key>
-    <Property Name="ThemeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ThemeDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ThemeImage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ThemePointsPrice" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Learners" Relationship="Self.FK_Learner_Theme" FromRole="Theme" ToRole="Learner" />
-  </EntityType>
   <EntityType Name="TheoryGame">
     <Key>
       <PropertyRef Name="TheoryGameID" />
@@ -215,17 +193,6 @@
     <NavigationProperty Name="Parents" Relationship="Self.FK_Parent_User" FromRole="User" ToRole="Parent" />
     <NavigationProperty Name="UserType" Relationship="Self.FK_User_UserType1" FromRole="User" ToRole="UserType" />
   </EntityType>
-  <EntityType Name="UserAchievement">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="LearnerID" Type="Int32" Nullable="false" />
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="AchievementID" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Achievement" Relationship="Self.FK_UserAchievement_Achievement" FromRole="UserAchievement" ToRole="Achievement" />
-    <NavigationProperty Name="Learner" Relationship="Self.FK_UserAchievement_Learner" FromRole="UserAchievement" ToRole="Learner" />
-  </EntityType>
   <EntityType Name="UserType">
     <Key>
       <PropertyRef Name="UserTypeID" />
@@ -234,18 +201,6 @@
     <Property Name="UserTypeDescription" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Users" Relationship="Self.FK_User_UserType1" FromRole="UserType" ToRole="User" />
   </EntityType>
-  <Association Name="FK_UserAchievement_Achievement">
-    <End Role="Achievement" Type="Self.Achievement" Multiplicity="1" />
-    <End Role="UserAchievement" Type="Self.UserAchievement" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Achievement">
-        <PropertyRef Name="AchievementID" />
-      </Principal>
-      <Dependent Role="UserAchievement">
-        <PropertyRef Name="AchievementID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Admin_Gender">
     <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
     <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
@@ -330,18 +285,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Learner_Theme">
-    <End Role="Theme" Type="Self.Theme" Multiplicity="1" />
-    <End Role="Learner" Type="Self.Learner" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Theme">
-        <PropertyRef Name="ThemeID" />
-      </Principal>
-      <Dependent Role="Learner">
-        <PropertyRef Name="ThemeID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Learner_User">
     <End Role="User" Type="Self.User" Multiplicity="1" />
     <End Role="Learner" Type="Self.Learner" Multiplicity="*" />
@@ -374,18 +317,6 @@
         <PropertyRef Name="LearnerID" />
       </Principal>
       <Dependent Role="TheoryGameAttempt">
-        <PropertyRef Name="LearnerID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_UserAchievement_Learner">
-    <End Role="Learner" Type="Self.Learner" Multiplicity="1" />
-    <End Role="UserAchievement" Type="Self.UserAchievement" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Learner">
-        <PropertyRef Name="LearnerID" />
-      </Principal>
-      <Dependent Role="UserAchievement">
         <PropertyRef Name="LearnerID" />
       </Dependent>
     </ReferentialConstraint>
@@ -511,7 +442,6 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="Del_4_272Entities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Achievements" EntityType="Self.Achievement" />
     <EntitySet Name="Admins" EntityType="Self.Admin" />
     <EntitySet Name="Countries" EntityType="Self.Country" />
     <EntitySet Name="Genders" EntityType="Self.Gender" />
@@ -523,18 +453,12 @@
     <EntitySet Name="PracQuestions" EntityType="Self.PracQuestion" />
     <EntitySet Name="PracticalGameAttempts" EntityType="Self.PracticalGameAttempt" />
     <EntitySet Name="ShortStories" EntityType="Self.ShortStory" />
-    <EntitySet Name="Themes" EntityType="Self.Theme" />
     <EntitySet Name="TheoryGames" EntityType="Self.TheoryGame" />
     <EntitySet Name="TheoryGameAttempts" EntityType="Self.TheoryGameAttempt" />
     <EntitySet Name="TheoryGameQuestions" EntityType="Self.TheoryGameQuestion" />
     <EntitySet Name="TheoryQuestions" EntityType="Self.TheoryQuestion" />
     <EntitySet Name="Users" EntityType="Self.User" />
-    <EntitySet Name="UserAchievements" EntityType="Self.UserAchievement" />
     <EntitySet Name="UserTypes" EntityType="Self.UserType" />
-    <AssociationSet Name="FK_UserAchievement_Achievement" Association="Self.FK_UserAchievement_Achievement">
-      <End Role="Achievement" EntitySet="Achievements" />
-      <End Role="UserAchievement" EntitySet="UserAchievements" />
-    </AssociationSet>
     <AssociationSet Name="FK_Admin_Gender" Association="Self.FK_Admin_Gender">
       <End Role="Gender" EntitySet="Genders" />
       <End Role="Admin" EntitySet="Admins" />
@@ -563,10 +487,6 @@
       <End Role="Parent" EntitySet="Parents" />
       <End Role="Learner" EntitySet="Learners" />
     </AssociationSet>
-    <AssociationSet Name="FK_Learner_Theme" Association="Self.FK_Learner_Theme">
-      <End Role="Theme" EntitySet="Themes" />
-      <End Role="Learner" EntitySet="Learners" />
-    </AssociationSet>
     <AssociationSet Name="FK_Learner_User" Association="Self.FK_Learner_User">
       <End Role="User" EntitySet="Users" />
       <End Role="Learner" EntitySet="Learners" />
@@ -578,10 +498,6 @@
     <AssociationSet Name="FK_TheoryGameAttempt_Learner" Association="Self.FK_TheoryGameAttempt_Learner">
       <End Role="Learner" EntitySet="Learners" />
       <End Role="TheoryGameAttempt" EntitySet="TheoryGameAttempts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_UserAchievement_Learner" Association="Self.FK_UserAchievement_Learner">
-      <End Role="Learner" EntitySet="Learners" />
-      <End Role="UserAchievement" EntitySet="UserAchievements" />
     </AssociationSet>
     <AssociationSet Name="FK_PracGame_Level" Association="Self.FK_PracGame_Level">
       <End Role="Level" EntitySet="Levels" />

@@ -1,14 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="Achievement">
-    <Key>
-      <PropertyRef Name="AchievementID" />
-    </Key>
-    <Property Name="AchievementID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Points" Type="int" Nullable="false" />
-    <Property Name="Min_Score" Type="char" MaxLength="10" Nullable="false" />
-  </EntityType>
   <EntityType Name="Admin">
     <Key>
       <PropertyRef Name="AdminID" />
@@ -116,15 +107,6 @@
     <Property Name="ShortStoryDescription" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ShortStoryPdfPath" Type="varchar(max)" Nullable="false" />
   </EntityType>
-  <EntityType Name="Theme">
-    <Key>
-      <PropertyRef Name="ThemeID" />
-    </Key>
-    <Property Name="ThemeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ThemeDescription" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="ThemeImage" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="ThemePointsPrice" Type="int" Nullable="false" />
-  </EntityType>
   <EntityType Name="TheoryGame">
     <Key>
       <PropertyRef Name="TheoryGameID" />
@@ -171,15 +153,6 @@
     <Property Name="Password" Type="varchar(max)" Nullable="false" />
     <Property Name="LastLoginDate" Type="datetime" Nullable="false" />
     <Property Name="UserTypeID" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="UserAchievement">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="Date" Type="datetime" Nullable="false" />
-    <Property Name="LearnerID" Type="int" Nullable="false" />
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="AchievementID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="UserType">
     <Key>
@@ -245,18 +218,6 @@
       </Principal>
       <Dependent Role="Learner">
         <PropertyRef Name="ParentID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Learner_Theme">
-    <End Role="Theme" Type="Self.Theme" Multiplicity="1" />
-    <End Role="Learner" Type="Self.Learner" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Theme">
-        <PropertyRef Name="ThemeID" />
-      </Principal>
-      <Dependent Role="Learner">
-        <PropertyRef Name="ThemeID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -440,32 +401,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_UserAchievement_Achievement">
-    <End Role="Achievement" Type="Self.Achievement" Multiplicity="1" />
-    <End Role="UserAchievement" Type="Self.UserAchievement" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Achievement">
-        <PropertyRef Name="AchievementID" />
-      </Principal>
-      <Dependent Role="UserAchievement">
-        <PropertyRef Name="AchievementID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_UserAchievement_Learner">
-    <End Role="Learner" Type="Self.Learner" Multiplicity="1" />
-    <End Role="UserAchievement" Type="Self.UserAchievement" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Learner">
-        <PropertyRef Name="LearnerID" />
-      </Principal>
-      <Dependent Role="UserAchievement">
-        <PropertyRef Name="LearnerID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="ModelStoreContainer">
-    <EntitySet Name="Achievement" EntityType="Self.Achievement" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
@@ -477,13 +413,11 @@
     <EntitySet Name="PracQuestion" EntityType="Self.PracQuestion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PracticalGameAttempt" EntityType="Self.PracticalGameAttempt" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ShortStory" EntityType="Self.ShortStory" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Theme" EntityType="Self.Theme" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TheoryGame" EntityType="Self.TheoryGame" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TheoryGameAttempt" EntityType="Self.TheoryGameAttempt" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TheoryGameQuestion" EntityType="Self.TheoryGameQuestion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TheoryQuestion" EntityType="Self.TheoryQuestion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="UserAchievement" EntityType="Self.UserAchievement" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Admin_Gender" Association="Self.FK_Admin_Gender">
       <End Role="Gender" EntitySet="Gender" />
@@ -503,10 +437,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_Learner_Parent" Association="Self.FK_Learner_Parent">
       <End Role="Parent" EntitySet="Parent" />
-      <End Role="Learner" EntitySet="Learner" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Learner_Theme" Association="Self.FK_Learner_Theme">
-      <End Role="Theme" EntitySet="Theme" />
       <End Role="Learner" EntitySet="Learner" />
     </AssociationSet>
     <AssociationSet Name="FK_Learner_User" Association="Self.FK_Learner_User">
@@ -568,14 +498,6 @@
     <AssociationSet Name="FK_User_UserType1" Association="Self.FK_User_UserType1">
       <End Role="UserType" EntitySet="UserType" />
       <End Role="User" EntitySet="User" />
-    </AssociationSet>
-    <AssociationSet Name="FK_UserAchievement_Achievement" Association="Self.FK_UserAchievement_Achievement">
-      <End Role="Achievement" EntitySet="Achievement" />
-      <End Role="UserAchievement" EntitySet="UserAchievement" />
-    </AssociationSet>
-    <AssociationSet Name="FK_UserAchievement_Learner" Association="Self.FK_UserAchievement_Learner">
-      <End Role="Learner" EntitySet="Learner" />
-      <End Role="UserAchievement" EntitySet="UserAchievement" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

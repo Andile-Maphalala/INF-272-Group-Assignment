@@ -1,16 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Del_4_272Entities">
-    <EntitySetMapping Name="Achievements">
-      <EntityTypeMapping TypeName="Model.Achievement">
-        <MappingFragment StoreEntitySet="Achievement">
-          <ScalarProperty Name="AchievementID" ColumnName="AchievementID" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Points" ColumnName="Points" />
-          <ScalarProperty Name="Min_Score" ColumnName="Min_Score" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Admins">
       <EntityTypeMapping TypeName="Model.Admin">
         <MappingFragment StoreEntitySet="Admin">
@@ -129,16 +119,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Themes">
-      <EntityTypeMapping TypeName="Model.Theme">
-        <MappingFragment StoreEntitySet="Theme">
-          <ScalarProperty Name="ThemeID" ColumnName="ThemeID" />
-          <ScalarProperty Name="ThemeDescription" ColumnName="ThemeDescription" />
-          <ScalarProperty Name="ThemeImage" ColumnName="ThemeImage" />
-          <ScalarProperty Name="ThemePointsPrice" ColumnName="ThemePointsPrice" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="TheoryGames">
       <EntityTypeMapping TypeName="Model.TheoryGame">
         <MappingFragment StoreEntitySet="TheoryGame">
@@ -188,16 +168,6 @@
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
           <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="UserAchievements">
-      <EntityTypeMapping TypeName="Model.UserAchievement">
-        <MappingFragment StoreEntitySet="UserAchievement">
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="LearnerID" ColumnName="LearnerID" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="AchievementID" ColumnName="AchievementID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
