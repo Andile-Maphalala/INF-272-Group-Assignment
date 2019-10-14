@@ -6,7 +6,7 @@
 
 <!DOCTYPE html>
 
-<html style="">
+<html >
 <head>
     @*<meta name="viewport" content="width=device-width" />*@
     <title>NumberQuiz</title>
@@ -18,6 +18,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <style>
     section {
@@ -40,59 +47,75 @@
 
 
 <body id="body2"> 
-    <input onclick="window.location.href='@Url.Action("HomePage", "Booksmart" )';"  id="img" type="image" value="button" src="~/Pics/home.jpg" class="home" />
-    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-
+  
 @if (Model != null)
 {
     <div>
-
+@using (Html.BeginForm("Result", "Booksmart", FormMethod.Post))
+{
         <h1 style="color:white; font-size:40px;">
            
         </h1>
-        @{ var n = 0;
+        <div>
+            @{ var n = 0;
 
-        }
-@foreach (var group in Model)
-{
-  
-        <section style="border:solid; margin-bottom:20px; margin-top:20px;" >
-     <div>    @{n++;
-     }
-         <h1 style="color:white; font-size:40px;">@group.Question</h1>
-         <label style="color:white; font-size:40px;">Fill in the missing number.</label>
-         <br /><br /><br /><br />
+            }
+        </div>
+        <div>
+            @foreach (var group in Model)
+            {
+                <div>
 
-         <form id="form2">
-             <input id="Text_@n" type="text" name="userAnswer_@n" pattern="^[0-9]*$" onkeypress="return isNumber(event)" required />
-         </form>
-             <br /><br /><br /><br />
-             <div id="arrow">
-                 @*<input id="Button1" type="button" value="Next" class="next" />*@
+                    <section style="border:solid; margin-bottom:20px; margin-top:20px;">
 
-                 @if (n == 10)
+
+                        <div>
+                            @{n++;
+                            }
+                            <h1 style="color:white; font-size:40px;">@group.Question</h1>
+                            <label style="color:white; font-size:40px;">Fill in the missing number.</label>
+                            <br /><br /><br /><br />
+
+                            <input id="Text_@n" type="text" name="userAnswer_@n" pattern="^[0-9]*$" onkeypress="return isNumber(event)" required />
+                            <input type="hidden" id="hid" name="Answer_@n" value="@group.Answer">
+
+                            <br /><br /><br /><br />
+                            <div id="arrow">
+                                @*<input id="Button1" type="button" value="Next" class="next" />*@
+
+                                @if (n == 10)
                  {
-                     <button class="next btn btn-primary" id="@n" onclick="window.location.href = '@Url.Action("PracticalMenu", "Booksmart" )';" type="submit"  disabled>Next</button>
+                <div>
+
+                    <button class="next btn btn-primary" id="@n" @*onclick="window.location.href = '@Url.Action("Result", "Booksmart")';"*@ type="submit" disabled>Next</button>
+
+
+                </div>
                  }
                  else
                  {
-                    @*<input class="next btn btn-primary" type="submit" value="Submit" id="@n" disabled />*@
-                     <button class="next btn btn-primary" id="@n" type="submit" disabled>Next</button>
-                     @*<button class="next btn btn-primary" id="@n" type="submit">Next</button>*@
+                @*<input class="next btn btn-primary" type="submit" value="Submit" id="@n" disabled />*@
+                <button class="next btn btn-primary" id="@n" type="button" disabled>Next</button>
+                @*<button class="next btn btn-primary" id="@n" type="submit">Next</button>*@
                  }
-                 <br /><br />
-                 <br />
-                 <br />
-                 <br />
-                 <br />
-                 <br />
 
-             
-             </div>
-       
-</div>
-        </section>
-            }
+
+                                <br /><br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+
+
+                            </div>
+
+                        </div>
+                    </section>
+                </div>}
+        </div>
+                                }
+      
 </div>
 
 

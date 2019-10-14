@@ -18,7 +18,7 @@ using System;
 public partial class TheoryGameAttempt
 {
 
-    public int Score { get; set; }
+    public Nullable<int> Score { get; set; }
 
     public int TheoryGameID { get; set; }
 
@@ -26,7 +26,7 @@ public partial class TheoryGameAttempt
 
     public int ID { get; set; }
 
-    public System.DateTime AttemptDate { get; set; }
+    public Nullable<System.DateTime> AttemptDate { get; set; }
 
 
 

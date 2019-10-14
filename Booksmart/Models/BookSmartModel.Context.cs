@@ -32,8 +32,6 @@ public partial class Del_4_272Entities : DbContext
     }
 
 
-    public virtual DbSet<Achievement> Achievements { get; set; }
-
     public virtual DbSet<Admin> Admins { get; set; }
 
     public virtual DbSet<Country> Countries { get; set; }
@@ -56,8 +54,6 @@ public partial class Del_4_272Entities : DbContext
 
     public virtual DbSet<ShortStory> ShortStories { get; set; }
 
-    public virtual DbSet<Theme> Themes { get; set; }
-
     public virtual DbSet<TheoryGame> TheoryGames { get; set; }
 
     public virtual DbSet<TheoryGameAttempt> TheoryGameAttempts { get; set; }
@@ -67,8 +63,6 @@ public partial class Del_4_272Entities : DbContext
     public virtual DbSet<TheoryQuestion> TheoryQuestions { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
-
-    public virtual DbSet<UserAchievement> UserAchievements { get; set; }
 
     public virtual DbSet<UserType> UserTypes { get; set; }
 

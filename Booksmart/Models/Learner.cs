@@ -26,8 +26,6 @@ public partial class Learner
 
         this.TheoryGameAttempts = new HashSet<TheoryGameAttempt>();
 
-        this.UserAchievements = new HashSet<UserAchievement>();
-
     }
 
 
@@ -61,8 +59,6 @@ public partial class Learner
 
     public virtual Parent Parent { get; set; }
 
-    public virtual Theme Theme { get; set; }
-
     public virtual User User { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -72,10 +68,6 @@ public partial class Learner
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<TheoryGameAttempt> TheoryGameAttempts { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<UserAchievement> UserAchievements { get; set; }
 
 }
 

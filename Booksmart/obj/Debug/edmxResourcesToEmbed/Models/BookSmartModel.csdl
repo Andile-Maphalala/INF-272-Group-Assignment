@@ -84,7 +84,6 @@
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Age" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Gender" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="UserID" Type="Int32" Nullable="false" />
@@ -174,11 +173,11 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="Score" Type="Int32" Nullable="false" />
+    <Property Name="Score" Type="Int32" />
     <Property Name="TheoryGameID" Type="Int32" Nullable="false" />
     <Property Name="LearnerID" Type="Int32" Nullable="false" />
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="AttemptDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="AttemptDate" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Learner" Relationship="Self.FK_TheoryGameAttempt_Learner" FromRole="TheoryGameAttempt" ToRole="Learner" />
     <NavigationProperty Name="TheoryGame" Relationship="Self.FK_TheoryGameAttempt_TheoryGame" FromRole="TheoryGameAttempt" ToRole="TheoryGame" />
   </EntityType>

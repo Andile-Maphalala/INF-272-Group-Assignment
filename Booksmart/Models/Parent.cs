@@ -35,8 +35,6 @@ public partial class Parent
 
     public string Age { get; set; }
 
-    public decimal Gender { get; set; }
-
     public System.DateTime DOB { get; set; }
 
     public string Email { get; set; }
