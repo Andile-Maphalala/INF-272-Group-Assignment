@@ -1,16 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace Booksmart.ViewModels
 {
+    public class DataResult
+    {
+        public List<IGrouping<string, UserVM>> results { get; set; }
+        public Dictionary<string, double?> chartData { get; set; }
+    }
     public class UserVM
     {
         int userID;
         string username;
         string password;
-
+        public DateTime? LastLogin
+        {
+            get; set;
+        }
 
         public int UserID
         {

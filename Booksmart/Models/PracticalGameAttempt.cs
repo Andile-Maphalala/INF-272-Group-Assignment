@@ -18,7 +18,7 @@ using System;
 public partial class PracticalGameAttempt
 {
 
-    public Nullable<int> PracticalGameScore { get; set; }
+    public int PracticalGameScore { get; set; }
 
     public int PracGameID { get; set; }
 
