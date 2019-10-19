@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Booksmart.Models;
+using System.Data.Entity;
+using Booksmart.ViewModels;
+
 
 namespace Booksmart.Controllers
 {
@@ -106,7 +109,31 @@ namespace Booksmart.Controllers
                             orderby Guid.NewGuid() ascending
                             select item;
 
-            return View(questions.ToList());
+
+         
+            List<NumberQuizVM> list = new List<NumberQuizVM>();
+            //List<NumberQuizVM> copy = questions.ToList();
+
+            //list =qlist
+
+            //IEnumerable<NumberQuizVM> enumerable;
+            //    { 
+
+
+            foreach (var it in questions.ToList())
+            {
+                NumberQuizVM items = new NumberQuizVM();
+                items.Id = it.TheoryQuestionID;
+                items.Question = it.Question;
+                items.UserAnswer = it.Answer;
+
+                list.Add(items);
+               
+            }
+
+
+            //}
+            return View(list);
         }
 
 
@@ -206,7 +233,31 @@ namespace Booksmart.Controllers
 
         public ActionResult UserPerformance()
         {
-            return View();
+            Del_4_272Entities db = new Del_4_272Entities();
+            db.Configuration.ProxyCreationEnabled = false;
+            DataResult res = new DataResult();
+            //var UserReport = db.Learners.Include(ii => ii);
+
+            var report = db.Learners.Include(i => i.TheoryGameAttempts).Include(y => y.PracticalGameAttempts).ToList().Select(r => new UserPerformance
+            {
+                name = r.Name,
+                surname = r.Surname,
+                averagePrac = r.PracticalGameAttempts.Average(xx => xx.PracticalGameScore),
+                
+               averageTheory = r.TheoryGameAttempts.Average(xx => xx.Score)
+            }
+            );
+            //).Where().ToList();
+            var query =
+   from post in db.Learners
+   join meta in db.PracticalGameAttempts on post.LearnerID equals meta.LearnerID
+   join deta in db.TheoryGameAttempts on post.LearnerID equals deta.LearnerID
+   //where post.ID == id
+   select new { post.Name,post.Surname, meta.PracticalGameScore,deta.Score};
+            res.results = report.GroupBy(u=>u.name).ToList();
+
+
+            return View(res);
         }
 
         public ActionResult InactiveUser()

@@ -290,6 +290,7 @@
     <Compile Include="ViewModels\ParentVM.cs" />
     <Compile Include="ViewModels\ThemesVM.cs" />
     <Compile Include="ViewModels\TheoryVM.cs" />
+    <Compile Include="ViewModels\UserPerformance.cs" />
     <Compile Include="ViewModels\UserVM.cs" />
     <Compile Include="ViewModels\WordGameQuizVM.cs" />
     <Compile Include="ViewModels\WordGameVM.cs" />

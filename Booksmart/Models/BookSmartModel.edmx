@@ -98,7 +98,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="PracticalGameScore" Type="int" Nullable="false" />
+          <Property Name="PracticalGameScore" Type="int" />
           <Property Name="PracGameID" Type="int" Nullable="false" />
           <Property Name="LearnerID" Type="int" Nullable="false" />
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
@@ -627,7 +627,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="PracticalGameScore" Type="Int32" Nullable="false" />
+          <Property Name="PracticalGameScore" Type="Int32" />
           <Property Name="PracGameID" Type="Int32" Nullable="false" />
           <Property Name="LearnerID" Type="Int32" Nullable="false" />
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
