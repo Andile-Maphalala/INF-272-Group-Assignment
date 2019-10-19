@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -17,8 +16,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        
+    </style>
 </head>
-<body id="1stBody">
+<body id="1stBody" style="background-color:purple;">
     <div>
          
         <input onclick="window.location.href='@Url.Action("HomePage", "Booksmart" )';"  id="img" type="image" value="button" src="~/Pics/home.jpg" class="home" />
@@ -45,7 +47,9 @@
                     </div>
                     <div class="modal-body">
                         You got  @ViewBag.RESULT /10 for the test !
+                        
                     </div>
+                   
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Okay</button>
 
@@ -53,6 +57,32 @@
                 </div>
             </div>
         </div>
+
+    }
+    @if (ViewBag.RESULT_ABC != null)
+    {
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Results</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        You got  @ViewBag.RESULT_ABC /10 for the test !
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Okay</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
     }
     <script type="text/javascript">
     $(window).on('load',function(){

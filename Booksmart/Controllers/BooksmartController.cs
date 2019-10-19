@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Booksmart.Models;
+using Booksmart.ViewModels;
 
 namespace Booksmart.Controllers
 {
@@ -56,7 +57,21 @@ namespace Booksmart.Controllers
             var questions = from item in qlist
                             orderby Guid.NewGuid() ascending
                             select item;
-            return View(questions.ToList());
+
+
+            List<ABCquizVM> list = new List<ABCquizVM>();
+
+            foreach(var dm in questions.ToList())
+            {
+                ABCquizVM items = new ABCquizVM();
+                items.TheoryQuestionID = dm.TheoryQuestionID;
+                items.Question = dm.Question;
+                items.Answer = dm.Answer;
+
+                list.Add(items);
+
+            }
+            return View(list);
         }
         public ActionResult ABCsong()
         {
@@ -81,6 +96,7 @@ namespace Booksmart.Controllers
         {
             return View();
         }
+
         public ActionResult PracticalMenu()
         {
             return View();
@@ -199,6 +215,8 @@ namespace Booksmart.Controllers
         {
             return View();
         }
+    
+        
         public ActionResult Practical()
         {
             return View();
@@ -211,6 +229,10 @@ namespace Booksmart.Controllers
 
         public ActionResult InactiveUser()
         {
+            Del_4_272Entities db = new Del_4_272Entities();
+            db.Configuration.ProxyCreationEnabled = false;
+            DataResult report = new DataResult();
+            var REPORT1=db.Users.Include(i=>i.Lastlogin)
             return View();
         }
 
