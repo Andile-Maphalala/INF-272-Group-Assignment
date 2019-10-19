@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Booksmart.ViewModels.WordGameQuizVM>
 @{
     Layout = null;
 }
@@ -7,23 +7,334 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Wordgame_Quiz</title>
-    <link href="~/StyleSheet1.css" rel="stylesheet" />
+
+    <title>WordGameQuiz</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <style>
+        section {
+            height: 100vh;
+        }
+
+        html {
+            overflow: hidden;
+        }
+
+        #arrow {
+        }
+
+            #arrow a {
+                display: inline-block;
+                padding: 10px 20px;
+                cursor: pointer;
+            }
+    </style>
+
+    <link href="~/Content/StyleSheet1.css" rel="stylesheet" />
 </head>
-<body id="body2">
-    <input onclick="window.location.href='@Url.Action("HomePage", "Booksmart" )';"  class="home" type="image" value="button" src="~/Pics/home.jpg" />
-    <br />
-    <br />
-    <br />
-    <div class="Pic">
-        <img src="~/Pics/ball.jpg" alt="" />
-        <br />
-        <label id="l2">What is in this picture</label>
-        <br />
-        <input id="Text1" type="text" />
-        <input id="Button1" type="button" value="next" onclick="location.href='@Url.Action("Wordgame", "Booksmart")'" />
-    </div>
+
+
+<body id="body1">
+
+    @if (Model != null)
+    {
+        <div>
+            @using (Html.BeginForm("Result_WGQ", "Booksmart", FormMethod.Post))
+            {
+                <h1 style="color:white; font-size:40px;"></h1>
+                <div>
+                    @{ var n = 0;
+
+                    }
+                </div>
+                <div>
+                    @foreach (var group in Model)
+                    {
+                        <div>
+
+                            <section style="margin-top:20px;">
+
+
+
+                                <div>
+                                    @{n++;
+                                    }
+
+                                    <h1 style="color:white;"> What is in the picture ?</h1><br /><br /><br /><br />
+
+                                    <img src="@Url.Content(@group.Imagepath)" alt="" style="height: 300px; width:300px" />
+                                    <br />
+                                    <label style="color:white; font-size:40px;">Fill in the name of the object.</label>
+                                    <br />
+                                    <input id="Text_@n" type="text" name="userAnswer_@n" @*pattern="[A-Za-z]"*@ onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" />
+                                    <input type="hidden" id="hid" name="Answer_@n" value="@group.Answer">
+                                    @*<label style="color:white; font-size:10px;">Moving on to the next question will prevent changes to this answer.</label>*@
+
+
+                                    <br /><br />
+                                    <div id="arrow">
+
+
+                                        @if (n == 10)
+                                        {
+                                            <div>
+
+                                                <button class="next btn btn-primary" id="@n" @*onclick="window.location.href = '@Url.Action("Result", "Booksmart")';"*@ type="submit" disabled>Next</button>
+
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            @*<input class="next btn btn-primary" type="submit" value="Submit" id="@n" disabled />*@
+                                            <button class="next btn btn-primary" id="@n" type="button" disabled>Next</button>
+                                            @*<button class="next btn btn-primary" id="@n" type="submit">Next</button>*@
+                                        }
+
+
+                                        <br /><br />
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <br />
+
+
+                                    </div>
+
+                                </div>
+                            </section>
+                        </div>}
+                </div>
+                                        }
+
+        </div>
+
+
+
+        @*<script>
+                jQuery.fn.extend({
+                    scrollTo: function (speed, easing) {
+                        return this.each(function () {
+                            var targetOffset = $(this).offset().top;
+                            $('html,body').animate({ scrollTop: targetOffset }, speed, easing);
+                        });
+                    }
+                });
+
+                $('.next-section').click(function (e) {
+                    e.preventDefault();
+                    var $this = $(this),
+                        $next = $this.parent().next();
+
+                    $next.scrollTo(400, 'linear');
+                });
+
+                $('.prev-section').click(function (e) {
+                    e.preventDefault();
+                    var $this = $(this),
+                        $prev = $this.parent().prev();
+
+                    $prev.scrollTo(400, 'linear');
+                });
+            </script>*@
+
+                                        <script>
+
+
+
+    //    var toValidate = $('#Text_1'),
+    //valid = false;
+    //    toValidate.keyup(function () {
+    //        if ($(this).val().length > 0) {
+    //            $(this).data('valid', true);
+    //        } else {
+    //            $(this).data('valid', false);
+    //        }
+    //        toValidate.each(function () {
+    //            if ($(this).data('valid') == true) {
+    //                valid = true;
+    //            } else {
+    //                valid = false;
+    //            }
+    //        });
+    //        if (valid === true) {
+    //            $('input[type=submit]').prop('disabled', false);
+    //        } else {
+    //            $('input[type=submit]').prop('disabled', true);
+    //        }
+    //    });
+
+
+        $(function () {
+
+            var pagePositon = 0,
+                sectionsSeclector = 'section',
+                $scrollItems = $(sectionsSeclector),
+                offsetTolorence = 30,
+                pageMaxPosition = $scrollItems.length - 1;
+
+            //Map the sections:
+            $scrollItems.each(function (index, ele) { $(ele).attr("debog", index).data("pos", index); });
+
+            // Bind to scroll
+            $(window).bind('scroll', upPos);
+
+            //Move on click:
+            $('#arrow button').click(function (e) {
+                if ($(this).hasClass('next') && pagePositon + 1 <= pageMaxPosition) {
+                    pagePositon++;
+                    $('html, body').stop().animate({
+                        scrollTop: $scrollItems.eq(pagePositon).offset().top
+                    }, 300);
+                }
+                if ($(this).hasClass('previous') && pagePositon - 1 >= 0) {
+                    pagePositon--;
+                    $('html, body').stop().animate({
+                        scrollTop: $scrollItems.eq(pagePositon).offset().top
+                    }, 300);
+                    return false;
+                }
+            });
+
+            //Update position func:
+            function upPos() {
+                var fromTop = $(this).scrollTop();
+                var $cur = null;
+                $scrollItems.each(function (index, ele) {
+                    if ($(ele).offset().top < fromTop + offsetTolorence) $cur = $(ele);
+                });
+                if ($cur != null && pagePositon != $cur.data('pos')) {
+                    pagePositon = $cur.data('pos');
+                }
+            }
+
+        });
+
+
+
+        @*function myFunction() {
+
+            var x = document.getElementsByTagName("SECTION")[9];
+            var url = '@Url.Action("HomePage", "Booksmart")';
+            var att = document.createAttribute("onclick");
+            att.value = window.location.href = '@Url.Action("HomePage", "Booksmart" )';
+
+
+            if (x.debog === 9) {
+
+
+                x.setAttributeNode(att);
+            }
+            else { }
+
+
+        }*@
+
+
+        //function validate()
+        //{
+        //    if(document.getElementById("aa").value=="")
+        //    {
+        //        alert("this textbox should not be empty");
+        //    }
+        //}
+
+
+        //$(document).ready(function () {
+
+        //    $('#myform').validate({
+        //        rules: {
+        //            userAnswer1: {
+        //                required: true
+        //            }
+        //            //field2: {
+        //            //    required: true
+        //            //}
+        //        },
+        //        submitHandler: function (form) { // for demo
+        //            window.alert('valid form');
+        //            return false;
+        //        }
+        //    });
+
+        //    // programmatically check any element using the `.valid()` method.
+        //    $('#1').on('click', function () {
+        //        $('input[name="userAnswer1"]').valid();
+        //    });
+
+        //});
+
+        $(document).on('click', 'input', function () {
+
+            var currentid = $(this).attr("id");
+
+            var toValidate = $(String("#"+$(this).attr("id"))),
+   valid = false;
+            toValidate.keyup(function () {
+                if ($(this).val().length > 0) {
+                    $(this).data('valid', true);
+                } else {
+                    $(this).data('valid', false);
+                }
+                toValidate.each(function () {
+                    if ($(this).data('valid') == true) {
+                        valid = true;
+                    } else {
+                        valid = false;
+                    }
+                });
+                if (valid === true) {
+                    if (currentid.length == 6) {
+                        $('button[id=' + currentid.charAt(5) + ']').prop('disabled', false);
+                    }
+                    else if (currentid.length == 7) {
+                        $('button[id=10]').prop('disabled', false);
+                    }
+
+                }
+                else {
+                    if (currentid.length == 6)
+                    {
+                        $('button[id=' + currentid.charAt(5) + ']').prop('disabled', true);
+                    }
+                    else if (currentid.length == 7)
+                    {
+                        $('button[id=10]').prop('disabled', true);
+                    }
+                }
+            });
+
+        });
+
+        function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+
+
+
+                                        </script>
+                                        }
+
+
 
 </body>
 </html>

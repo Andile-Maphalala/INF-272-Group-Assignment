@@ -106,6 +106,7 @@
     <Property Name="ShortStoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ShortStoryDescription" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ShortStoryPdfPath" Type="varchar(max)" Nullable="false" />
+    <Property Name="Image" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="TheoryGame">
     <Key>

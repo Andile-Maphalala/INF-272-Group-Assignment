@@ -304,6 +304,9 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\EntertainmentImages\cinderella.jpg" />
+    <Content Include="Content\EntertainmentImages\humpty 2.jpg" />
+    <Content Include="Content\EntertainmentImages\little red.jpg" />
     <Content Include="Content\Homepage.css" />
     <Content Include="Content\Inactive.css" />
     <Content Include="Content\Login.css" />
@@ -406,6 +409,9 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\ShortStory\Cinderella.pdf" />
+    <Content Include="Content\ShortStory\HumptyDumpty.pdf" />
+    <Content Include="Content\ShortStory\Little-red-riding-hood.pdf" />
     <None Include="Pics\Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Pics\Scripts\jquery-1.10.2.js" />
     <Content Include="Pics\Scripts\jquery-1.10.2.min.js" />
@@ -514,6 +520,9 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Booksmart\Shortstories_1.cshtml" />
+    <Content Include="Views\Booksmart\Shortstories_2.cshtml" />
+    <Content Include="Views\Booksmart\Shortstories_3.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

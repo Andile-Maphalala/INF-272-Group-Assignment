@@ -113,6 +113,7 @@
     <EntitySetMapping Name="ShortStories">
       <EntityTypeMapping TypeName="Model.ShortStory">
         <MappingFragment StoreEntitySet="ShortStory">
+          <ScalarProperty Name="Image" ColumnName="Image" />
           <ScalarProperty Name="ShortStoryID" ColumnName="ShortStoryID" />
           <ScalarProperty Name="ShortStoryDescription" ColumnName="ShortStoryDescription" />
           <ScalarProperty Name="ShortStoryPdfPath" ColumnName="ShortStoryPdfPath" />
