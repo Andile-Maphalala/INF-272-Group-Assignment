@@ -89,7 +89,7 @@
                                     <label style="color:white; font-size:40px;">Fill in the missing letter.</label>
                                     <br /><br /><br /><br />
 
-                                    <input id="Text_@n" type="text" name="userAnswer_@n" pattern="[A-Za-z]{0}" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" required maxlength="1" />
+                                    <input id="Text_@n" type="text" name="userAnswer_@n" pattern="[A-Za-z]{1}" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" oninput="this.value = this.value.toUpperCase()" required maxlength="1" />
                                     <input type="hidden" id="hid" name="Answer_@n" value="@group.Answer">
 
                                     <br /><br /><br /><br />

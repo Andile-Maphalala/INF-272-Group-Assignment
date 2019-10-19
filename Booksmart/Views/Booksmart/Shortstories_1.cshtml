@@ -1,0 +1,35 @@
+﻿@model Booksmart.Models.ShortStory
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/StyleSheet1.css" rel="stylesheet" />
+    <title>Shortstories</title>
+    <style>
+        
+        #st { height:700px;
+              width:100%;
+        }
+
+        html {
+        overflow-y: hidden;}
+            
+    </style>
+
+</head>
+<body>
+   
+    <input class="home" type="image" style="left:0;" value="button" src="~/Pics/home.jpg" onclick="window.location.href='@Url.Action("HomePage", "Booksmart" )';" />
+    <div > 
+        <iframe id="st" src="@Url.Content(Model.ShortStoryPdfPath)"></iframe>
+</div>
+</body>
+</html>
+
+

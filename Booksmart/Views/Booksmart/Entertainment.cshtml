@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Booksmart.Models.ShortStory>
 @{
     Layout = null;
 }
@@ -8,8 +8,9 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Entertainment</title>
     <link href="~/StyleSheet1.css" rel="stylesheet" />
+    <title>Entertainment</title>
+   
 </head>
 <body id="body">
     <input class="home" type="image" value="button" src="~/Pics/home.jpg" onclick="window.location.href='@Url.Action("HomePage", "Booksmart" )';" />
@@ -17,14 +18,34 @@
     <br />
     <br />
     <h1>Pick A story to read</h1>
-    <div class="books">
-        <img src="~/Pics/cinderella.jpg" alt="" />
+    <div>
+        @{ var n = 0;
+
+        }
     </div>
-    <div class="books">
-        <img src="~/Pics/humpty.jpg" alt="" />
+
+    <div>
+        @foreach (var group in Model)
+        {
+            <div>
+
+                <section margin-bottom:20px; margin-top:20px;">
+
+
+                    <div>@{n++;
+                    }
+
+                        <img src="@Url.Content(@group.Image)" alt="" style="height: 500px; width:500px " onclick="window.location.href='@Url.Action("Shortstories_"+@n.ToString(), "Booksmart" )';" />
+                        
+                        <br />
+        
+
+                    </div>
+
+
+                </section>
+            </div>}
     </div>
-    <div class="books">
-        <img src="~/Pics/little red.jpg" alt="" />
-    </div>
+   
 </body>
 </html>
