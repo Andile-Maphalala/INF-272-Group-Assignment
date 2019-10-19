@@ -111,7 +111,6 @@
           <Property Name="ShortStoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ShortStoryDescription" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ShortStoryPdfPath" Type="varchar(max)" Nullable="false" />
-          <Property Name="Image" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="TheoryGame">
           <Key>
@@ -643,7 +642,6 @@
           <Property Name="ShortStoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ShortStoryDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ShortStoryPdfPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Image" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TheoryGame">
           <Key>
@@ -1169,7 +1167,6 @@
           <EntitySetMapping Name="ShortStories">
             <EntityTypeMapping TypeName="Model.ShortStory">
               <MappingFragment StoreEntitySet="ShortStory">
-                <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="ShortStoryID" ColumnName="ShortStoryID" />
                 <ScalarProperty Name="ShortStoryDescription" ColumnName="ShortStoryDescription" />
                 <ScalarProperty Name="ShortStoryPdfPath" ColumnName="ShortStoryPdfPath" />

@@ -62,13 +62,16 @@
 
 
                                     <div>
-                              
-                                        <img src="@Url.Content(@group.Image)" alt="" style="height: 700px; width:700px" />
+                                        @{n++;
+                                        }
+                                        
+                                        @*var url = @group.Answer;*@
+
+                                        <img src="@Url.Content(@group.Image)" alt="" style="height: 700px; width:700px"  />
                                         <br />
                                         <label id="Label">@group.Answer.ToUpper()</label>
                                         <br /><br /><br /><br />
 
-                                    </div>
                                        
                             
                                 </section>

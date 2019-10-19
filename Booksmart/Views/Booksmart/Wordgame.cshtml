@@ -1,4 +1,4 @@
-﻿@model List<Booksmart.Models.PracQuestion>
+﻿
 @{
     Layout = null;
 }
@@ -7,125 +7,23 @@
 
 <html>
 <head>
-    <title>WordGame</title>
     <meta name="viewport" content="width=device-width" />
     <link href="~/StyleSheet1.css" rel="stylesheet" type="text/css" />
-
-    <title>WordGame</title>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <style>
-        section {
-            min-height: 100vh;
-        }
-
-        #arrow {
-        }
-
-            #arrow a {
-                display: inline-block;
-                padding: 10px 20px;
-                cursor: pointer;
-            }
-    </style>
-
-    <link href="~/Content/StyleSheet1.css" rel="stylesheet" />
+    <title>Wordgame</title>
 </head>
-
-<body id="body">
-
-    <div>
-        @{ var n = 0;
-
-        }
-    </div>
-    <div>
-        @foreach (var group in Model)
-        {
-            <div>
-
-                <section margin-bottom:20px; margin-top:20px;">
-
-
-                    <div>
-
-                        <img src="@Url.Content(@group.Image)" alt="" style="height: 500px; width:500px" />
-                        <br />
-                        <label id="Label">@group.Answer.ToUpper()</label>
-                        <br /><br /><br /><br />
-
-                    </div>
-
-
-                </section>
-            </div>}
-    </div>
-    }
-
-    <script>
-
-
-
-                        $(function () {
-
-                            var pagePositon = 0,
-                                sectionsSeclector = 'section',
-                                $scrollItems = $(sectionsSeclector),
-                                offsetTolorence = 30,
-                                pageMaxPosition = $scrollItems.length - 1;
-
-                            //Map the sections:
-                            $scrollItems.each(function (index, ele) { $(ele).attr("debog", index).data("pos", index); });
-
-                            // Bind to scroll
-                            $(window).bind('scroll', upPos);
-
-                            //Move on click:
-                            $('#arrow button').click(function (e) {
-                                if ($(this).hasClass('next') && pagePositon + 1 <= pageMaxPosition) {
-                                    pagePositon++;
-                                    $('html, body').stop().animate({
-                                        scrollTop: $scrollItems.eq(pagePositon).offset().top
-                                    }, 300);
-                                }
-                                if ($(this).hasClass('previous') && pagePositon - 1 >= 0) {
-                                    pagePositon--;
-                                    $('html, body').stop().animate({
-                                        scrollTop: $scrollItems.eq(pagePositon).offset().top
-                                    }, 300);
-                                    return false;
-                                }
-                            });
-
-                            //Update position func:
-                            function upPos() {
-                                var fromTop = $(this).scrollTop();
-                                var $cur = null;
-                                $scrollItems.each(function (index, ele) {
-                                    if ($(ele).offset().top < fromTop + offsetTolorence) $cur = $(ele);
-                                });
-                                if ($cur != null && pagePositon != $cur.data('pos')) {
-                                    pagePositon = $cur.data('pos');
-                                }
-                            }
-
-                        });
-
-
-    </script>
-</body>
+    <body id="body2">
+        <input onclick="window.location.href='@Url.Action("HomePage", "Booksmart" )';"  class="home" type="image" value="button" src="~/Pics/home.jpg" />
+        <br />
+        <br />
+        <br />
+        <div class="Pic">
+            <img src="~/Pics/ball.jpg" alt="" />
+            <br />
+            <label id="Label">B Ball</label>
+            <br />
+        </div>
+        <br />
+        <input id="Button1" type="button" value="Back" />
+        <input onclick="window.location.href='@Url.Action("Wordgame_Quiz", "Booksmart" )';"  id="Button1" type="button" value="Next" />
+    </body>
 </html>
