@@ -4,14 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Booksmart.Models;
-using System.Data.Entity;
 using Booksmart.ViewModels;
-
+using System.Security.Cryptography;
+using System.Text;
+using System.Data.Entity;
 
 namespace Booksmart.Controllers
 {
     public class BooksmartController : Controller
     {
+
+
         // GET: Booksmart
         public ActionResult Index()
         {
@@ -23,9 +26,60 @@ namespace Booksmart.Controllers
             return View();
         }
 
+        public ActionResult AddLearner()
+        {
+
+            //Create db context object here 
+            Del_4_272Entities db = new Del_4_272Entities();
+            //Get the value from database and then set it to ViewBag to pass it View
+            //ViewBag.UserType = from p in db.Users.GroupBy(i => new { i.UserType1.Description, i.UserType1.ID }).OrderByDescending(x => x.Count()).Select(i => i.Key).ToList()
+            //                   select new
+            //                   {
+            //                       Id = p.ID,
+            //                       Description = p.ID + " - " + p.Description
+            //                   };
+
+
+            IEnumerable<SelectListItem> items = db.Genders.Select(c => new SelectListItem
+            {
+                Value = c.Description,
+                Text = c.Description
+
+            });
+            ViewBag.Gender = items;
+
+
+            IEnumerable<SelectListItem> Countries = db.Countries.Select(c => new SelectListItem
+            {
+                Value = c.CountryName,
+                Text = c.CountryName
+
+            });
+            ViewBag.Country = Countries;
+
+            List<User> UserList = db.Users.ToList();
+            return View(UserList);
+
+
+        }
+
+
+
+
         public ActionResult ParentPage()
         {
-            return View();
+            Del_4_272Entities db = new Del_4_272Entities();
+            db.Configuration.ProxyCreationEnabled = false;
+
+            var qlist = db.Learners.Where(xx => xx.ParentID == 1).ToList();
+
+
+
+
+
+
+
+            return View(qlist.ToList());
 
         }
 
@@ -33,15 +87,214 @@ namespace Booksmart.Controllers
         {
             return View();
         }
+        public ActionResult DoLogin()
+        { return View(); }
+
+        [HttpPost]
+        public ActionResult DoLogin(string Username, string Password)
+        {
+            Del_4_272Entities db = new Del_4_272Entities();
+            var HashedPassword = ComputeSha256Hash(Password);
+            Models.User user = db.Users.Where(zz => zz.Username == Username
+                                                && zz.Password == HashedPassword).FirstOrDefault();
+
+            var findUserID = db.Users.Where(xx => xx.Username == Username).FirstOrDefault();
+
+            if (user != null)
+            {
+                UserVM userVME = new UserVM();
+                userVME.user = user;
+                userVME.RefreshGuid(db);
+                TempData["userVM"] = userVME;
+                user = db.Users.Where(ZZ => ZZ.Username == Username).FirstOrDefault();
+                user.LastLoginDate = DateTime.Now;
+                db.SaveChanges();
+
+
+                if (findUserID.UserTypeID == 3)
+                { return View("Homepage", findUserID); }
+                else if (findUserID.UserTypeID == 2)
+                {
+                    return RedirectToAction("ParentPage", "Booksmart");
+                }
+                else { return RedirectToAction("AdminPage", "Booksmart"); }
+
+
+
+            }
+
+            LoginVM vb = new LoginVM();
+
+
+            ViewBag.Password = "Username or password incorrect";
+            vb.Viewbag = ViewBag.Password;
+
+            return View("Login", vb);
+        }
+
+        string ComputeSha256Hash(string rawData)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+
+                }
+                return builder.ToString();
+            }
+        }
+
+        public JsonResult CheckUsernameAvailability(string userdata)
+        {
+            Del_4_272Entities db = new Del_4_272Entities();
+            System.Threading.Thread.Sleep(200);
+            var SeachData = db.Users.Where(x => x.Username == userdata).SingleOrDefault();
+            if (SeachData != null)
+            {
+                return Json(1);
+            }
+            else
+            {
+                return Json(0);
+            }
+
+        }
 
         public ActionResult Register()
         {
-            return View();
+            //Create db context object here 
+            Del_4_272Entities db = new Del_4_272Entities();
+            //Get the value from database and then set it to ViewBag to pass it View
+            //ViewBag.UserType = from p in db.Users.GroupBy(i => new { i.UserType1.Description, i.UserType1.ID }).OrderByDescending(x => x.Count()).Select(i => i.Key).ToList()
+            //                   select new
+            //                   {
+            //                       Id = p.ID,
+            //                       Description = p.ID + " - " + p.Description
+            //                   };
+
+
+            IEnumerable<SelectListItem> items = db.Genders.Select(c => new SelectListItem
+            {
+                Value = c.Description,
+                Text = c.Description
+
+            });
+            ViewBag.Gender = items;
+
+
+            IEnumerable<SelectListItem> Countries = db.Countries.Select(c => new SelectListItem
+            {
+                Value = c.CountryName,
+                Text = c.CountryName
+
+            });
+            ViewBag.Country = Countries;
+
+            List<User> UserList = db.Users.ToList();
+            return View(UserList);
+
+        }
+
+        //public JsonResult CheckUsernameAvailability(string userdata)
+        //{
+        //    Del_4_272Entities db = new Del_4_272Entities();
+        //    System.Threading.Thread.Sleep(200);
+        //    var SeachData = db.Users.Where(x => x.Username == userdata).SingleOrDefault();
+        //    if (SeachData != null)
+        //    {
+        //        return Json(1);
+        //    }
+        //    else
+        //    {
+        //        return Json(0);
+        //    }
+
+        //}
+
+
+        [HttpPost]
+        public ActionResult DoRegister(string Name, string Surname, string Username, string Gender, string Country, DateTime DOB, string Email, string Password)
+        {
+
+            Del_4_272Entities db = new Del_4_272Entities();
+            db.Configuration.ProxyCreationEnabled = false;
+            Parent NewParent = new Parent();
+            User NewUser = new User();
+            //if (ModelState.IsValid)
+            //{
+            //    var UserExist= db.Users.Any(x => x.Username == Username) ;
+            //    if (UserExist)
+            //    {
+            //        ViewBag.Exist = "This username islaready taken";
+            //        return RedirectToAction("Register");
+            //    }
+            //}
+
+            NewUser.Username = Username;
+            NewUser.Password = ComputeSha256Hash(Password);
+            NewUser.UserTypeID = 2;
+            NewUser.LastLoginDate = DateTime.Now;
+            NewUser.Guid = Guid.NewGuid().ToString();
+            db.Users.Add(NewUser);
+            //db.SaveChanges();
+
+            NewParent.Name = Name;
+            NewParent.Surname = Surname;
+            var findGender = db.Genders.Where(zz => zz.Description == Gender).FirstOrDefault();
+            NewParent.GenderID = findGender.GenderID;
+            var find = db.Countries.Where(zz => zz.CountryName == Country).FirstOrDefault();
+            NewParent.CountryID = find.CountryID;
+            NewParent.DOB = DOB;
+            NewParent.Email = Email;
+
+
+            db.Parents.Add(NewParent);
+            db.SaveChanges();
+            return View("Login");
         }
 
         public ActionResult HomePage()
         {
-            return View();
+
+
+            Del_4_272Entities db = new Del_4_272Entities();
+            db.Configuration.ProxyCreationEnabled = false;
+
+            //var UserReport = db.Learners.Include(ii => ii);
+
+            var report = db.Learners.Include(i => i.TheoryGameAttempts).Include(y => y.PracticalGameAttempts).Include(v => v.User).ToList().Select(r => new Home
+            {
+                Username = r.User.Username,
+
+                averagePrac = r.PracticalGameAttempts.Average(xx => xx.PracticalGameScore),
+
+                averageTheory = r.TheoryGameAttempts.Average(xx => xx.Score),
+                total = r.PracticalGameAttempts.Average(xx => xx.PracticalGameScore) + r.TheoryGameAttempts.Average(xx => xx.Score)
+            }
+            );
+
+            var studentWithStandard = from s in db.Learners
+                                      join stad in db.TheoryGameAttempts
+            on s.LearnerID equals stad.LearnerID
+                                      join st in db.PracticalGameAttempts
+                                      on s.LearnerID equals st.LearnerID
+                                      join sta in db.Users
+                                      on s.UserID equals sta.UserID
+
+                                      select new
+                                      {
+                                          UserName = sta.Username,
+                                          averagePrac = stad.Score,
+                                          averageTheory = st.PracticalGameScore
+                                      };
+
+
+
+            return View(studentWithStandard);
         }
 
         public ActionResult Theory()
@@ -133,31 +386,7 @@ namespace Booksmart.Controllers
                             orderby Guid.NewGuid() ascending
                             select item;
 
-
-         
-            List<NumberQuizVM> list = new List<NumberQuizVM>();
-            //List<NumberQuizVM> copy = questions.ToList();
-
-            //list =qlist
-
-            //IEnumerable<NumberQuizVM> enumerable;
-            //    { 
-
-
-            foreach (var it in questions.ToList())
-            {
-                NumberQuizVM items = new NumberQuizVM();
-                items.Id = it.TheoryQuestionID;
-                items.Question = it.Question;
-                items.UserAnswer = it.Answer;
-
-                list.Add(items);
-               
-            }
-
-
-            //}
-            return View(list);
+            return View(questions.ToList());
         }
 
 
@@ -305,31 +534,7 @@ namespace Booksmart.Controllers
 
         public ActionResult UserPerformance()
         {
-            Del_4_272Entities db = new Del_4_272Entities();
-            db.Configuration.ProxyCreationEnabled = false;
-            DataResult res = new DataResult();
-            //var UserReport = db.Learners.Include(ii => ii);
-
-            var report = db.Learners.Include(i => i.TheoryGameAttempts).Include(y => y.PracticalGameAttempts).ToList().Select(r => new UserPerformance
-            {
-                name = r.Name,
-                surname = r.Surname,
-                averagePrac = r.PracticalGameAttempts.Average(xx => xx.PracticalGameScore),
-                
-               averageTheory = r.TheoryGameAttempts.Average(xx => xx.Score)
-            }
-            );
-            //).Where().ToList();
-            var query =
-   from post in db.Learners
-   join meta in db.PracticalGameAttempts on post.LearnerID equals meta.LearnerID
-   join deta in db.TheoryGameAttempts on post.LearnerID equals deta.LearnerID
-   //where post.ID == id
-   select new { post.Name,post.Surname, meta.PracticalGameScore,deta.Score};
-            res.results = report.GroupBy(u=>u.name).ToList();
-
-
-            return View(res);
+            return View();
         }
 
         public ActionResult InactiveUser()

@@ -1,0 +1,184 @@
+﻿@model List<Booksmart.Models.User>
+@{
+
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add Learner</title>
+    <link href="~/Content/Register.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        label {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <h1 style="text-align:center">Registration</h1>
+    <br /><br />
+    <div class="container">
+        <form method="post" action="@Url.Action("DoRegisterChild", "Booksmart")">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-3">
+                        <label for="name">Name:</label>
+                    </div>
+                    <div class="col-3">
+                        <input type="text" class="form-control" id="name" placeholder="Enter name" required name="Name">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-3">
+                        <label for="surname">Surname:</label>
+                    </div>
+                    <div class="col-3">
+                        <input type="text" class="form-control" id="surname" placeholder="Enter Surname" required name="Surname">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-3">
+                        <label for="Gender">Gender:</label>
+                    </div>
+                    <div class="col-3">
+                        @*<input type="text" class="form-control" id="email" placeholder="Choose Gender" required name="Gender">*@
+
+                        @Html.DropDownList("Gender", null, null, new { @class = "form-group" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @*<div class="row">
+                        <div class="col-3"></div>
+                        <div class="col-3">
+                            <label for="country">Country:</label>
+                        </div>
+                        <div class="col-3">
+                            @Html.DropDownList("Country", null, null, new { @class = "form-group" })
+                        </div>
+                    </div>*@
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-3">
+                        <label for="dob">Date of Birth:</label>
+                    </div>
+                    <div class="col-3">
+                        <input type="date" class="form-control" id="dob" placeholder="Enter Date of birth" required name="DOB">
+                    </div>
+                </div>
+            </div>
+            @*<div class="form-group">
+                    <div class="row">
+                        <div class="col-3"></div>
+                        <div class="col-3">
+                            <label for="email">Email:</label>
+                        </div>
+                        <div class="col-3">
+                            <input type="email" class="form-control" id="email" placeholder="Enter email" required name="Email">
+                        </div>
+                    </div>
+                </div>*@
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-3">
+                        <label for="username">Username:</label>
+                    </div>
+                    <div class="col-3">
+                        <input type="text" class="form-control" id="Username" onkeypress="myFunction" placeholder="Enter Username" required name="Username" onchange="UserCheck()">
+                        <p id="Status" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-3">
+                        <label for="passowrd">Password:</label>
+                    </div>
+                    <div class="col-3">
+                        <input type="password" class="form-control" id="password" placeholder="Enter password" required name="Password" onchange="UserCheck()">
+                    </div>
+                </div>
+            </div>
+            @*<div class="form-group">
+                    <div class="row">
+                        <div class="col-3"></div>
+                        <div class="col-3">
+                            <label for="confirm">Confirm Password:</label>
+                        </div>
+                        <div class="col-3">
+                            <input type="password" class="form-control" id="confrim" placeholder="Enter password again" required name="Confirm">
+                        </div>
+                    </div>
+                </div>*@
+
+            <div class="row" style="margin-bottom:20px; margin-left:720px;">
+
+
+                <div class="col-12">
+                    <button type="button" onclick="window.location.href='@Url.Action("ParentPage", "Booksmart" )';" class="btn btn-primary">Cancel</button>
+                    <br />
+
+                </div>
+            </div>
+
+            <div class="row" style="margin-left:720px;">
+                @using (@Html.BeginForm("DoRegisterChild", "Booksmart", FormMethod.Post))
+                {
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <br />
+
+                    </div>
+                }
+
+
+            </div>
+
+
+        </form>
+    </div>
+
+    <script>
+    function UserCheck() {
+        $("#Status").html("Checking...");
+        $.post("@Url.Action("CheckUsernameAvailability", "Booksmart")",
+            {
+                userdata: $("#Username").val()
+            },
+        function (data) {
+            if (data == 0) {
+                $("#Status").html('<font color="Green">Available Username ! You can take it.</font>');
+                $("#Username").css("border-color", "Green");
+
+            }
+            else {
+                $("#Status").html('<font color="Red">That Username is taken.Try Another.</font>');
+                $("#Username").css("border-color", "Red");
+            }
+        });
+    }
+    </script>
+
+</body>
+</html>
