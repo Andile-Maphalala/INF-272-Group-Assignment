@@ -418,6 +418,7 @@
     <Content Include="Pics\Scripts\respond.js" />
     <Content Include="Pics\Scripts\respond.min.js" />
     <Content Include="Pics\Scripts\_references.js" />
+    <Content Include="Report\song.css" />
     <Content Include="resize video.css" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -517,7 +518,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Report\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

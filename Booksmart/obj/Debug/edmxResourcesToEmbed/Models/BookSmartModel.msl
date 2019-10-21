@@ -61,7 +61,6 @@
           <ScalarProperty Name="ParentID" ColumnName="ParentID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Surname" ColumnName="Surname" />
-          <ScalarProperty Name="Age" ColumnName="Age" />
           <ScalarProperty Name="DOB" ColumnName="DOB" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
@@ -113,6 +112,7 @@
     <EntitySetMapping Name="ShortStories">
       <EntityTypeMapping TypeName="Model.ShortStory">
         <MappingFragment StoreEntitySet="ShortStory">
+          <ScalarProperty Name="Image" ColumnName="Image" />
           <ScalarProperty Name="ShortStoryID" ColumnName="ShortStoryID" />
           <ScalarProperty Name="ShortStoryDescription" ColumnName="ShortStoryDescription" />
           <ScalarProperty Name="ShortStoryPdfPath" ColumnName="ShortStoryPdfPath" />

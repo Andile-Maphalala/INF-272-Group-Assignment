@@ -9,7 +9,6 @@ namespace Booksmart.ViewModels
     {
         int theoryGameID;
         string theoryVideo;
-    
 
         public int TheoryGameID
         {
@@ -37,6 +36,6 @@ namespace Booksmart.ViewModels
             }
         }
 
-      
+     
     }
 }

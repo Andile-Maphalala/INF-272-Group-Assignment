@@ -33,8 +33,6 @@ public partial class Parent
 
     public string Surname { get; set; }
 
-    public string Age { get; set; }
-
     public System.DateTime DOB { get; set; }
 
     public string Email { get; set; }

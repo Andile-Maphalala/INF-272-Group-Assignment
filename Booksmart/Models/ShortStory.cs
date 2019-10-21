@@ -24,6 +24,8 @@ public partial class ShortStory
 
     public string ShortStoryPdfPath { get; set; }
 
+    public string Image { get; set; }
+
 }
 
 }

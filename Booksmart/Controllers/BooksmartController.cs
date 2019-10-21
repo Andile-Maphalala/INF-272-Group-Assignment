@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Booksmart.Models;
 using Booksmart.ViewModels;
+using System.Data.Entity;
 
 namespace Booksmart.Controllers
 {
@@ -61,7 +62,7 @@ namespace Booksmart.Controllers
 
             List<ABCquizVM> list = new List<ABCquizVM>();
 
-            foreach(var dm in questions.ToList())
+            foreach (var dm in questions.ToList())
             {
                 ABCquizVM items = new ABCquizVM();
                 items.TheoryQuestionID = dm.TheoryQuestionID;
@@ -71,11 +72,30 @@ namespace Booksmart.Controllers
                 list.Add(items);
 
             }
-            return View(list);
-        }
-        public ActionResult ABCsong()
+        return View(questions.ToList());
+    }
+    public ActionResult ABCsong()
         {
-            return View();
+            Del_4_272Entities db = new Del_4_272Entities();
+
+            var det = db.TheoryGames.Where(xx => xx.TheoryGameID == 2).FirstOrDefault();
+
+            ABCsongVM ist = new ABCsongVM();
+
+
+            ist.TheoryGameID = det.TheoryGameID;
+            ist.TheoryVideo = det.TheoryVideo;
+            //foreach (var mn in list.ToList ())
+            //{
+            //    ABCsongVM items = new ABCsongVM();
+            //    items.TheoryGameID = mn.TheoryGameID;
+            //    items.TheoryVideo = mn.TheoryVideo;
+                
+
+            //    list.Add(items);
+
+            //}
+            return View(ist);
         }
         public ActionResult NumberGame()
         {
@@ -222,18 +242,46 @@ namespace Booksmart.Controllers
             return View();
         }
 
-        public ActionResult UserPerformance()
-        {
-            return View();
-        }
+   //     public ActionResult UserPerformance()
+   //     {
+   //         Del_4_272Entities db = new Del_4_272Entities();
+   //         db.Configuration.ProxyCreationEnabled = false;
+   //         DataResult res = new DataResult();
+   //         //var UserReport = db.Learners.Include(ii => ii);
+
+   //         var report = db.Learners.Include(i => i.TheoryGameAttempts).Include(y => y.PracticalGameAttempts).ToList().Select(r => new UserPerformance
+   //         {
+   //             name = r.Name,
+   //             surname = r.Surname,
+   //             averagePrac = r.PracticalGameAttempts.Average(xx => xx.PracticalGameScore),
+
+   //             averageTheory = r.TheoryGameAttempts.Average(xx => xx.Score)
+   //         }
+   //         );
+   //         //).Where().ToList();
+   //         var query =
+   //from post in db.Learners
+   //join meta in db.PracticalGameAttempts on post.LearnerID equals meta.LearnerID
+   //join deta in db.TheoryGameAttempts on post.LearnerID equals deta.LearnerID
+   ////where post.ID == id
+   //select new { post.Name, post.Surname, meta.PracticalGameScore, deta.Score };
+   //         res.results = report.GroupBy(u => u.name).ToList();
+
+
+   //         return View(res);
+   //     }
 
         public ActionResult InactiveUser()
         {
             Del_4_272Entities db = new Del_4_272Entities();
             db.Configuration.ProxyCreationEnabled = false;
             DataResult report = new DataResult();
-            var REPORT1=db.Users.Include(i=>i.Lastlogin)
-            return View();
+
+            var REPORT1 = db.Learners.Include(mm => mm.User).Where(ii => DbFunctions.DiffDays(ii.User.LastLoginDate, DateTime.Now) > 30).ToList();
+
+
+
+            return View(REPORT1);
         }
 
         public ActionResult Theme()

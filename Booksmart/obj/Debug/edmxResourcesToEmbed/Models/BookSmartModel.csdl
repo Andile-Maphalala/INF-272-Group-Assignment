@@ -71,8 +71,7 @@
     <Property Name="ParentID" Type="Int32" Nullable="false" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Age" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DOB" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="UserID" Type="Int32" Nullable="false" />
     <Property Name="CountryID" Type="Int32" Nullable="false" />
@@ -122,7 +121,7 @@
     <Property Name="PracGameID" Type="Int32" Nullable="false" />
     <Property Name="LearnerID" Type="Int32" Nullable="false" />
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="AttemptDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="AttemptDate" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="Learner" Relationship="Self.FK_PracticalGameAttempt_Learner" FromRole="PracticalGameAttempt" ToRole="Learner" />
     <NavigationProperty Name="PracGame" Relationship="Self.FK_PracticalGameAttempt_PracGame" FromRole="PracticalGameAttempt" ToRole="PracGame" />
   </EntityType>
@@ -133,6 +132,7 @@
     <Property Name="ShortStoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ShortStoryDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ShortStoryPdfPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="TheoryGame">
     <Key>

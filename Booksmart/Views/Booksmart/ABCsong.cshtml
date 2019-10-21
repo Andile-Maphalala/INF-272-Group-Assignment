@@ -1,4 +1,5 @@
-﻿
+﻿@model Booksmart.ViewModels.ABCsongVM
+
 @{
     Layout = null;
 }
@@ -8,34 +9,54 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/StyleSheet2.css" rel="stylesheet" />
+
     <title>ABCsong</title>
     <style>
         body {
-            background-image: url('../Pics/MusicT.png');
-            /*object-fit:fill;*/
-            margin: auto;
-            text-align: center;
-            background-repeat: no-repeat;
+            background-color:blueviolet;
         }
 </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <link href="~/resize video.css" rel="stylesheet" />
+
+    <style>
+        #video {
+  
+    display: block;       /* iframes are inline by default */
+    background: #000;
+    border: none;         /* Reset default border */
+    height: 100vh;        /* Viewport-relative units */
+    width: 100vw;
+
+
+        
+}
+
+        .home{right:0;
+      position:fixed;
+}
+      
+          #img {
+    padding: 1%;
+    width: 10%;
+}
+    </style>
 </head>
 
 <body>
     <input onclick="window.location.href='@Url.Action("HomePage", "Booksmart" )';"  id="img" type="image" value="button" src="~/Pics/home.jpg" class="home" />
-    <br /><br />
+    <br /><br /><br>
+    <br /><br /><br>
+    
+    <div class="embed-responsive embed-responsive-16by9" >
 
-    <div >
-
-        <iframe  src="https://www.youtube.com/embed/75p-N9YKqNo"></iframe>
-        <br /><br />
-            <input id="Submit1" type="submit" class="btn btn-primary" value="Go To Quiz" onclick="window.location.href='@Url.Action("ABCquiz", "Booksmart" )';" />
-
+        <iframe class="embed-responsive-item"  src="@Model.TheoryVideo" ></iframe>
     </div>
+    <div>
+        <input id="Submit1" type="submit" class="btn btn-primary" value="Go To Quiz" onclick="window.location.href='@Url.Action("ABCquiz", "Booksmart" )';" />
+    </div>
+
     
     
 </body>
