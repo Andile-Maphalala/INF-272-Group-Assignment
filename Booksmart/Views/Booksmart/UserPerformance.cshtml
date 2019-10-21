@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <title>Index</title>
+    <title>User Performance</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +22,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
+    <script type="text/javascript" src="jspdf.debug.js"></script>
+    @*<link href="~/Content/bootstrap.min2.css" rel="stylesheet" />*@
 
     <style>
         #customers {
@@ -58,13 +59,13 @@
 
 
 </head>
-<body style="">
+<body>
     <div class="col-12">
         <h1 style="text-align:center;">Monthly User Performance Report</h1>
     </div>
     <br />
 
-    <div style="">
+    <div >
 @if (Model != null)
 {
 
@@ -77,15 +78,18 @@
 
             <br /><br />
             <h3><strong>@group.Key.ToUpper()  </strong></h3>
+            <hr />
        
                 <div class="row">
-                    <div class="col-12 ">
-                        <table class="table table-striped">
+                    <div class="col-12 " id="data">
+                        <table class="table table-striped" >
 
                             <tr>
 
                                 <th>AVERAGE THEORY GAME SCORE</th>
-                                <th>AVERAGE PRACTICAL GAME SCORE</th>
+                                <th >AVERAGE PRACTICAL GAME SCORE</th>
+                                <th colspan="5">TOTAL AVERAGE SCORE</th>
+                                <th ></th>
                             </tr>
 
 
@@ -95,11 +99,13 @@
                     {
 
                                 <tr width="100%" >
-                                    <td width="">@groupitem.averagePrac</td>
+                                    <td style="text-align:left">@groupitem.averagePrac</td>
                                   
-                                    <td width="">@groupitem.averageTheory</td>
+                                    <td style="text-align:center" width="">@groupitem.averageTheory</td>
                                     <td></td>
-                                    <td></td>
+
+                                    @*<td></td>
+                                    <td></td>*@
                                     @*<td>R @groupitem.Amount</td>
                                         <td>@groupitem.EmployeeDetail</td>*@
 
@@ -111,10 +117,10 @@
 
                             }
                             <tr>
-                                <td>Total </td>
+                                <td><strong>Total </strong></td>
                                 <td></td>
-                                <td><strong>@group.Sum(item => item.averagePrac / 10 * 50 + item.averageTheory / 10 * 50).ToString()</strong></td>
-                                <td></td>
+                                <td colspan="5" style="text-align:center;"><strong>@group.Sum(item => item.averagePrac / 10 * 50 + item.averageTheory / 10 * 50).ToString()</strong></td>
+                          
 
                             </tr>
                         </table>
@@ -128,13 +134,13 @@
             </div>
 
 
-            <br><br>
+            @*<br><br>
             <div class="col-lg-12">
                 @Html.ActionLink("Export as PDF", "ExportPDF", "Report")<br />
                 @Html.ActionLink("Export as Word", "ExportDOC", "Report")
 
 
-            </div>
+            </div>*@
 
 
 
@@ -175,7 +181,66 @@
 
 
         <br />
-        <button type="button" class="btn btn-success">Print Report</button>
+        @*<button  class="btn btn-success"  onclick="javascript:demoFromHTML();">Print Report</button>*@
+
+
+        <script>
+
+        function printData()
+        {
+        var divToPrint=document.getElementById("printTable");
+        newWin= window.open("");
+        newWin.document.write(divToPrint.outerHTML);
+        newWin.print();
+        newWin.close();
+        }
+
+        $('button').on('click',function(){
+        printData();
+        })
+
+
+
+        function demoFromHTML() {
+            var pdf = new jsPDF('p', 'pt', 'letter');
+            // source can be HTML-formatted string, or a reference
+            // to an actual DOM element from which the text will be scraped.
+            source = $('#data')[0];
+
+            // we support special element handlers. Register them with jQuery-style 
+            // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
+            // There is no support for any other type of selectors 
+            // (class, of compound) at this time.
+            specialElementHandlers = {
+                // element with id of "bypass" - jQuery style selector
+                '#bypassme': function (element, renderer) {
+                    // true = "handled elsewhere, bypass text extraction"
+                    return true
+                }
+            };
+            margins = {
+                top: 80,
+                bottom: 60,
+                left: 40,
+                width: 522
+            };
+            // all coords and widths are in jsPDF instance's declared units
+            // 'inches' in this case
+            pdf.fromHTML(
+            source, // HTML string or DOM elem ref.
+            margins.left, // x coord
+            margins.top, { // y coord
+                'width': margins.width, // max width of content on PDF
+                'elementHandlers': specialElementHandlers
+            },
+
+            function (dispose) {
+                // dispose: object with X, Y of the last line add to the PDF 
+                //          this allow the insertion of new lines after html
+                pdf.save('UserPerformance.pdf');
+            }, margins);
+        }
+        </script>
 
 </div>
 </body>

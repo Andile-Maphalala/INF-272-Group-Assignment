@@ -1,4 +1,8 @@
-﻿
+﻿@model Booksmart.ViewModels.AdminVM
+
+@using Booksmart.ViewModels ;
+@using System.Data
+@using System.Globalization
 @{
     Layout = null;
 }
@@ -9,9 +13,86 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>AdminPage</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap.min1.css" rel="stylesheet" />
 </head>
 <body>
-    <div> 
-    </div>
+    <div>
+        <h1 style="text-align :center"> Admin Homepage</h1>
+        <hr />
+        <h2 style="margin-left:65px;">Details</h2>
+        <hr />
+        <dl class="dl-horizontal" style="font-size:20px;">
+          
+
+            <dt >
+                @Html.DisplayNameFor(model => model.Name )
+            </dt>
+
+            <dd>
+                @Model.Name
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Surname)
+            </dt>
+
+            <dd>
+                @Model.Surname
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email )
+            </dt>
+
+            <dd>
+                @Model.Email
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CellphoneNo )
+            </dt>
+
+            <dd>
+                @Model.CellphoneNo
+            </dd>
+
+
+        </dl>
+
+        <br /><br />
+        <br />
+
+
+        <hr />
+        <h2 style="margin-left:50px;">Generate Report</h2>
+        <hr />
+        <dl class="dl-horizontal">
+
+
+            <div>
+
+                <a ></a>
+                <button onclick="window.location.href='@Url.Action("UserPerformance", "Booksmart" )';"  style="margin-left:50px;" type="button" class="btn btn-info">Generate User Performance Report</button>
+
+            </div>
+
+           
+          
+
+
+        </dl>
+
+
+
+</div>
+
+
+
+
+
 </body>
 </html>
