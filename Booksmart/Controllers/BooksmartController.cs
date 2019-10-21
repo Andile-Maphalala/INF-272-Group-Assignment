@@ -654,6 +654,63 @@ namespace Booksmart.Controllers
             return View();
         }
         [HttpPost]
+        public ActionResult Levelup(string id)
+        {
+            Del_4_272Entities db = new Del_4_272Entities();
+            db.Configuration.ProxyCreationEnabled = false;
+            List<TheoryGameAttempt> numberattempt = new List<TheoryGameAttempt>();
+            numberattempt = db.TheoryGameAttempts.Where(zz => zz.LearnerID == 2 && zz.TheoryGame.TheoryType == 0).ToList();
+
+            List<TheoryGameAttempt> wordattempt = new List<TheoryGameAttempt>();
+            wordattempt = db.TheoryGameAttempts.Where(zz => zz.LearnerID == 2 && zz.TheoryGame.TheoryType == 1).ToList();
+
+
+
+            bool passednumber = false;
+            bool passedword = false;
+            int a = 0;
+            while (a < numberattempt.Count() || passednumber == false)
+            {
+                int Score = Convert.ToInt32(numberattempt[a].Score);
+                if (Score > 4)
+                {
+                    passednumber = true;
+                }
+                else
+                {
+                    a++;
+                }
+            }
+
+            while (a < wordattempt.Count() || passedword == false)
+            {
+                int Score = Convert.ToInt32(wordattempt[a].Score);
+                if (Score > 4)
+                {
+                    passedword = true;
+                }
+                else
+                {
+                    a++;
+                }
+            }
+
+            if (passednumber == true && passedword == true)
+            {
+                Learner levelupscore = new Learner();
+                levelupscore.LevelID = 2;
+                db.SaveChanges();
+                return View("Practical");
+            }
+            else
+            {
+                return View("Theory");
+            }
+
+         
+           
+        }
+        [HttpPost]
         public ActionResult Result_ABC(string userAnswer_1, string userAnswer_2, string userAnswer_3, string userAnswer_4, string userAnswer_5, string userAnswer_6, string userAnswer_7, string userAnswer_8, string userAnswer_9, string userAnswer_10, string Answer_1, string Answer_2, string Answer_3, string Answer_4, string Answer_5, string Answer_6, string Answer_7, string Answer_8, string Answer_9, string Answer_10)
         {
             List<string> UserAnswers = new List<string>();

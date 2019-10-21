@@ -15,13 +15,17 @@
     <h1>Welcome Mr Ray  0 Points</h1>
     <div>
         <img onclick="window.location.href='@Url.Action("Theory", "Booksmart" )';" class="Theory" src="~/Content/Images/Theory.jpg"   />
-        <img onclick="window.location.href='@Url.Action("PracticalMenu", "Booksmart" )';" class="Practical" src="~/Content/Images/ThreeCups.jpg" />
+      
         <br /><br /><br />
 
         <img id="imgClickAndChange" onclick="window.location.href='@Url.Action("Entertainment", "Booksmart" )';" onmouseover="changeImage()" onmouseout="changeImageBack()"  class="Ent" src="~/Pics/humpty 2.jpg" />
         <img  class="imgs" onclick="Info()" src="~/Content/Images/QuestionMark.jpg" />
         <img onclick="window.location.href='@Url.Action("Settings", "Booksmart" )';" class="imgs2" src="~/Pics/settings.png" />
 
+    </div>
+    <br />
+    <div>
+        <img onclick="window.location.href='@Url.Action("Levelup", "Booksmart" )';" class="Practical" src="~/Content/Images/ThreeCups.jpg" />
     </div>
 
     <script>
