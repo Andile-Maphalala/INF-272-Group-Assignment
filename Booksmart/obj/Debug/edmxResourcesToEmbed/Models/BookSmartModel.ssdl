@@ -56,8 +56,7 @@
     <Property Name="ParentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Age" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="DOB" Type="date" Nullable="false" />
+    <Property Name="DOB" Type="datetime" Nullable="false" />
     <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="UserID" Type="int" Nullable="false" />
     <Property Name="CountryID" Type="int" Nullable="false" />
@@ -93,11 +92,11 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="PracticalGameScore" Type="int" />
+    <Property Name="PracticalGameScore" Type="int" Nullable="false" />
     <Property Name="PracGameID" Type="int" Nullable="false" />
     <Property Name="LearnerID" Type="int" Nullable="false" />
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="AttemptDate" Type="date" Nullable="false" />
+    <Property Name="AttemptDate" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="ShortStory">
     <Key>
@@ -106,6 +105,7 @@
     <Property Name="ShortStoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ShortStoryDescription" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ShortStoryPdfPath" Type="varchar(max)" Nullable="false" />
+    <Property Name="Image" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="TheoryGame">
     <Key>

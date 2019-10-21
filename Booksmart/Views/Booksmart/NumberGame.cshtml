@@ -10,91 +10,79 @@
     <title>NumberGame</title>
     <meta name="viewport" content="width=device-width" />
     <link href="~/StyleSheet1.css" rel="stylesheet" type="text/css" />
-        
-        <title>NumberQuiz</title>
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <title>NumberQuiz</title>
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
-        <style>
-            section {
-                min-height: 100vh;
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <style>
+        section {
+            min-height: 100vh;
+        }
+
+        #arrow {
+        }
+
+            #arrow a {
+                display: inline-block;
+                padding: 10px 20px;
+                cursor: pointer;
             }
+    </style>
 
-            #arrow {
-            }
+    <link href="~/Content/StyleSheet1.css" rel="stylesheet" />
+</head>
 
-                #arrow a {
-                    display: inline-block;
-                    padding: 10px 20px;
-                    cursor: pointer;
-                }
-        </style>
-
-        <link href="~/Content/StyleSheet1.css" rel="stylesheet" />
-    </head>
-    
 <body id="body">
 
+    <div>
+        @{ var n = 0;
+
+        }
+    </div>
+    <div>
+        @foreach (var group in Model)
+        {
+            <div>
+
+                <section margin-bottom:20px; margin-top:20px;">
                     <div>
-                        @{ var n = 0;
 
-                        }
+                        <img src="@Url.Content(@group.Image)" alt="" style="height: 700px; width:700px" />
+                        <br />
+                        <label id="Label">@group.Answer.ToUpper()</label>
+                        <br /><br /><br /><br />
                     </div>
-                    <div>
-                        @foreach (var group in Model)
-                        {
-                            <div>
-
-                                <section margin-bottom:20px; margin-top:20px;">
 
 
-                                    <div>
-                                        @{n++;
-                                        }
-                                        
-                                        @*var url = @group.Answer;*@
-
-                                        <img src="@Url.Content(@group.Image)" alt="" style="height: 700px; width:700px"  />
-                                        <br />
-                                        <label id="Label">@group.Answer.ToUpper()</label>
-                                        <br /><br /><br /><br />
-                                        </div>
-</section>
-                            </div>}
-                    </div>
-                    }
-
-                    <script>
-
-
-
+                </section>
+            </div>}
+    </div>
+    }
+    <script>
                         $(function () {
-
                             var pagePositon = 0,
                                 sectionsSeclector = 'section',
                                 $scrollItems = $(sectionsSeclector),
                                 offsetTolorence = 30,
                                 pageMaxPosition = $scrollItems.length - 1;
-
                             //Map the sections:
                             $scrollItems.each(function (index, ele) { $(ele).attr("debog", index).data("pos", index); });
-
                             // Bind to scroll
                             $(window).bind('scroll', upPos);
-
                             //Move on click:
                             $('#arrow button').click(function (e) {
                                 if ($(this).hasClass('next') && pagePositon + 1 <= pageMaxPosition) {
@@ -111,7 +99,6 @@
                                     return false;
                                 }
                             });
-
                             //Update position func:
                             function upPos() {
                                 var fromTop = $(this).scrollTop();
@@ -123,10 +110,7 @@
                                     pagePositon = $cur.data('pos');
                                 }
                             }
-
                         });
-
-
-                    </script>
+    </script>
 </body>
 </html>

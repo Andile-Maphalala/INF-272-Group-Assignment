@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'F:\272 work\INF-272-Group-Assignment\Booksmart\Models\BookSmartModel.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\272\INF-272-Group-Assignment\Booksmart\Models\BookSmartModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -61,8 +61,7 @@
           <Property Name="ParentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Age" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="DOB" Type="date" Nullable="false" />
+          <Property Name="DOB" Type="datetime" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="CountryID" Type="int" Nullable="false" />
@@ -98,11 +97,11 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="PracticalGameScore" Type="int" />
+          <Property Name="PracticalGameScore" Type="int" Nullable="false" />
           <Property Name="PracGameID" Type="int" Nullable="false" />
           <Property Name="LearnerID" Type="int" Nullable="false" />
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="AttemptDate" Type="date" Nullable="false" />
+          <Property Name="AttemptDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="ShortStory">
           <Key>
@@ -111,6 +110,7 @@
           <Property Name="ShortStoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ShortStoryDescription" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ShortStoryPdfPath" Type="varchar(max)" Nullable="false" />
+          <Property Name="Image" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="TheoryGame">
           <Key>
@@ -580,8 +580,7 @@
           <Property Name="ParentID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Age" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="CountryID" Type="Int32" Nullable="false" />
@@ -627,11 +626,11 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="PracticalGameScore" Type="Int32" />
+          <Property Name="PracticalGameScore" Type="Int32" Nullable="false" />
           <Property Name="PracGameID" Type="Int32" Nullable="false" />
           <Property Name="LearnerID" Type="Int32" Nullable="false" />
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AttemptDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AttemptDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Learner" Relationship="Self.FK_PracticalGameAttempt_Learner" FromRole="PracticalGameAttempt" ToRole="Learner" />
           <NavigationProperty Name="PracGame" Relationship="Self.FK_PracticalGameAttempt_PracGame" FromRole="PracticalGameAttempt" ToRole="PracGame" />
         </EntityType>
@@ -642,6 +641,7 @@
           <Property Name="ShortStoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ShortStoryDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ShortStoryPdfPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TheoryGame">
           <Key>
@@ -1115,7 +1115,6 @@
                 <ScalarProperty Name="ParentID" ColumnName="ParentID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
                 <ScalarProperty Name="DOB" ColumnName="DOB" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
@@ -1167,6 +1166,7 @@
           <EntitySetMapping Name="ShortStories">
             <EntityTypeMapping TypeName="Model.ShortStory">
               <MappingFragment StoreEntitySet="ShortStory">
+                <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="ShortStoryID" ColumnName="ShortStoryID" />
                 <ScalarProperty Name="ShortStoryDescription" ColumnName="ShortStoryDescription" />
                 <ScalarProperty Name="ShortStoryPdfPath" ColumnName="ShortStoryPdfPath" />

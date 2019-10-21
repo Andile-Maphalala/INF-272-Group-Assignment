@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Booksmart.ViewModels
 {
-    public class DataResult
+    public class DataResults
     {
         public List<IGrouping<string, UserVM>> results { get; set; }
         public Dictionary<string, double?> chartData { get; set; }
