@@ -1,4 +1,4 @@
-﻿
+﻿@model Booksmart.ViewModels.NumberSongVM
 
 @{
     Layout = null;
@@ -10,10 +10,22 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>NumberSong</title>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <link href="~/Content/StyleSheet1.css" rel="stylesheet" />
-    
+    <style>
+
+
+          #st {
+            height: 700px;
+            width: 100%;
+        }
+
+    </style>
 </head>
 
 
@@ -22,16 +34,17 @@
     <input onclick="window.location.href='@Url.Action("HomePage", "Booksmart" )';"  id="img" type="image" value="button" src="~/Pics/home.jpg" class="home" />
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
-    <div>
 
-        <iframe width="420" height="315" src="https://www.youtube.com/embed/glkQwKA5_PU"
-                frameborder="0"></iframe>
-        <br /><br /><br /><br /><br /><br />
+    <div >
+
+        <iframe id="st" class="" src="@Model.Video" allowfullscreen
+                ></iframe>
+        <br /><br /><br />
 
 
 
-        <input id="Submit1" type="submit" value="Go To Quiz" onclick="window.location.href='@Url.Action("NumberQuiz", "Booksmart" )';" />
-
+        <input id="Submit1"  type="submit" class="btn btn-primary"  value="Go To Quiz" onclick="window.location.href='@Url.Action("NumberQuiz", "Booksmart" )';" />
+        <br /><br /><br />
 
     </div>
 </body>

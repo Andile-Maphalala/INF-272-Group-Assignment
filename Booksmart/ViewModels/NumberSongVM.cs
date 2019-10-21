@@ -8,6 +8,7 @@ namespace Booksmart.ViewModels
     public class NumberSongVM
     {
         string video;
+       
 
         public string Video
         {

@@ -325,6 +325,8 @@ namespace Booksmart.Controllers
             //Random rnd = new Random();
             //load questions to view
             var alist = db.PracQuestions.Where(xx => xx.Type == 1).ToList();
+
+
             //var questions = db.TheoryQuestions.Where(xx => xx.Type == 0).OrderBy().ToList();
             return View(alist.ToList());
 
@@ -374,7 +376,17 @@ namespace Booksmart.Controllers
 
         public ActionResult NumberSong()
         {
-            return View();
+            Del_4_272Entities db = new Del_4_272Entities();
+            db.Configuration.ProxyCreationEnabled = false;
+
+            var details = db.TheoryGames.Where(xx => xx.TheoryGameID == 1).FirstOrDefault();
+
+            NumberSongVM item = new NumberSongVM();
+
+            item.Video = details.TheoryVideo;
+
+
+            return View(item);
         }
 
 
@@ -392,7 +404,19 @@ namespace Booksmart.Controllers
                             orderby Guid.NewGuid() ascending
                             select item;
 
-            return View(questions.ToList());
+
+            List<NumberQuizVM> list = new List<NumberQuizVM>();
+            foreach (var it in qlist.ToList())
+            {
+                NumberQuizVM items = new NumberQuizVM();
+                items.Id = it.TheoryQuestionID;
+                items.UserAnswer = it.Answer;
+                items.Question = it.Question;
+                list.Add(items);
+            }
+            return View(list);
+
+         
         }
 
 
