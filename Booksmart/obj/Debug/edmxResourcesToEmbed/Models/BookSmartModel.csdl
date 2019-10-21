@@ -192,6 +192,7 @@
     <NavigationProperty Name="Learners" Relationship="Self.FK_Learner_User" FromRole="User" ToRole="Learner" />
     <NavigationProperty Name="Parents" Relationship="Self.FK_Parent_User" FromRole="User" ToRole="Parent" />
     <NavigationProperty Name="UserType" Relationship="Self.FK_User_UserType1" FromRole="User" ToRole="UserType" />
+    <Property Name="Guid" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="UserType">
     <Key>

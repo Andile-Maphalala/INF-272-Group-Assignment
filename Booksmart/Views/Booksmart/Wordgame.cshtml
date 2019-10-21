@@ -1,4 +1,4 @@
-﻿@model List<Booksmart.Models.PracQuestion>
+﻿@model List<Booksmart.ViewModels.WordGameVM>
 @{
     Layout = null;
 }
@@ -60,7 +60,7 @@
 
                 <section margin-bottom:20px; margin-top:20px;">
                     <div>
-                        <img src="@Url.Content(@group.Image)" alt="" style="height: 500px; width:500px" />
+                        <img src="@Url.Content(@group.Imagepath)" alt="" style="height: 500px; width:500px" />
                         <br />
                         <label id="Label">@group.Answer.ToUpper()</label>
                         <br /><br /><br /><br />

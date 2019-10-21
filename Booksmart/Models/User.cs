@@ -27,6 +27,7 @@ namespace Booksmart.Models
         public string Password { get; set; }
         public System.DateTime LastLoginDate { get; set; }
         public int UserTypeID { get; set; }
+        public string Guid { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Admin> Admins { get; set; }

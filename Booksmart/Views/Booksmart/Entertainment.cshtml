@@ -1,4 +1,4 @@
-﻿@model List<Booksmart.Models.ShortStory>
+﻿@model List<Booksmart.ViewModels.EntertainmentVM>
 @{
     Layout = null;
 }
@@ -36,7 +36,7 @@
                         @{n++;
                     }
 
-                    <img src="@Url.Content(@group.Image)" alt="" style="height: 500px; width:500px " onclick="window.location.href='@Url.Action("Shortstories_"+@n.ToString(), "Booksmart" )';" />
+                    <img src="@Url.Content(@group.Imagepath)" alt="" style="height: 500px; width:500px " onclick="window.location.href='@Url.Action("Shortstories_"+@n.ToString(), "Booksmart" )';" />
 
                     <br />
 

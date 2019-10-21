@@ -1,4 +1,4 @@
-﻿@model Booksmart.ViewModels.LoginVM
+﻿@*@model Booksmart.ViewModels.UserVM*@
 @{
     Layout = null;
 }
@@ -62,7 +62,7 @@
         <a href="@Url.Action("Register", "Booksmart" )">Click here if you don't have an account</a>
     </div>
 
-    @if (Model != null)
+    @if (ViewBag.Password != null)
     {
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -74,7 +74,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        @Model.Viewbag
+                  @ViewBag.Password
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Okay</button>

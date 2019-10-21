@@ -123,13 +123,13 @@ namespace Booksmart.Controllers
 
             }
 
-            LoginVM vb = new LoginVM();
+            //LoginVM vb = new LoginVM();
 
 
             ViewBag.Password = "Username or password incorrect";
-            vb.Viewbag = ViewBag.Password;
+            //vb.Viewbag = ViewBag.Password;
 
-            return View("Login", vb);
+            return View("Login", ViewBag.Password);
         }
 
         string ComputeSha256Hash(string rawData)
@@ -266,16 +266,16 @@ namespace Booksmart.Controllers
 
             //var UserReport = db.Learners.Include(ii => ii);
 
-            var report = db.Learners.Include(i => i.TheoryGameAttempts).Include(y => y.PracticalGameAttempts).Include(v => v.User).ToList().Select(r => new Home
-            {
-                Username = r.User.Username,
+            //var report = db.Learners.Include(i => i.TheoryGameAttempts).Include(y => y.PracticalGameAttempts).Include(v => v.User).ToList().Select(r => new Home
+            //{
+            //    Username = r.User.Username,
 
-                averagePrac = r.PracticalGameAttempts.Average(xx => xx.PracticalGameScore),
+            //    averagePrac = r.PracticalGameAttempts.Average(xx => xx.PracticalGameScore),
 
-                averageTheory = r.TheoryGameAttempts.Average(xx => xx.Score),
-                total = r.PracticalGameAttempts.Average(xx => xx.PracticalGameScore) + r.TheoryGameAttempts.Average(xx => xx.Score)
-            }
-            );
+            //    averageTheory = r.TheoryGameAttempts.Average(xx => xx.Score),
+            //    total = r.PracticalGameAttempts.Average(xx => xx.PracticalGameScore) + r.TheoryGameAttempts.Average(xx => xx.Score)
+            //}
+            //);
 
             var studentWithStandard = from s in db.Learners
                                       join stad in db.TheoryGameAttempts
@@ -354,11 +354,17 @@ namespace Booksmart.Controllers
         {
             Del_4_272Entities db = new Del_4_272Entities();
             db.Configuration.ProxyCreationEnabled = false;
-            //Random rnd = new Random();
-            //load questions to view
+            
             var alist = db.PracQuestions.Where(xx => xx.Type == 0).ToList();
-            //var questions = db.TheoryQuestions.Where(xx => xx.Type == 0).OrderBy().ToList();
-            return View(alist.ToList());
+            List<WordGameVM> list = new List<WordGameVM>();
+            foreach (var it in alist.ToList())
+            {
+                WordGameVM items = new WordGameVM();
+                items.Imagepath = it.Image;
+                items.Answer = it.Answer;
+                list.Add(items);
+            }
+            return View(list);
 
         }
         public ActionResult PracticalMenu()
@@ -524,8 +530,16 @@ namespace Booksmart.Controllers
             Del_4_272Entities db = new Del_4_272Entities();
             db.Configuration.ProxyCreationEnabled = false;
             var alist = db.ShortStories.ToList();
-            return View(alist.ToList());
-
+            
+            List<EntertainmentVM> list = new List<EntertainmentVM>();
+            foreach (var it in alist.ToList())
+            {
+                EntertainmentVM items = new EntertainmentVM();
+                items.Imagepath = it.Image;
+                items.Storypath = it.ShortStoryPdfPath;
+                list.Add(items);
+            }
+            return View(list);
         }
         public ActionResult Practical()
         {
