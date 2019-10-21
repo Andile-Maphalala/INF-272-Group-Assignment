@@ -292,6 +292,7 @@
     <Compile Include="ViewModels\ParentVM.cs" />
     <Compile Include="ViewModels\ThemesVM.cs" />
     <Compile Include="ViewModels\TheoryVM.cs" />
+    <Compile Include="ViewModels\UserPerformance.cs" />
     <Compile Include="ViewModels\UserVM.cs" />
     <Compile Include="ViewModels\WordGameQuizVM.cs" />
     <Compile Include="ViewModels\WordGameVM.cs" />
@@ -501,7 +502,6 @@
     <Content Include="Views\Booksmart\Practical.cshtml" />
     <Content Include="Views\Booksmart\UserPerformance.cshtml" />
     <Content Include="Views\Booksmart\InactiveUser.cshtml" />
-    <Content Include="Views\Booksmart\Theme.cshtml" />
     <Content Include="Views\Booksmart\AdminPage.cshtml" />
     <Content Include="Views\Booksmart\ParentPage.cshtml" />
     <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
@@ -515,6 +515,9 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Booksmart\Shortstories_1.cshtml" />
+    <Content Include="Views\Booksmart\Shortstories_2.cshtml" />
+    <Content Include="Views\Booksmart\Shortstories_3.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

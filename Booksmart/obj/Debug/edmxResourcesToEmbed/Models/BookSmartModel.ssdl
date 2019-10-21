@@ -153,6 +153,7 @@
     <Property Name="Password" Type="varchar(max)" Nullable="false" />
     <Property Name="LastLoginDate" Type="datetime" Nullable="false" />
     <Property Name="UserTypeID" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="UserType">
     <Key>
@@ -389,18 +390,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_User_UserType1">
-    <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
-    <End Role="User" Type="Self.User" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="UserType">
-        <PropertyRef Name="UserTypeID" />
-      </Principal>
-      <Dependent Role="User">
-        <PropertyRef Name="UserTypeID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="ModelStoreContainer">
     <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
@@ -494,10 +483,6 @@
     <AssociationSet Name="FK_TheoryGameQuestion_TheoryQuestion" Association="Self.FK_TheoryGameQuestion_TheoryQuestion">
       <End Role="TheoryQuestion" EntitySet="TheoryQuestion" />
       <End Role="TheoryGameQuestion" EntitySet="TheoryGameQuestion" />
-    </AssociationSet>
-    <AssociationSet Name="FK_User_UserType1" Association="Self.FK_User_UserType1">
-      <End Role="UserType" EntitySet="UserType" />
-      <End Role="User" EntitySet="User" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

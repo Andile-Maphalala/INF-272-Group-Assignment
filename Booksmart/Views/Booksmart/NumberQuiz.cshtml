@@ -1,4 +1,4 @@
-﻿@model List<Booksmart.Models.TheoryQuestion>
+﻿@model List<Booksmart.ViewModels.NumberQuizVM >
 
 @{
     Layout = null;
@@ -87,7 +87,7 @@
                             <br /><br /><br /><br />
 
                             <input id="Text_@n" type="text" name="userAnswer_@n" pattern="^[0-9]*$" onkeypress="return isNumber(event)" required />
-                            <input type="hidden" id="hid" name="Answer_@n" value="@group.Answer">
+                            <input type="hidden" id="hid" name="Answer_@n" value="@group.UserAnswer">
 
                             <br /><br /><br /><br />
                             <div id="arrow">

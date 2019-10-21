@@ -1,4 +1,8 @@
-﻿
+﻿@model Booksmart.ViewModels.DataResult
+
+@using Booksmart.ViewModels ;
+@using System.Data
+@using System.Globalization
 @{
     Layout = null;
 }
@@ -12,12 +16,21 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <title>Index</title>
 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
     <style>
         #customers {
             font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
             border-collapse: collapse;
             width: 100%;
         }
+   
 
             #customers td, #customers th {
                 border: 1px solid #ddd;
@@ -45,19 +58,96 @@
 
 
 </head>
-<body style="text-align:center;">
-
-    <h1>User Performance Report</h1>
+<body style="">
+    <div class="col-12">
+        <h1 style="text-align:center;">Monthly User Performance Report</h1>
+    </div>
     <br />
-    <div style="text-align:center;">
-        <table id="customers" style="text-align:center;">
-            <tr>
-                <th>NAME</th>
-                <th>SURNAME</th>
-                <th>AVERAGE THEORY GAME SCORE</th>
-                <th>AVERAGE PRACTICAL GAME SCORE</th>
-            </tr>
-            <tr>
+
+    <div style="">
+@if (Model != null)
+{
+
+
+    <div>
+
+
+        @foreach (var group in Model.results)
+                {
+
+            <br /><br />
+            <h3><strong>@group.Key.ToUpper()  </strong></h3>
+       
+                <div class="row">
+                    <div class="col-12 ">
+                        <table class="table table-striped">
+
+                            <tr>
+
+                                <th>AVERAGE THEORY GAME SCORE</th>
+                                <th>AVERAGE PRACTICAL GAME SCORE</th>
+                            </tr>
+
+
+
+
+                            @foreach (UserPerformance groupitem in group)
+                    {
+
+                                <tr width="100%" >
+                                    <td width="">@groupitem.averagePrac</td>
+                                  
+                                    <td width="">@groupitem.averageTheory</td>
+                                    <td></td>
+                                    <td></td>
+                                    @*<td>R @groupitem.Amount</td>
+                                        <td>@groupitem.EmployeeDetail</td>*@
+
+
+
+
+
+                                </tr>
+
+                            }
+                            <tr>
+                                <td>Total </td>
+                                <td></td>
+                                <td><strong>@group.Sum(item => item.averagePrac / 10 * 50 + item.averageTheory / 10 * 50).ToString()</strong></td>
+                                <td></td>
+
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+           
+                <hr />
+
+                }
+                @*<h3>Grand Total : <strong> R @Model.results.Sum(group => group.Sum(item => item.averagePrac + item.averageTheory)).ToString()</strong></h3>*@
+            </div>
+
+
+            <br><br>
+            <div class="col-lg-12">
+                @Html.ActionLink("Export as PDF", "ExportPDF", "Report")<br />
+                @Html.ActionLink("Export as Word", "ExportDOC", "Report")
+
+
+            </div>
+
+
+
+
+            }
+
+
+                 
+                  
+
+
+
+        @*<tr>
                 <td>Jack</td>
                 <td>Gooding</td>
                 <td>78</td>
@@ -80,13 +170,13 @@
                 <td>Smith</td>
                 <td>61</td>
                 <td>62</td>
-            </tr>
+            </tr>*@
 
-        </table>
+
 
         <br />
-        <button type="button">Print Report</button>
+        <button type="button" class="btn btn-success">Print Report</button>
 
-    </div>
+</div>
 </body>
 </html>
