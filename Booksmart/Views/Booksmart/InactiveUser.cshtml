@@ -18,7 +18,7 @@
     
         @if (Model != null)
         {
-        <table class="w3-table-all">
+        <table class="w3-table-all" id="printTable">
             <tr>
                 <th>Name</th>
                 <th>Surname</th>
@@ -51,10 +51,27 @@
         <br />
         
         <div class="rightsss">
-        <button  class="button button4" style="float:right;">Print Report</button>
+        @*<button  class="button button4" style="float:right;">Print Report</button>*@
         </div>
     <div/>
 
         }
+
+    <script>
+
+    function printData()
+    {
+    var divToPrint=document.getElementById("printTable");
+    newWin= window.open("");
+    newWin.document.write(divToPrint.outerHTML);
+    newWin.print();
+    newWin.close();
+    }
+
+    $('button').on('click',function(){
+    printData();
+    })
+    </script>
+
 </body>
 </html>

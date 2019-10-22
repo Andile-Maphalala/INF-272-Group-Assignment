@@ -8,7 +8,7 @@ namespace Booksmart.ViewModels
     public class NumberSongVM
     {
         string video;
-       
+        int currentuser;
 
         public string Video
         {
@@ -20,6 +20,19 @@ namespace Booksmart.ViewModels
             set
             {
                 video = value;
+            }
+        }
+
+        public int Currentuser
+        {
+            get
+            {
+                return currentuser;
+            }
+
+            set
+            {
+                currentuser = value;
             }
         }
     }

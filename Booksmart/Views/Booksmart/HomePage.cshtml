@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -8,26 +7,86 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/Homepage.css" rel="stylesheet" />
+
     <title>HomePage</title>
+
+
+    <style>
+        h1{text-align :center;
+   font-size : 60px;
+}
+
+
+      .img{height : 300px;
+    width : 400px;}
+
+
+      .Ent {
+     
+  
+    height : 250px;
+    width : 400px;
+}
+
+    </style>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
 </head>
-<body>
-    <h1>Welcome Mr Ray  0 Points</h1>
-    <div>
-        <img onclick="window.location.href='@Url.Action("Theory", "Booksmart" )';" class="Theory" src="~/Content/Images/Theory.jpg"   />
+<body  style="background-color:lightgray">
+    <h1>Welcome To Booksmart</h1>
+
+    <div class="row">
+
+        <div class="col-6">
+          
+             
+                <img onclick="window.location.href='@Url.Action("Theory", "Booksmart" )';" class="img" src="~/Content/Images/Theory.jpg" />
+  
+        </div>
+
+
+       
+        <div  class="col-6">
       
-        <br /><br /><br />
-
-        <img id="imgClickAndChange" onclick="window.location.href='@Url.Action("Entertainment", "Booksmart" )';" onmouseover="changeImage()" onmouseout="changeImageBack()"  class="Ent" src="~/Pics/humpty 2.jpg" />
-        <img  class="imgs" onclick="Info()" src="~/Content/Images/QuestionMark.jpg" />
-        <img onclick="window.location.href='@Url.Action("Settings", "Booksmart" )';" class="imgs2" src="~/Pics/settings.png" />
+            <div>
+          
+                <img onclick="window.location.href='@Url.Action("Practical", "Booksmart" )';" class="img" src="~/Content/Images/ThreeCups.jpg" />
+            </div>
+       
+    </div>
 
     </div>
+
+    <br /><br />
+    <div class="row">
+        <div class="col-4">
+            
+            <img style="position : absolute;
+    left : 50px;
+    bottom :50px;  height :150px;  width : 150px;" class="imgs" onclick="Info()" src="~/Content/Images/QuestionMark.jpg" />
+</div>
+
+
+            <div class="col-4">
+                <img id="imgClickAndChange" onclick="window.location.href='@Url.Action("Entertainment", "Booksmart" )';" onmouseover="changeImage()" onmouseout="changeImageBack()" class="Ent" src="~/Pics/humpty 2.jpg" />
+            
+            </div>
+
+
+        <div class="col-4"></div>
+        </div>
+
+
     <br />
-    <div>
-        <img onclick="window.location.href='@Url.Action("Levelup", "Booksmart" )';" class="Practical" src="~/Content/Images/ThreeCups.jpg" />
-    </div>
 
+    
     <script>
         function changeImageBack() {
 
@@ -40,6 +99,15 @@
             window.alert("Instructions \n You need an average of 50% to progress to the next level.\n The buttons with the locked icons are not accessible.\n To gain access one must play the current and pass. ")
         }
 
+        function submit_by_id() {
+            document.getElementById("form_id").submit();// Form submission
+
+        }
+
+        function submit_by_id2() {
+            document.getElementById("form_id2").submit();// Form submission
+
+        }
     </script>
 </body>
 </html>

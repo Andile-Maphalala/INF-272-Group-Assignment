@@ -1,4 +1,4 @@
-﻿Every{
+﻿/*Every{
     text-align : center;
  
 }
@@ -17,13 +17,15 @@ input{
 h1 {
     font-size: 70px;
 }
-body {
-    background-image: url('../Content/Images/ImgLogin.jpg');
-    background-size: 1600px 800px
-}
+
 
 a{
      font-size : 20px;
     color : red;
     
+}*/
+
+body {
+    background-image: url('../Content/Images/ImgLogin.jpg');
+    background-size: 1600px 800px
 }

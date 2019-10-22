@@ -33,9 +33,7 @@
     <Property Name="LearnerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Age" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="DOB" Type="date" Nullable="false" />
-    <Property Name="PointBalance" Type="char" MaxLength="10" Nullable="false" />
     <Property Name="ThemeID" Type="int" Nullable="false" />
     <Property Name="ParentID" Type="int" Nullable="false" />
     <Property Name="UserID" Type="int" Nullable="false" />

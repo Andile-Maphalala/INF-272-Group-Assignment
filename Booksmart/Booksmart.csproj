@@ -284,7 +284,9 @@
     <Compile Include="ViewModels\ABCsongVM.cs" />
     <Compile Include="ViewModels\AdminVM.cs" />
     <Compile Include="ViewModels\EntertainmentVM.cs" />
+    <Compile Include="ViewModels\HomepageVM.cs" />
     <Compile Include="ViewModels\LearnerVM.cs" />
+    <Compile Include="ViewModels\LoginVM.cs" />
     <Compile Include="ViewModels\NumberGameQuizVM.cs" />
     <Compile Include="ViewModels\NumberQuizVM.cs" />
     <Compile Include="ViewModels\NumberGameVM.cs" />
@@ -307,9 +309,34 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.min1.css" />
     <Content Include="Content\bootstrap.min2.css" />
+    <Content Include="Content\EntertainmentImages\cinderella.jpg" />
+    <Content Include="Content\EntertainmentImages\humpty 2.jpg" />
+    <Content Include="Content\EntertainmentImages\little red.jpg" />
     <Content Include="Content\Homepage.css" />
+    <Content Include="Content\Images\3 cups.gif" />
+    <Content Include="Content\Images\humpty 2.jpg" />
+    <Content Include="Content\Images\ImgLogin.jpg" />
+    <Content Include="Content\Images\ImgRegsister.jpg" />
+    <Content Include="Content\Images\lock.jfif" />
+    <Content Include="Content\Images\MusicT.jpg" />
+    <Content Include="Content\Images\play %282%29.jpg" />
+    <Content Include="Content\Images\QuestionMark.jpg" />
+    <Content Include="Content\Images\settings.png" />
+    <Content Include="Content\Images\star.png" />
+    <Content Include="Content\Images\Theory.jpg" />
+    <Content Include="Content\Images\ThreeCups.jpg" />
     <Content Include="Content\Inactive.css" />
     <Content Include="Content\Login.css" />
+    <Content Include="Content\NumberGameImages\eight.jpg" />
+    <Content Include="Content\NumberGameImages\five.jpg" />
+    <Content Include="Content\NumberGameImages\four.jpg" />
+    <Content Include="Content\NumberGameImages\nine.jpg" />
+    <Content Include="Content\NumberGameImages\one.png" />
+    <Content Include="Content\NumberGameImages\seven.jpg" />
+    <Content Include="Content\NumberGameImages\six.png" />
+    <Content Include="Content\NumberGameImages\ten.jpg" />
+    <Content Include="Content\NumberGameImages\three.jpg" />
+    <Content Include="Content\NumberGameImages\two.png" />
     <Content Include="Content\PracticalMenu.css" />
     <Content Include="Content\Register.css" />
     <Content Include="Content\StyleSheet1.css" />
@@ -409,6 +436,9 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\ShortStory\Cinderella.pdf" />
+    <Content Include="Content\ShortStory\HumptyDumpty.pdf" />
+    <Content Include="Content\ShortStory\Little-red-riding-hood.pdf" />
     <None Include="Pics\Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Pics\Scripts\jquery-1.10.2.js" />
     <Content Include="Pics\Scripts\jquery-1.10.2.min.js" />
@@ -520,6 +550,7 @@
     <Content Include="Views\Booksmart\Shortstories_1.cshtml" />
     <Content Include="Views\Booksmart\Shortstories_2.cshtml" />
     <Content Include="Views\Booksmart\Shortstories_3.cshtml" />
+    <Content Include="Views\Booksmart\AddLearner.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

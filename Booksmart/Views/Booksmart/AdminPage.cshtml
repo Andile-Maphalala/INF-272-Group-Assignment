@@ -23,6 +23,8 @@
 <body>
     <div>
         <h1 style="text-align :center"> Admin Homepage</h1>
+        <input onclick="window.location.href='@Url.Action("Login", "Booksmart" )';" id="img" type="button" value="Log Out" class="home" />
+
         <hr />
         <h2 style="margin-left:65px;">Details</h2>
         <hr />
@@ -73,18 +75,25 @@
         <dl class="dl-horizontal">
 
 
-            <div>
+            <div class="row">
 
                 <a ></a>
                 <button onclick="window.location.href='@Url.Action("UserPerformance", "Booksmart" )';"  style="margin-left:50px;" type="button" class="btn btn-info">Generate User Performance Report</button>
 
             </div>
 
-           
-          
+            <br /> <br /><br />
 
 
-        </dl>
+            <div class="row">
+
+                <button onclick="window.location.href='@Url.Action("InactiveUser", "Booksmart" )';" style="margin-left:50px;" type="button" class="btn btn-info">Generate Inactive Users Report</button>
+            </div>
+
+
+
+
+</dl>
 
 
 

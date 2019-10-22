@@ -10,6 +10,7 @@ namespace Booksmart.ViewModels
         int id;
         string image;
         string answer;
+        int currentuser;
 
         public string Image
         {
@@ -47,6 +48,19 @@ namespace Booksmart.ViewModels
             set
             {
                 id = value;
+            }
+        }
+
+        public int Currentuser
+        {
+            get
+            {
+                return currentuser;
+            }
+
+            set
+            {
+                currentuser = value;
             }
         }
     }

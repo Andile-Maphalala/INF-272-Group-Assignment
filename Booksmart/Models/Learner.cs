@@ -35,11 +35,7 @@ public partial class Learner
 
     public string Surname { get; set; }
 
-    public string Age { get; set; }
-
     public System.DateTime DOB { get; set; }
-
-    public string PointBalance { get; set; }
 
     public int ThemeID { get; set; }
 

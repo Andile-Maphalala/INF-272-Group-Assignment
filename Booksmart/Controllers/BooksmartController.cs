@@ -8,6 +8,7 @@ using Booksmart.ViewModels;
 using System.Security.Cryptography;
 using System.Text;
 using System.Data.Entity;
+using System.Net;
 
 namespace Booksmart.Controllers
 {
@@ -40,26 +41,26 @@ namespace Booksmart.Controllers
             return View(ist);
         }
 
-        [HttpPost]
-        public ActionResult AdminPage(int id)
-        {
-            Del_4_272Entities db = new Del_4_272Entities();
-            db.Configuration.ProxyCreationEnabled = false;
+    
+        //public ActionResult AdminPage()
+        //{
+        //    Del_4_272Entities db = new Del_4_272Entities();
+        //    db.Configuration.ProxyCreationEnabled = false;
 
-            var admin = db.Admins.Where(v => v.UserID == 1).FirstOrDefault();
-            AdminVM ist = new AdminVM();
-
-
-            ist.AdminID = admin.AdminID  ;
-            ist.Name = admin.AdminName;
-            ist.Surname = admin.Surname;
-            ist.CellphoneNo = admin.CellphoneNo;
-            ist.Email = admin.Email;
+        //    var admin = db.Admins.Where(v => v.UserID == 1).FirstOrDefault();
+        //    AdminVM ist = new AdminVM();
 
 
+        //    ist.AdminID = admin.AdminID  ;
+        //    ist.Name = admin.AdminName;
+        //    ist.Surname = admin.Surname;
+        //    ist.CellphoneNo = admin.CellphoneNo;
+        //    ist.Email = admin.Email;
 
-            return View(ist);
-        }
+
+
+        //    return View(ist);
+        //}
 
         public ActionResult AddLearner()
         {
@@ -134,6 +135,13 @@ namespace Booksmart.Controllers
                                                 && zz.Password == HashedPassword).FirstOrDefault();
 
             var findUserID = db.Users.Where(xx => xx.Username == Username).FirstOrDefault();
+            ViewBag.CurrentUser = findUserID.UserID;
+            HomepageVM userloggedin = new HomepageVM();
+
+            userloggedin.Id =ViewBag.CurrentUser  ;
+            userloggedin.Username = findUserID.Username;
+
+
 
             if (user != null)
             {
@@ -147,7 +155,8 @@ namespace Booksmart.Controllers
 
 
                 if (findUserID.UserTypeID == 3)
-                { return View("Homepage", findUserID); }
+                { return RedirectToAction("Homepage","Booksmart"); }
+
                 else if (findUserID.UserTypeID == 2)
                 {
                     return RedirectToAction("ParentPage", "Booksmart");
@@ -158,13 +167,13 @@ namespace Booksmart.Controllers
 
             }
 
-            //LoginVM vb = new LoginVM();
+            LoginVM vb = new LoginVM();
 
 
             ViewBag.Password = "Username or password incorrect";
-            //vb.Viewbag = ViewBag.Password;
+            vb.Viewbag = ViewBag.Password;
 
-            return View("Login", ViewBag.Password);
+            return View("Login", vb );
         }
 
         string ComputeSha256Hash(string rawData)
@@ -252,6 +261,54 @@ namespace Booksmart.Controllers
 
 
         [HttpPost]
+        public ActionResult DoRegisterChild(string Name, string Surname, string Username, string Gender, string Password)
+        {
+
+            Del_4_272Entities db = new Del_4_272Entities();
+            db.Configuration.ProxyCreationEnabled = false;
+            Learner NewLearner = new Learner();
+            User NewUser = new User();
+
+            NewUser.Username = Username;
+            NewUser.Password = ComputeSha256Hash(Password);
+            NewUser.UserTypeID = 2;
+            NewUser.LastLoginDate = DateTime.Now;
+            NewUser.Guid = Guid.NewGuid().ToString();
+            db.Users.Add(NewUser);
+            
+
+
+            NewLearner.Name = Name;
+            NewLearner.Surname = Surname;
+            var findGender = db.Genders.Where(zz => zz.Description == Gender).FirstOrDefault();
+            NewLearner.GenderID = findGender.GenderID;
+            NewLearner.DOB = DateTime.Now;
+         
+            NewLearner.ParentID = 1;
+            NewLearner.LevelID = 1;
+
+
+
+            db.Learners.Add(NewLearner);
+
+            db.SaveChanges();
+            return RedirectToAction("ParentPage", "Booksmart");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        [HttpPost]
         public ActionResult DoRegister(string Name, string Surname, string Username, string Gender, string Country, DateTime DOB, string Email, string Password)
         {
 
@@ -296,8 +353,8 @@ namespace Booksmart.Controllers
         {
 
 
-            Del_4_272Entities db = new Del_4_272Entities();
-            db.Configuration.ProxyCreationEnabled = false;
+            //Del_4_272Entities db = new Del_4_272Entities();
+            //db.Configuration.ProxyCreationEnabled = false;
 
             //var UserReport = db.Learners.Include(ii => ii);
 
@@ -312,28 +369,30 @@ namespace Booksmart.Controllers
             //}
             //);
 
-            var studentWithStandard = from s in db.Learners
-                                      join stad in db.TheoryGameAttempts
-            on s.LearnerID equals stad.LearnerID
-                                      join st in db.PracticalGameAttempts
-                                      on s.LearnerID equals st.LearnerID
-                                      join sta in db.Users
-                                      on s.UserID equals sta.UserID
+            //var studentWithStandard = from s in db.Learners
+            //                          join stad in db.TheoryGameAttempts
+            //on s.LearnerID equals stad.LearnerID
+            //                          join st in db.PracticalGameAttempts
+            //                          on s.LearnerID equals st.LearnerID
+            //                          join sta in db.Users
+            //                          on s.UserID equals sta.UserID
 
-                                      select new
-                                      {
-                                          UserName = sta.Username,
-                                          averagePrac = stad.Score,
-                                          averageTheory = st.PracticalGameScore
-                                      };
+            //                          select new
+            //                          {
+            //                              UserName = sta.Username,
+            //                              averagePrac = stad.Score,
+            //                              averageTheory = st.PracticalGameScore
+            //                          };
 
 
 
-            return View(studentWithStandard);
+            return View();
         }
 
+        
         public ActionResult Theory()
         {
+         
             return View();
         }
         public ActionResult ABCquiz()
@@ -361,7 +420,7 @@ namespace Booksmart.Controllers
                 list.Add(items);
 
             }
-        return View(questions.ToList());
+        return View(list);
     }
     public ActionResult ABCsong()
         {
@@ -371,7 +430,7 @@ namespace Booksmart.Controllers
 
             ABCsongVM ist = new ABCsongVM();
 
-
+           
             ist.TheoryGameID = det.TheoryGameID;
             ist.TheoryVideo = det.TheoryVideo;
             //foreach (var mn in list.ToList ())
@@ -442,6 +501,8 @@ namespace Booksmart.Controllers
             return View();
         }
 
+
+
         public ActionResult NumberSong()
         {
             Del_4_272Entities db = new Del_4_272Entities();
@@ -452,13 +513,13 @@ namespace Booksmart.Controllers
             NumberSongVM item = new NumberSongVM();
 
             item.Video = details.TheoryVideo;
-
-
+           
             return View(item);
         }
 
 
-
+        
+    
 
         public ActionResult NumberQuiz(string nada)
         {
@@ -635,6 +696,7 @@ namespace Booksmart.Controllers
         }
         public ActionResult Practical()
         {
+            
             return View();
         }
 
@@ -645,6 +707,7 @@ namespace Booksmart.Controllers
             DataResult res = new DataResult();
             //var UserReport = db.Learners.Include(ii => ii);
 
+
             var report = db.Learners.Include(i => i.TheoryGameAttempts).Include(y => y.PracticalGameAttempts).ToList().Select(r => new UserPerformance
             {
                 name = r.Name,
@@ -653,14 +716,12 @@ namespace Booksmart.Controllers
 
                 averageTheory = r.TheoryGameAttempts.Average(xx => xx.Score)
             }
-            );
+            )  ;
+
             //).Where().ToList();
-            var query =
-   from post in db.Learners
-   join meta in db.PracticalGameAttempts on post.LearnerID equals meta.LearnerID
-   join deta in db.TheoryGameAttempts on post.LearnerID equals deta.LearnerID
-   //where post.ID == id
-   select new { post.Name, post.Surname, meta.PracticalGameScore, deta.Score };
+
+
+
             res.results = report.GroupBy(u => u.name).ToList();
 
 

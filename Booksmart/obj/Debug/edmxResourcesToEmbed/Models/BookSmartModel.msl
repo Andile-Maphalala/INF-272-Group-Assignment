@@ -36,9 +36,7 @@
           <ScalarProperty Name="LearnerID" ColumnName="LearnerID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Surname" ColumnName="Surname" />
-          <ScalarProperty Name="Age" ColumnName="Age" />
           <ScalarProperty Name="DOB" ColumnName="DOB" />
-          <ScalarProperty Name="PointBalance" ColumnName="PointBalance" />
           <ScalarProperty Name="ThemeID" ColumnName="ThemeID" />
           <ScalarProperty Name="ParentID" ColumnName="ParentID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
