@@ -131,49 +131,64 @@ namespace Booksmart.Controllers
         {
             Del_4_272Entities db = new Del_4_272Entities();
             var HashedPassword = ComputeSha256Hash(Password);
-            Models.User user = db.Users.Where(zz => zz.Username == Username
-                                                && zz.Password == HashedPassword).FirstOrDefault();
+            var UserExist = db.Users.Where(zz => zz.Username == Username).FirstOrDefault();
 
-            var findUserID = db.Users.Where(xx => xx.Username == Username).FirstOrDefault();
-            ViewBag.CurrentUser = findUserID.UserID;
-            HomepageVM userloggedin = new HomepageVM();
-
-            userloggedin.Id =ViewBag.CurrentUser  ;
-            userloggedin.Username = findUserID.Username;
-
-
-
-            if (user != null)
+            if (UserExist != null)
             {
-                UserVM userVME = new UserVM();
-                userVME.user = user;
-                userVME.RefreshGuid(db);
-                TempData["userVM"] = userVME;
-                user = db.Users.Where(ZZ => ZZ.Username == Username).FirstOrDefault();
-                user.LastLoginDate = DateTime.Now;
-                db.SaveChanges();
+
+                Models.User user = db.Users.Where(zz => zz.Username == Username
+                                                    && zz.Password == HashedPassword).FirstOrDefault();
+
+                var findUserID = db.Users.Where(xx => xx.Username == Username).FirstOrDefault();
+                ViewBag.CurrentUser = findUserID.UserID;
+                HomepageVM userloggedin = new HomepageVM();
+
+                userloggedin.Id = ViewBag.CurrentUser;
+                userloggedin.Username = findUserID.Username;
 
 
-                if (findUserID.UserTypeID == 3)
-                { return RedirectToAction("Homepage","Booksmart"); }
 
-                else if (findUserID.UserTypeID == 2)
+                if (user != null)
                 {
-                    return RedirectToAction("ParentPage", "Booksmart");
+                    UserVM userVME = new UserVM();
+                    userVME.user = user;
+                    userVME.RefreshGuid(db);
+                    TempData["userVM"] = userVME;
+                    user = db.Users.Where(ZZ => ZZ.Username == Username).FirstOrDefault();
+                    user.LastLoginDate = DateTime.Now;
+                    db.SaveChanges();
+
+
+                    if (findUserID.UserTypeID == 3)
+                    { return RedirectToAction("Homepage", "Booksmart"); }
+
+                    else if (findUserID.UserTypeID == 2)
+                    {
+                        return RedirectToAction("ParentPage", "Booksmart");
+                    }
+                    else { return RedirectToAction("AdminPage", "Booksmart"); }
+
+
+
                 }
-                else { return RedirectToAction("AdminPage", "Booksmart"); }
+
+                LoginVM vb = new LoginVM();
 
 
+                ViewBag.Password = "Password incorrect";
+                vb.Viewbag = ViewBag.Password;
 
+                return View("Login", vb);
+            }
+            else
+            {
+                LoginVM vb = new LoginVM();
+                ViewBag.Password = "User does not exist";
+                vb.Viewbag = ViewBag.Password;
+                return View("Login", vb);
             }
 
-            LoginVM vb = new LoginVM();
-
-
-            ViewBag.Password = "Username or password incorrect";
-            vb.Viewbag = ViewBag.Password;
-
-            return View("Login", vb );
+            
         }
 
         string ComputeSha256Hash(string rawData)

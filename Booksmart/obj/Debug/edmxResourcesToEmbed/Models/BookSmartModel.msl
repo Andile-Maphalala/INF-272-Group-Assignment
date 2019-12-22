@@ -37,7 +37,6 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Surname" ColumnName="Surname" />
           <ScalarProperty Name="DOB" ColumnName="DOB" />
-          <ScalarProperty Name="ThemeID" ColumnName="ThemeID" />
           <ScalarProperty Name="ParentID" ColumnName="ParentID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="LevelID" ColumnName="LevelID" />
