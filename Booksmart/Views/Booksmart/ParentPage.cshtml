@@ -1,4 +1,4 @@
-﻿@model List<Booksmart.Models.Learner>
+﻿@model Booksmart.ViewModels.ParentVM
 @{
     Layout = null;
 }
@@ -27,7 +27,7 @@
                         <span class="glyphicon glyphicon-user"></span> User
                     </a>
                 </div>
-                <div class="col-lg-6 col-xs-12"><button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("AddLearner", "Booksmart" )';">Add Child</button></div>
+                <div class="col-lg-6 col-xs-12"><button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("AddLearner", "Booksmart",new { ID = Model.ParentID } )';">Add Child</button></div>
             </div>
         </div>
 
@@ -54,37 +54,58 @@
             </th>*@
 
         </tr>
-
-        @foreach (var item in Model)
+        @if (Model != null)
         {
-            <tr>
-                <td>
-                    @item.Name
-                </td>
-                <td>
-                    @item.Surname
-                </td>
+            foreach (var item in Model.Children)
+            {
 
-                @*<td><button type="button" class="btn btn-info">Generate Report</button></td>*@
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Surname
+                    </td>
 
-                @*<td>
-                    <button type="button" class="btn btn-danger">Delete</button>
-                </td>*@
+                    @*<td><button type="button" class="btn btn-info">Generate Report</button></td>*@
+
+                    <td>
+
+                        <div class="col-lg-6 col-xs-12"><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" @*onclick="window.location.href='@Url.Action("DeleteLearner", "Booksmart", new { ID = item.UserID })';" name="Delete" )';"*@>Delete</button></div>
+
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Confirm</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to delete
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="window.location.href='@Url.Action("Cancel", "Booksmart", new { ID = item.LearnerID })';" name="Cancel" )';">Cancel</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="window.location.href='@Url.Action("DeleteLearner", "Booksmart", new { ID = item.LearnerID })';" name="Delete" )';">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
 
 
-                @*<td>
-                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                    </td>*@
-            </tr>
+
+                </tr>
+                       
+                    }
         }
 
     </table>
 
 
-
-
+ 
+            
 
 
 

@@ -1,4 +1,4 @@
-﻿@model List<Booksmart.Models.User>
+﻿@model Booksmart.Models.Parent
 @{
 
     Layout = null;
@@ -120,6 +120,9 @@
                     </div>
                 </div>
             </div>
+
+            @Html.Hidden("ID",Model.ParentID); 
+
             @*<div class="form-group">
                     <div class="row">
                         <div class="col-3"></div>

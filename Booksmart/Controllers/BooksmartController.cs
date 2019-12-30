@@ -62,62 +62,13 @@ namespace Booksmart.Controllers
         //    return View(ist);
         //}
 
-        public ActionResult AddLearner()
-        {
-
-            //Create db context object here 
-            Del_4_272Entities db = new Del_4_272Entities();
-            //Get the value from database and then set it to ViewBag to pass it View
-            //ViewBag.UserType = from p in db.Users.GroupBy(i => new { i.UserType1.Description, i.UserType1.ID }).OrderByDescending(x => x.Count()).Select(i => i.Key).ToList()
-            //                   select new
-            //                   {
-            //                       Id = p.ID,
-            //                       Description = p.ID + " - " + p.Description
-            //                   };
-
-
-            IEnumerable<SelectListItem> items = db.Genders.Select(c => new SelectListItem
-            {
-                Value = c.Description,
-                Text = c.Description
-
-            });
-            ViewBag.Gender = items;
-
-
-            IEnumerable<SelectListItem> Countries = db.Countries.Select(c => new SelectListItem
-            {
-                Value = c.CountryName,
-                Text = c.CountryName
-
-            });
-            ViewBag.Country = Countries;
-
-            List<User> UserList = db.Users.ToList();
-            return View(UserList);
-
-
-        }
-
-
-
-
-        public ActionResult ParentPage()
-        {
-            Del_4_272Entities db = new Del_4_272Entities();
-            db.Configuration.ProxyCreationEnabled = false;
-
-            var qlist = db.Learners.Where(xx => xx.ParentID == 1).ToList();
+      
 
 
 
 
 
 
-
-            return View(qlist.ToList());
-
-        }
 
         public ActionResult Login()
         {
@@ -129,6 +80,8 @@ namespace Booksmart.Controllers
         [HttpPost]
         public ActionResult DoLogin(string Username, string Password)
         {
+            
+ 
             Del_4_272Entities db = new Del_4_272Entities();
             var HashedPassword = ComputeSha256Hash(Password);
             var UserExist = db.Users.Where(zz => zz.Username == Username).FirstOrDefault();
@@ -164,7 +117,16 @@ namespace Booksmart.Controllers
 
                     else if (findUserID.UserTypeID == 2)
                     {
-                        return RedirectToAction("ParentPage", "Booksmart");
+                        Parent CurrentParent = new Parent();
+                        CurrentParent = db.Parents.Where(zz => zz.UserID == user.UserID).FirstOrDefault();
+                        ParentVM Parent = new ParentVM();
+                        Parent.Children = db.Learners.Where(zz => zz.ParentID == CurrentParent.ParentID).ToList();
+                        Parent.ParentID = CurrentParent.ParentID;
+                        Parent.Email = CurrentParent.Email;
+                        Parent.Name = CurrentParent.Name;
+                        Parent.Surname = CurrentParent.Surname;
+
+                        return View("ParentPage",Parent);
                     }
                     else { return RedirectToAction("AdminPage", "Booksmart"); }
 
@@ -223,6 +185,152 @@ namespace Booksmart.Controllers
 
         }
 
+        public ActionResult AddLearner(int ID)
+        {
+
+            //Create db context object here 
+            Del_4_272Entities db = new Del_4_272Entities();
+            //Get the value from database and then set it to ViewBag to pass it View
+            //ViewBag.UserType = from p in db.Users.GroupBy(i => new { i.UserType1.Description, i.UserType1.ID }).OrderByDescending(x => x.Count()).Select(i => i.Key).ToList()
+            //                   select new
+            //                   {
+            //                       Id = p.ID,
+            //                       Description = p.ID + " - " + p.Description
+            //                   };
+
+
+            IEnumerable<SelectListItem> items = db.Genders.Select(c => new SelectListItem
+            {
+                Value = c.Description,
+                Text = c.Description
+
+            });
+            ViewBag.Gender = items;
+
+
+            IEnumerable<SelectListItem> Countries = db.Countries.Select(c => new SelectListItem
+            {
+                Value = c.CountryName,
+                Text = c.CountryName
+
+            });
+            ViewBag.Country = Countries;
+
+            Parent CurrentUser = new Parent();
+            CurrentUser = db.Parents.Where(zz => zz.ParentID == ID).FirstOrDefault();
+
+            return View(CurrentUser);
+
+
+        }
+
+        public ActionResult DeleteLearner(int ID)
+        {
+            Del_4_272Entities db = new Del_4_272Entities();
+
+            User DeleteUser = new User();
+            Learner DeleteLearner = new Learner();
+            DeleteUser = db.Users.Where(zz => zz.UserID == ID).FirstOrDefault();
+            DeleteLearner = db.Learners.Where(zz => zz.LearnerID == ID).FirstOrDefault();
+            db.Learners.Remove(DeleteLearner);
+            db.Users.Remove(DeleteUser);
+            db.SaveChanges();
+
+            int ParentID = DeleteLearner.ParentID;
+
+            Parent CurrentParent = new Parent();
+            CurrentParent = db.Parents.Where(zz => zz.ParentID == ParentID).FirstOrDefault();
+            ParentVM Parent = new ParentVM();
+            Parent.Children = db.Learners.Where(zz => zz.ParentID == CurrentParent.ParentID).ToList();
+            Parent.ParentID = CurrentParent.ParentID;
+            Parent.Email = CurrentParent.Email;
+            Parent.Name = CurrentParent.Name;
+            Parent.Surname = CurrentParent.Surname;
+            return View("ParentPage", Parent);
+        }
+
+        public ActionResult Cancel(int ID)
+        {
+            Del_4_272Entities db = new Del_4_272Entities();
+            Learner ThisLearner = new Learner();
+            ThisLearner = db.Learners.Where(zz => zz.LearnerID == ID).FirstOrDefault();
+
+            Parent CurrentParent = new Parent();
+            CurrentParent = db.Parents.Where(zz => zz.ParentID == ThisLearner.ParentID).FirstOrDefault();
+
+            ParentVM Parent = new ParentVM();
+            Parent.Children = db.Learners.Where(zz => zz.ParentID == CurrentParent.ParentID).ToList();
+            Parent.ParentID = CurrentParent.ParentID;
+            Parent.Email = CurrentParent.Email;
+            Parent.Name = CurrentParent.Name;
+            Parent.Surname = CurrentParent.Surname;
+            return View("ParentPage", Parent);
+        }
+
+        public ActionResult ParentPage()
+        {
+            //Del_4_272Entities db = new Del_4_272Entities();
+            //db.Configuration.ProxyCreationEnabled = false;
+
+            //var qlist = db.Learners.Where(xx => xx.ParentID == CurrentID).ToList();
+
+
+
+
+
+
+
+            return View(/*qlist.ToList()*/);
+
+        }
+
+        [HttpPost]
+        public ActionResult DoRegisterChild(string Name, string Surname, string Username, string Gender, string Password, int ID)
+        {
+
+            Del_4_272Entities db = new Del_4_272Entities();
+            db.Configuration.ProxyCreationEnabled = false;
+            Learner NewLearner = new Learner();
+            User NewUser = new User();
+
+            NewUser.Username = Username;
+            NewUser.Password = ComputeSha256Hash(Password);
+            NewUser.UserTypeID = 3;
+            NewUser.LastLoginDate = DateTime.Now;
+            NewUser.Guid = Guid.NewGuid().ToString();
+            db.Users.Add(NewUser);
+
+
+
+            NewLearner.Name = Name;
+            NewLearner.Surname = Surname;
+            var findGender = db.Genders.Where(zz => zz.Description == Gender).FirstOrDefault();
+            NewLearner.GenderID = findGender.GenderID;
+            NewLearner.DOB = DateTime.Now;
+
+            NewLearner.ParentID = ID; 
+            NewLearner.LevelID = 1;
+
+
+
+            db.Learners.Add(NewLearner);
+
+            db.SaveChanges();
+
+            Parent CurrentParent = new Parent();
+            CurrentParent = db.Parents.Where(zz => zz.ParentID == ID).FirstOrDefault();
+            ParentVM Parent = new ParentVM();
+            Parent.Children = db.Learners.Where(zz => zz.ParentID == CurrentParent.ParentID).ToList();
+            Parent.ParentID = CurrentParent.ParentID;
+            Parent.Email = CurrentParent.Email;
+            Parent.Name = CurrentParent.Name;
+            Parent.Surname = CurrentParent.Surname;
+            return View("ParentPage",Parent);
+        }
+
+
+
+
         public ActionResult Register()
         {
             //Create db context object here 
@@ -275,49 +383,7 @@ namespace Booksmart.Controllers
         //}
 
 
-        [HttpPost]
-        public ActionResult DoRegisterChild(string Name, string Surname, string Username, string Gender, string Password)
-        {
-
-            Del_4_272Entities db = new Del_4_272Entities();
-            db.Configuration.ProxyCreationEnabled = false;
-            Learner NewLearner = new Learner();
-            User NewUser = new User();
-
-            NewUser.Username = Username;
-            NewUser.Password = ComputeSha256Hash(Password);
-            NewUser.UserTypeID = 2;
-            NewUser.LastLoginDate = DateTime.Now;
-            NewUser.Guid = Guid.NewGuid().ToString();
-            db.Users.Add(NewUser);
-            
-
-
-            NewLearner.Name = Name;
-            NewLearner.Surname = Surname;
-            var findGender = db.Genders.Where(zz => zz.Description == Gender).FirstOrDefault();
-            NewLearner.GenderID = findGender.GenderID;
-            NewLearner.DOB = DateTime.Now;
-         
-            NewLearner.ParentID = 1;
-            NewLearner.LevelID = 1;
-
-
-
-            db.Learners.Add(NewLearner);
-
-            db.SaveChanges();
-            return RedirectToAction("ParentPage", "Booksmart");
-        }
-
-
-
-
-
-
-
-
-
+       
 
 
 

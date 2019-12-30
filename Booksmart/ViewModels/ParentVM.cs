@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Booksmart.Models;
 
 namespace Booksmart.ViewModels
 {
     public class ParentVM
     {
+        List<Learner> children;
         int parentID;
         string name;
         string surname;
-        int age;
-        string gender;
-        DateTime dateofbirth;
         string email;
 
         public int ParentID
@@ -54,44 +53,7 @@ namespace Booksmart.ViewModels
             }
         }
 
-        public int Age
-        {
-            get
-            {
-                return age;
-            }
-
-            set
-            {
-                age = value;
-            }
-        }
-
-        public string Gender
-        {
-            get
-            {
-                return gender;
-            }
-
-            set
-            {
-                gender = value;
-            }
-        }
-
-        public DateTime DOB
-        {
-            get
-            {
-                return dateofbirth;
-            }
-
-            set
-            {
-                dateofbirth = value;
-            }
-        }
+      
 
         public string Email
         {
@@ -103,6 +65,19 @@ namespace Booksmart.ViewModels
             set
             {
                 email = value;
+            }
+        }
+
+        public List<Learner> Children
+        {
+            get
+            {
+                return children;
+            }
+
+            set
+            {
+                children = value;
             }
         }
     }
